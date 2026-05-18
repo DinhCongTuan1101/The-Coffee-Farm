@@ -32,6 +32,10 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
+        dao.ProductDAO dao = new dao.ProductDAO();
+        for (model.Product p : dao.getAllProducts()) {
+            System.out.println(p.getName() + " - Giá: " + p.getPrice());
+        }
         launch();
     }
 
