@@ -17,7 +17,6 @@ public class ThanhChucNang_Controller {
    
     @FXML
     public void bamNutShippingMethod(javafx.event.ActionEvent event) {
-        // Bật lớp phủ lên (hiện bảng chọn)
         if (lopPhuShippingMethod != null) {
             lopPhuShippingMethod.setVisible(true);
         } else {
@@ -27,10 +26,9 @@ public class ThanhChucNang_Controller {
     @FXML
     public void bamNutAccount(javafx.event.ActionEvent event) {
         try {
-            // Lôi cái file giao diện Account m vừa làm ra
+     
             javafx.scene.Parent ruotAccount = javafx.fxml.FXMLLoader.load(getClass().getResource("Account_Screen.fxml"));
             
-            // Nhét nó vào giữa cái khung chính của màn hình
             if (khungChinh != null) {
                 khungChinh.setCenter(ruotAccount);
             } else {
@@ -39,13 +37,31 @@ public class ThanhChucNang_Controller {
             
         } catch (Exception e) {
             System.out.println("Lỗi: Không tìm thấy hoặc không load được file Account_Screen.fxml!");
-            e.printStackTrace(); // In ra lỗi màu đỏ để m biết sai ở đâu
+            e.printStackTrace(); 
         }
     }
-    // ==========================================
-    // CÁC HÀM XỬ LÝ LỚP PHỦ SHIPPING 
-    // ==========================================
-
+    @FXML
+    public void bamNutHome(javafx.event.ActionEvent event) {
+        try {
+            javafx.scene.Parent trangChuTacVu = javafx.fxml.FXMLLoader.load(getClass().getResource("FoodAndDrink.fxml"));
+            
+            if (khungChinh != null) {
+                khungChinh.setCenter(trangChuTacVu);
+            } else {
+                System.out.println("Lỗi: Không tìm thấy 'khungChinh' để nhét trang Home!");
+            }
+        } catch (Exception e) {
+            System.out.println("Lỗi: Không load được giao diện chính khi bấm Home!");
+            e.printStackTrace();
+        }
+    }
+    
+    @FXML
+    public void dongPopupShipping(ActionEvent event) {
+        if (lopPhuShippingMethod != null) {
+            lopPhuShippingMethod.setVisible(false);
+        }
+    }
     @FXML
     public void chonGiaoHang(javafx.event.ActionEvent event) {
         System.out.println("Bạn đã chọn: Giao hàng tận nơi");

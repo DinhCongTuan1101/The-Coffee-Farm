@@ -14,9 +14,9 @@
    <children>
       <BorderPane fx:id="khungChinh" prefHeight="700.0" prefWidth="500.0">
          <bottom>
-            <HBox alignment="CENTER" prefHeight="70.0" prefWidth="200.0" spacing="50.0" BorderPane.alignment="CENTER">
+            <HBox alignment="CENTER" prefHeight="70.0" prefWidth="200.0" spacing="40.0" style="-fx-background-color: white; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 10, 0, 0, -2);" BorderPane.alignment="CENTER">
                <children>
-                  <Button contentDisplay="TOP" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-cursor: hand; -fx-text-fill: #707070;" text="Home" textFill="#000000ca">
+                  <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#bamNutHome" style="-fx-background-color: transparent; -fx-cursor: hand; -fx-text-fill: #707070;" text="Home">
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -25,7 +25,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="btnShippingMethod" contentDisplay="TOP" mnemonicParsing="false" onAction="#bamNutShippingMethod" style="-fx-background-color: transparent; -fx-cursor: hand; -fx-text-fill: #707070;" text="Shipping Method" textFill="#000000ca">
+                  <Button fx:id="btnShippingMethod" contentDisplay="TOP" mnemonicParsing="false" onAction="#bamNutShippingMethod" style="-fx-background-color: transparent; -fx-cursor: hand; -fx-text-fill: #707070;" text="Shipping">
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -34,16 +34,16 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="btnShoppingCart" contentDisplay="TOP" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-cursor: hand; -fx-text-fill: #707070;" text="Shopping Cart" textFill="#000000ca">
+                  <Button fx:id="btnShoppingCart" contentDisplay="TOP" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-cursor: hand; -fx-text-fill: #707070;" text="Cart">
                      <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@images/shoppingcart.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="btnAccount" contentDisplay="TOP" mnemonicParsing="false" onAction="#bamNutAccount" style="-fx-background-color: transparent; -fx-cursor: hand; -fx-text-fill: #707070;" text="Account" textFill="#000000ca">
+                  <Button fx:id="btnAccount" contentDisplay="TOP" mnemonicParsing="false" onAction="#bamNutAccount" style="-fx-background-color: transparent; -fx-cursor: hand; -fx-text-fill: #707070;" text="Account">
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -56,12 +56,19 @@
             </HBox>
          </bottom>
       </BorderPane>
-      <AnchorPane fx:id="lopPhuShippingMethod" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(0, 0, 0, 0.5);" visible="false">
+
+      <AnchorPane fx:id="lopPhuShippingMethod" prefHeight="200.0" prefWidth="200.0" visible="false">
          <children>
-            <VBox layoutY="500.0" prefHeight="200.0" prefWidth="500.0" style="-fx-background-color: white; -fx-background-radius: 20 20 0 0;">
+            <Button mnemonicParsing="false" onAction="#dongPopupShipping" style="-fx-background-color: rgba(0, 0, 0, 0.5); -fx-background-radius: 0;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            
+            <VBox layoutY="450.0" prefHeight="250.0" prefWidth="500.0" style="-fx-background-color: white; -fx-background-radius: 20 20 0 0; -fx-padding: 15;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="                                                        Phương Thức Nhận Hàng" wrappingWidth="500.53667640686035" />
-                  <Button fx:id="btnGiaoTanNoi" mnemonicParsing="false" onAction="#chonGiaoHang" prefHeight="52.0" prefWidth="501.0" style="-fx-background-color: transfer;" text="Giao Hàng Tận Nơi">
+                  <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold; -fx-font-size: 15px;" text="Phương Thức Nhận Hàng" />
+                     </children>
+                  </HBox>
+                  <Button fx:id="btnGiaoTanNoi" mnemonicParsing="false" onAction="#chonGiaoHang" prefHeight="50.0" prefWidth="500.0" style="-fx-background-color: transparent; -fx-cursor: hand; -fx-alignment: center-left; -fx-padding: 0 0 0 40;" text="Giao Hàng Tận Nơi">
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -70,7 +77,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="btnLayMangDi" mnemonicParsing="false" onAction="#chonMangDi" prefHeight="49.0" prefWidth="501.0" style="-fx-background-color: transfer;" text="Đến Lấy Mang Đi">
+                  <Button fx:id="btnLayMangDi" mnemonicParsing="false" onAction="#chonMangDi" prefHeight="50.0" prefWidth="500.0" style="-fx-background-color: transparent; -fx-cursor: hand; -fx-alignment: center-left; -fx-padding: 0 0 0 40;" text="Đến Lấy Mang Đi">
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -79,7 +86,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="btnDungTaiQuan" mnemonicParsing="false" onAction="#chonTaiQuan" prefHeight="52.0" prefWidth="502.0" style="-fx-background-color: transfer;" text="Dùng Tại Quán">
+                  <Button fx:id="btnDungTaiQuan" mnemonicParsing="false" onAction="#chonTaiQuan" prefHeight="50.0" prefWidth="500.0" style="-fx-background-color: transparent; -fx-cursor: hand; -fx-alignment: center-left; -fx-padding: 0 0 0 40;" text="Dùng Tại Quán">
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
