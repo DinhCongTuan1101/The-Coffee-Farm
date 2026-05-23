@@ -43,7 +43,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="btnAccount" contentDisplay="TOP" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-cursor: hand; -fx-text-fill: #707070;" text="Account" textFill="#000000ca">
+                  <Button fx:id="btnAccount" contentDisplay="TOP" mnemonicParsing="false" onAction="#bamNutAccount" style="-fx-background-color: transparent; -fx-cursor: hand; -fx-text-fill: #707070;" text="Account" textFill="#000000ca">
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
