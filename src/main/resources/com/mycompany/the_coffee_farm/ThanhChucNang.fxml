@@ -16,7 +16,7 @@
          <bottom>
             <HBox alignment="CENTER" prefHeight="70.0" prefWidth="200.0" spacing="40.0" style="-fx-background-color: white; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 10, 0, 0, -2);" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="btnBack" contentDisplay="TOP" mnemonicParsing="false" onAction="#veTrangChu" style="-fx-background-color: transparent; -fx-cursor: hand; -fx-text-fill: #707070;" text="Home">
+                  <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#bamNutHome" style="-fx-background-color: transparent; -fx-cursor: hand; -fx-text-fill: #707070;" text="Home">
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>

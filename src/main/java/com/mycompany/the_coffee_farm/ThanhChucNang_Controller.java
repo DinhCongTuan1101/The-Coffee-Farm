@@ -20,6 +20,21 @@ public class ThanhChucNang_Controller {
 
     @FXML
     private javafx.scene.layout.AnchorPane lopPhuShippingMethod;
+    public static String trangChuCuaNhanh = "FoodAndDrink.fxml"; 
+    @FXML
+    private void bamNutHome(javafx.event.ActionEvent event) {
+        try {
+            javafx.scene.Parent ruotNhanh = javafx.fxml.FXMLLoader.load(getClass().getResource(trangChuCuaNhanh));
+                        if (khungChinh != null) {
+                khungChinh.setCenter(ruotNhanh);
+            } else {
+                System.out.println("Lỗi: Chưa đặt fx:id là 'khungChinh' cho BorderPane bên Scene Builder!");
+            }
+        } catch (Exception e) {
+            System.out.println("Lỗi đéo về được nhánh chính: " + trangChuCuaNhanh);
+            e.printStackTrace();
+        }
+    }
    
     @FXML
     public void bamNutShippingMethod(javafx.event.ActionEvent event) {
@@ -110,7 +125,7 @@ public class ThanhChucNang_Controller {
             stage.setScene(scene);
             stage.show();
         } catch (Exception e) {
-            System.out.println("Lỗi đéo chuyển được trang!");
+            System.out.println("Lỗi không chuyển được trang!");
             e.printStackTrace();
         }
     }

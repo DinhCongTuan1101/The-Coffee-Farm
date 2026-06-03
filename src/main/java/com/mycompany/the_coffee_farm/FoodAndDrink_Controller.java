@@ -130,6 +130,6 @@ private void locDanhSach(VBox danhSach, String tuKhoa) {
         if (!daCoTrongGio) {
             GioHang.danhSachMua.add(new GioHang.MonHang(tenMon, giaTien, 1));
         }
-                System.out.println(">>> Vừa thêm: " + tenMon + " | Giá: " + giaTien + " | Số lượng: " + soLuongHienTai);
+                System.out.println(" Vừa thêm: " + tenMon + " | Giá: " + giaTien + " | Số lượng: " + soLuongHienTai);
     }
 }

@@ -5,7 +5,6 @@ import java.util.List;
 
 public class GioHang {
     
-    // Class phụ để cấu trúc 1 món hàng trong giỏ
     public static class MonHang {
         public String tenMon;
         public int giaTien;
@@ -18,6 +17,5 @@ public class GioHang {
         }
     }
 
-    // Cái giỏ hàng tĩnh này sẽ sống suốt quá trình bật app, đi đâu cũng gọi được
     public static List<MonHang> danhSachMua = new ArrayList<>();
 }

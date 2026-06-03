@@ -24,7 +24,7 @@ public class Primary_Controller implements Initializable {
     private ImageView bannerImage;
 
     private int imageIndex = 0;
-   
+    
     private String[] danhSachAnh = {
         "/com/mycompany/the_coffee_farm/images/anh1.jpg",
         "/com/mycompany/the_coffee_farm/images/anh2.jpg",
@@ -59,10 +59,10 @@ public class Primary_Controller implements Initializable {
     @FXML
     public void chuyenTrangThongTin(ActionEvent event) {
         try {
-javafx.stage.Stage stage = (javafx.stage.Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-        javafx.scene.Parent trangThongTin = javafx.fxml.FXMLLoader.load(getClass().getResource("ThongTinDoanhNghiep.fxml"));
-                javafx.scene.Scene sceneMoi = new javafx.scene.Scene(trangThongTin);
-                stage.setScene(sceneMoi);
+            javafx.stage.Stage stage = (javafx.stage.Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+            javafx.scene.Parent trangThongTin = javafx.fxml.FXMLLoader.load(getClass().getResource("ThongTinDoanhNghiep.fxml"));
+            javafx.scene.Scene sceneMoi = new javafx.scene.Scene(trangThongTin);
+            stage.setScene(sceneMoi);
         } catch (IOException e) {
             System.out.println("Lỗi không load được file thông tin!");
         }
@@ -71,16 +71,14 @@ javafx.stage.Stage stage = (javafx.stage.Stage) ((javafx.scene.Node) event.getSo
     @FXML
     public void vaoNguyenLieuTho(javafx.event.ActionEvent event) {
         try {
+            ThanhChucNang_Controller.trangChuCuaNhanh = "NguyenLieuTho.fxml"; 
+
             javafx.stage.Stage stage = (javafx.stage.Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-            
             javafx.scene.layout.StackPane voChinh = javafx.fxml.FXMLLoader.load(getClass().getResource("ThanhChucNang.fxml"));
-            
             javafx.scene.Parent ruotNLT = javafx.fxml.FXMLLoader.load(getClass().getResource("NguyenLieuTho.fxml"));
-            
             javafx.scene.layout.BorderPane khungChinh = (javafx.scene.layout.BorderPane) voChinh.lookup("#khungChinh");
             
             khungChinh.setCenter(ruotNLT);
-            
             stage.setScene(new javafx.scene.Scene(voChinh));
         } catch (Exception e) {
             System.out.println("Lỗi vào Nguyên liệu thô!");
@@ -91,13 +89,14 @@ javafx.stage.Stage stage = (javafx.stage.Stage) ((javafx.scene.Node) event.getSo
     @FXML
     public void vaoNguyenLieuSoChe(javafx.event.ActionEvent event) {
         try {
+            ThanhChucNang_Controller.trangChuCuaNhanh = "NguyenLieuSoChe.fxml";
+
             javafx.stage.Stage stage = (javafx.stage.Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
             javafx.scene.layout.StackPane voChinh = javafx.fxml.FXMLLoader.load(getClass().getResource("ThanhChucNang.fxml"));
             javafx.scene.Parent ruotNLSC = javafx.fxml.FXMLLoader.load(getClass().getResource("NguyenLieuSoChe.fxml"));
-            
             javafx.scene.layout.BorderPane khungChinh = (javafx.scene.layout.BorderPane) voChinh.lookup("#khungChinh");
-            khungChinh.setCenter(ruotNLSC);
             
+            khungChinh.setCenter(ruotNLSC);
             stage.setScene(new javafx.scene.Scene(voChinh));
         } catch (Exception e) {
             System.out.println("Lỗi vào Nguyên liệu sơ chế!");
@@ -108,13 +107,14 @@ javafx.stage.Stage stage = (javafx.stage.Stage) ((javafx.scene.Node) event.getSo
     @FXML
     public void vaoFoodAndDrink(javafx.event.ActionEvent event) {
         try {
+            ThanhChucNang_Controller.trangChuCuaNhanh = "FoodAndDrink.fxml";
+
             javafx.stage.Stage stage = (javafx.stage.Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
             javafx.scene.layout.StackPane voChinh = javafx.fxml.FXMLLoader.load(getClass().getResource("ThanhChucNang.fxml"));
             javafx.scene.Parent ruotFood = javafx.fxml.FXMLLoader.load(getClass().getResource("FoodAndDrink.fxml"));
-            
             javafx.scene.layout.BorderPane khungChinh = (javafx.scene.layout.BorderPane) voChinh.lookup("#khungChinh");
-            khungChinh.setCenter(ruotFood);
             
+            khungChinh.setCenter(ruotFood);
             stage.setScene(new javafx.scene.Scene(voChinh));
         } catch (Exception e) {
             System.out.println("Lỗi vào Food and Drink!");

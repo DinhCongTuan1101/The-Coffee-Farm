@@ -105,7 +105,6 @@ public class OrderScreen_Controller {
         btnMuaHang.setText("Mua hàng (" + soMonDaChon + ")");
     }
 
-    // ĐÂY CHÍNH LÀ CÁI HÀM THẰNG FXML ĐANG TÌM MỎI MẮT NÀY
     @FXML
     private void handleChonTatCa(ActionEvent event) {
         boolean trangThaiTatCa = chkTatCa.isSelected();
