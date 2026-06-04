@@ -38,7 +38,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" prefHeight="66.0" prefWidth="230.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-cursor: hand; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 10, 0, 0, 2);" text="Lịch sử đơn hàng" GridPane.rowIndex="1">
+                  <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#moLichSuDonHang" prefHeight="66.0" prefWidth="230.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-cursor: hand; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 10, 0, 0, 2);" text="Lịch sử đơn hàng" GridPane.rowIndex="1">
                      <graphic>
                         <ImageView fitHeight="64.0" fitWidth="36.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -50,7 +50,7 @@
                         <Font name="Arial Bold" size="12.0" />
                      </font>
                   </Button>
-                  <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" prefHeight="66.0" prefWidth="230.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-cursor: hand; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 10, 0, 0, 2);" text="Tìm kiếm đơn hàng" GridPane.rowIndex="3">
+                  <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#moTimKiemDonHang" prefHeight="66.0" prefWidth="230.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-cursor: hand; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 10, 0, 0, 2);" text="Tìm kiếm đơn hàng" GridPane.rowIndex="3">
                      <graphic>
                         <ImageView fitHeight="64.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -74,7 +74,7 @@
                         <Font name="Arial Bold" size="12.0" />
                      </font>
                   </Button>
-                  <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" prefHeight="66.0" prefWidth="230.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-cursor: hand; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 10, 0, 0, 2);" text="Ưu đãi của bạn" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                  <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#moUuDaiCuaBan" prefHeight="66.0" prefWidth="230.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-cursor: hand; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 10, 0, 0, 2);" text="Ưu đãi của bạn" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <graphic>
                         <ImageView fitHeight="64.0" fitWidth="36.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -156,7 +156,7 @@
                      <graphic>
                         <ImageView fitHeight="22.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@images/user%20(1).png" />
+                              <Image url="@images/account.png" />
                            </image>
                         </ImageView>
                      </graphic>

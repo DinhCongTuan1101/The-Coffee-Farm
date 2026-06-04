@@ -26,10 +26,10 @@ public class Primary_Controller implements Initializable {
     private int imageIndex = 0;
     
     private String[] danhSachAnh = {
-        "/com/mycompany/the_coffee_farm/images/anh1.jpg",
-        "/com/mycompany/the_coffee_farm/images/anh2.jpg",
-        "/com/mycompany/the_coffee_farm/images/anh3.jpg",
-        "/com/mycompany/the_coffee_farm/images/anh4.jpg"
+        "/com/mycompany/the_coffee_farm/images/anh1.png",
+        "/com/mycompany/the_coffee_farm/images/anh2.png",
+        "/com/mycompany/the_coffee_farm/images/anh3.png",
+        "/com/mycompany/the_coffee_farm/images/anh4.png"
     };
 
     @Override
@@ -119,6 +119,20 @@ public class Primary_Controller implements Initializable {
         } catch (Exception e) {
             System.out.println("Lỗi vào Food and Drink!");
             e.printStackTrace();
+        }
+    }
+    @FXML
+    public void moTrangDangNhap(javafx.event.ActionEvent event) {
+        try {
+            // Đưa người dùng sang trang Đăng nhập
+            javafx.stage.Stage stage = (javafx.stage.Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+            // (Nhớ tạo file DangNhap.fxml nhé)
+            javafx.scene.Parent root = javafx.fxml.FXMLLoader.load(getClass().getResource("DangNhap.fxml")); 
+            javafx.scene.Scene scene = new javafx.scene.Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            System.out.println("Lỗi không load được trang Đăng Nhập!");
         }
     }
 }

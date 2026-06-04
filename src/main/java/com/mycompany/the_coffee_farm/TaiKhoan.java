@@ -4,12 +4,12 @@
  */
 package com.mycompany.the_coffee_farm;
 
-import javafx.fxml.FXML;
-
 /**
  *
  * @author admin
  */
-public class UuDaiCuaBan_Controller {
-
+public class TaiKhoan {
+    public static boolean daDangNhap = false; 
+    
+    public static String tenTaiKhoan = "";
 }

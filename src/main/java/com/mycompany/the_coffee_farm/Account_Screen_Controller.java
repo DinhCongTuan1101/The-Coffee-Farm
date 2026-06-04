@@ -18,4 +18,28 @@ public class Account_Screen_Controller {
             e.printStackTrace();
         }
     }
+        @FXML
+    private void moLichSuDonHang(javafx.event.ActionEvent event) {
+        if (TaiKhoan.daDangNhap == false) {
+            System.out.println("Bạn chưa đăng nhập!");
+            return; 
+        }    
+        System.out.println("Đã xác nhận tài khoản. Đang tải Lịch sử đơn hàng!");
+    }
+            @FXML
+    private void moTimKiemDonHang(javafx.event.ActionEvent event) {
+        if (TaiKhoan.daDangNhap == false) {
+            System.out.println("Bạn chưa đăng nhập!");
+            return; 
+        }    
+        System.out.println("Đã xác nhận tài khoản. Đang tải Lịch sử đơn hàng!");
+    }
+            @FXML
+    private void moUuDaiCuaBan(javafx.event.ActionEvent event) {
+        if (TaiKhoan.daDangNhap == false) {
+            System.out.println("Bạn chưa đăng nhập!");
+            return; 
+        }    
+        System.out.println("Đã xác nhận tài khoản. Đang tải Lịch sử đơn hàng!");
+    }
 }

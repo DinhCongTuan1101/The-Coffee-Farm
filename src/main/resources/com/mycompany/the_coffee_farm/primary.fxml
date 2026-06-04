@@ -8,31 +8,43 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" prefHeight="700.0" prefWidth="500.0" spacing="20.0" style="-fx-background-color: #fcfcfc;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.the_coffee_farm.Primary_Controller">
+<VBox alignment="TOP_CENTER" prefHeight="700.0" prefWidth="500.0" spacing="20.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.the_coffee_farm.Primary_Controller">
    <children>
       
       <StackPane prefHeight="200.0" prefWidth="500.0">
          <children>
-            <ImageView fx:id="bannerImage" fitHeight="200.0" fitWidth="370.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="bannerImage" fitHeight="150.0" fitWidth="340.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@images/anh1.jpg" />
+                  <Image url="@images/anh1.png" />
                </image></ImageView>
+            <Button mnemonicParsing="false" onAction="#moTrangDangNhap" style="-fx-background-radius: 100; -fx-cursor: hand; -fx-background-color: transperent;" StackPane.alignment="TOP_RIGHT">
+               <StackPane.margin>
+                  <Insets right="10.0" top="10.0" />
+               </StackPane.margin>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/account.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
       </StackPane>
 
-      <Button fx:id="btnThongTin" mnemonicParsing="false" onAction="#chuyenTrangThongTin" prefHeight="60.0" prefWidth="380.0" style="-fx-background-color: #D2B48C; -fx-background-radius: 15;" text="Thông tin doanh nghiệp">
+      <Button fx:id="btnThongTin" mnemonicParsing="false" onAction="#chuyenTrangThongTin" prefHeight="60.0" prefWidth="380.0" style="-fx-background-color: pink; -fx-background-radius: 15;" text="Thông tin doanh nghiệp">
          <font><Font name="System Bold" size="18.0" /></font>
       </Button>
       
-      <Button fx:id="btnNguyenLieuTho" mnemonicParsing="false" onAction="#vaoNguyenLieuTho" prefHeight="60.0" prefWidth="380.0" style="-fx-background-color: #D2B48C; -fx-background-radius: 15;" text="Nguyên liệu thô">
+      <Button fx:id="btnNguyenLieuTho" mnemonicParsing="false" onAction="#vaoNguyenLieuTho" prefHeight="60.0" prefWidth="380.0" style="-fx-background-color: pink; -fx-background-radius: 15;" text="Nguyên liệu thô">
          <font><Font name="System Bold" size="18.0" /></font>
       </Button>
       
-      <Button fx:id="btnNguyenLieuSoChe" mnemonicParsing="false" onAction="#vaoNguyenLieuSoChe" prefHeight="60.0" prefWidth="380.0" style="-fx-background-color: #D2B48C; -fx-background-radius: 15;" text="Nguyên liệu sơ chế">
+      <Button fx:id="btnNguyenLieuSoChe" mnemonicParsing="false" onAction="#vaoNguyenLieuSoChe" prefHeight="60.0" prefWidth="380.0" style="-fx-background-color: pink; -fx-background-radius: 15;" text="Nguyên liệu sơ chế">
          <font><Font name="System Bold" size="18.0" /></font>
       </Button>
       
-      <Button fx:id="btnFoodDrink" mnemonicParsing="false" onAction="#vaoFoodAndDrink" prefHeight="60.0" prefWidth="380.0" style="-fx-background-color: #D2B48C; -fx-background-radius: 15;" text="Food and Drink">
+      <Button fx:id="btnFoodDrink" mnemonicParsing="false" onAction="#vaoFoodAndDrink" prefHeight="60.0" prefWidth="380.0" style="-fx-background-color: pink; -fx-background-radius: 15;" text="Food and Drink">
          <font><Font name="System Bold" size="18.0" /></font>
       </Button>
       

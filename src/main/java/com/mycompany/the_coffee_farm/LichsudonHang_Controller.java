@@ -4,10 +4,12 @@
  */
 package com.mycompany.the_coffee_farm;
 
+import javafx.fxml.FXML;
+
 /**
  *
  * @author admin
  */
 public class LichsudonHang_Controller {
-    
+
 }
