@@ -12,43 +12,43 @@
 <?import javafx.scene.text.Font?>
 
 <ScrollPane hbarPolicy="NEVER" pannable="true" prefHeight="700.0" prefWidth="500.0" vbarPolicy="ALWAYS" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.the_coffee_farm.ThongTinDoanhNghiep_Controller">
-   <content>
-      <AnchorPane prefHeight="700.0" prefWidth="500.0">
-         <children>
-            <StackPane layoutX="-2.0" layoutY="1.0" prefHeight="242.0" prefWidth="500.0">
-               <children>
-                  <ImageView fitHeight="250.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/result_z7897640139435_d2aa1243448c0eb7cdb1b54f1385bdf3.jpg" />
-                     </image>
-                  </ImageView>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#26282959" height="250.0" stroke="BLACK" strokeType="INSIDE" width="510.0" />
-                  <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="65.0" prefWidth="295.0" text="   THÔNG TIN VỀ CHÚNG TÔI" textFill="#fffcfc" StackPane.alignment="BOTTOM_LEFT">
-                     <font>
-                        <Font size="22.0" />
-                     </font>
-                     <effect>
-                        <DropShadow spread="0.3" />
-                     </effect>
-                  </Label>
-                  <Button fx:id="btnBack" mnemonicParsing="false" onAction="#veTrangChu" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: transparent; -fx-text-fill: white;" text="←" textFill="#000000fe" StackPane.alignment="TOP_LEFT">
-                     <font>
-                        <Font size="19.0" />
-                     </font>
-                  </Button>
-               </children>
-            </StackPane>
-            <Label layoutX="4.0" layoutY="251.0" prefHeight="114.0" prefWidth="494.0" text="Câu chuyện của chúng tôi bắt nguồn từ &quot;Hương vị nguyên bản từ thủ phủ cà phê Đắk Lắk — Nơi mỗi hạt tịnh hoa chứa đựng tình yêu của nắng gió đại ngàn và giọt mồ hôi người nông dân.&quot;" wrapText="true">
-               <font>
-                  <Font name="System Bold Italic" size="18.0" />
-               </font>
-            </Label>
-            <Label layoutY="365.0" prefHeight="360.0" prefWidth="494.0" text="Chào mừng bạn đến với The Coffee Farm, nơi hành trình của những tách cà phê đậm vị được bắt đầu từ chính thủ phủ Đắk Lắk bạt ngàn.Sinh ra và lớn lên giữa vùng đất đỏ bazan huyền thoại của Tây Nguyên, chúng tôi thấu hiểu rằng một ly cà phê ngon không đơn thuần là một thức uống tỉnh táo mỗi sáng, mà đó là cả một nghệ thuật được kết tinh từ lòng đất mẹ. Tại The Coffee Farm, từng cây cà phê Robusta kiên cường và Arabica thanh nhã đều được nuôi dưỡng hoàn toàn tự nhiên, đón nhận những tinh túy thuần khiết nhất của khí hậu đại ngàn.Chúng tôi tự hào vận hành theo mô hình 'Từ nông trại đến ly cà phê' (From Farm to Cup) với sự tỉ mỉ tuyệt đối trong từng công đoạn. Khi mùa thu hoạch gõ cửa, những người nông dân lành nghề của chúng tôi chỉ lựa chọn hái bằng tay những trái cà phê chín mọng, đạt độ đường hoàn hảo nhất. Trải qua quy trình sơ chế nghiêm ngặt và công nghệ rang xay hiện đại độc quyền, từng hạt cà phê đều giữ trọn vẹn được hậu vị ngọt ngào, hương thơm mộc mạc và cái chất đậm đà, nguyên bản không thể pha lẫn.Đến với The Coffee Farm, bạn không chỉ thưởng thức cà phê sạch nguyên chất 100%, mà còn đang cùng chúng tôi viết tiếp hành trình tôn vinh giá trị nông sản Việt, mang hương vị của mảnh đất Đắk Lắk vươn xa hơn mỗi ngày. Cảm ơn bạn đã lựa chọn trở thành một phần trong câu chuyện hạnh phúc của chúng tôi!" wrapText="true">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-         </children>
-      </AnchorPane>
-   </content>
+    <content>
+        <AnchorPane prefHeight="700.0" prefWidth="500.0">
+            <children>
+                <StackPane layoutX="-2.0" layoutY="1.0" prefHeight="242.0" prefWidth="500.0">
+                    <children>
+                        <ImageView fitHeight="250.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@images/result_z7897640139435_d2aa1243448c0eb7cdb1b54f1385bdf3.jpg" />
+                            </image>
+                        </ImageView>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#26282959" height="250.0" stroke="BLACK" strokeType="INSIDE" width="510.0" />
+                        <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="65.0" prefWidth="295.0" text="   THÔNG TIN VỀ CHÚNG TÔI" textFill="#fffcfc" StackPane.alignment="BOTTOM_LEFT">
+                            <font>
+                                <Font size="22.0" />
+                            </font>
+                            <effect>
+                                <DropShadow spread="0.3" />
+                            </effect>
+                        </Label>
+                        <Button fx:id="btnBack" mnemonicParsing="false" onAction="#veTrangChu" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: transparent; -fx-text-fill: white;" text="←" textFill="#000000fe" StackPane.alignment="TOP_LEFT">
+                            <font>
+                                <Font size="19.0" />
+                            </font>
+                        </Button>
+                    </children>
+                </StackPane>
+                <Label layoutX="4.0" layoutY="251.0" prefHeight="114.0" prefWidth="494.0" text="Câu chuyện của chúng tôi bắt nguồn từ &quot;Hương vị nguyên bản từ thủ phủ cà phê Đắk Lắk — Nơi mỗi hạt tịnh hoa chứa đựng tình yêu của nắng gió đại ngàn và giọt mồ hôi người nông dân.&quot;" wrapText="true">
+                    <font>
+                        <Font name="System Bold Italic" size="18.0" />
+                    </font>
+                </Label>
+                <Label layoutY="365.0" prefHeight="360.0" prefWidth="494.0" text="Chào mừng bạn đến với The Coffee Farm, nơi hành trình của những tách cà phê đậm vị được bắt đầu từ chính thủ phủ Đắk Lắk bạt ngàn.Sinh ra và lớn lên giữa vùng đất đỏ bazan huyền thoại của Tây Nguyên, chúng tôi thấu hiểu rằng một ly cà phê ngon không đơn thuần là một thức uống tỉnh táo mỗi sáng, mà đó là cả một nghệ thuật được kết tinh từ lòng đất mẹ. Tại The Coffee Farm, từng cây cà phê Robusta kiên cường và Arabica thanh nhã đều được nuôi dưỡng hoàn toàn tự nhiên, đón nhận những tinh túy thuần khiết nhất của khí hậu đại ngàn.Chúng tôi tự hào vận hành theo mô hình 'Từ nông trại đến ly cà phê' (From Farm to Cup) với sự tỉ mỉ tuyệt đối trong từng công đoạn. Khi mùa thu hoạch gõ cửa, những người nông dân lành nghề của chúng tôi chỉ lựa chọn hái bằng tay những trái cà phê chín mọng, đạt độ đường hoàn hảo nhất. Trải qua quy trình sơ chế nghiêm ngặt và công nghệ rang xay hiện đại độc quyền, từng hạt cà phê đều giữ trọn vẹn được hậu vị ngọt ngào, hương thơm mộc mạc và cái chất đậm đà, nguyên bản không thể pha lẫn.Đến với The Coffee Farm, bạn không chỉ thưởng thức cà phê sạch nguyên chất 100%, mà còn đang cùng chúng tôi viết tiếp hành trình tôn vinh giá trị nông sản Việt, mang hương vị của mảnh đất Đắk Lắk vươn xa hơn mỗi ngày. Cảm ơn bạn đã lựa chọn trở thành một phần trong câu chuyện hạnh phúc của chúng tôi!" wrapText="true">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+    </content>
 </ScrollPane>

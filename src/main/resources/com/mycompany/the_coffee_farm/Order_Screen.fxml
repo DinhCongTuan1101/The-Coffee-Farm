@@ -11,41 +11,41 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="700.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.the_coffee_farm.OrderScreen_Controller">
-   <children>
-      <Button fx:id="btnBack" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#veTrangChu" prefHeight="20.0" prefWidth="62.0" style="-fx-background-color: transparent;" text="←">
-         <font>
-            <Font size="23.0" />
-         </font>
-      </Button>
-      <Label layoutX="77.0" layoutY="24.0" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #4A4A4A;" text="Giỏ Hàng" />
-      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" layoutY="89.0" prefHeight="530.0" prefWidth="510.0" style="-fx-background-color: white; -fx-background: white; -fx-border-color: transparent;" vbarPolicy="AS_NEEDED">
-         <content>
-            <VBox fx:id="vboxGioHang" prefHeight="529.0" prefWidth="492.0" spacing="12.0" style="-fx-background-color: white; -fx-padding: 15;" />
-         </content>
-      </ScrollPane>
+    <children>
+        <Button fx:id="btnBack" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#veTrangChu" prefHeight="20.0" prefWidth="62.0" style="-fx-background-color: transparent;" text="←">
+            <font>
+                <Font size="23.0" />
+            </font>
+        </Button>
+        <Label layoutX="77.0" layoutY="24.0" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #4A4A4A;" text="Giỏ Hàng" />
+        <ScrollPane fitToWidth="true" hbarPolicy="NEVER" layoutY="89.0" prefHeight="530.0" prefWidth="510.0" style="-fx-background-color: white; -fx-background: white; -fx-border-color: transparent;" vbarPolicy="AS_NEEDED">
+            <content>
+                <VBox fx:id="vboxGioHang" prefHeight="529.0" prefWidth="492.0" spacing="12.0" style="-fx-background-color: white; -fx-padding: 15;" />
+            </content>
+        </ScrollPane>
       
-     <HBox alignment="CENTER_LEFT" layoutY="620.0" prefHeight="65.0" prefWidth="510.0" spacing="10.0" style="-fx-background-color: white; -fx-border-color: #E8E8E8; -fx-border-width: 1 0 0 0; -fx-padding: 0 15 0 15;">
-         <children>
-            <CheckBox fx:id="chkTatCa" mnemonicParsing="false" onAction="#handleChonTatCa" text="Tất cả">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </CheckBox>
+        <HBox alignment="CENTER_LEFT" layoutY="620.0" prefHeight="65.0" prefWidth="510.0" spacing="10.0" style="-fx-background-color: white; -fx-border-color: #E8E8E8; -fx-border-width: 1 0 0 0; -fx-padding: 0 15 0 15;">
+            <children>
+                <CheckBox fx:id="chkTatCa" mnemonicParsing="false" onAction="#handleChonTatCa" text="Tất cả">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </CheckBox>
             
-            <Region HBox.hgrow="ALWAYS" />
+                <Region HBox.hgrow="ALWAYS" />
             
-            <Label fx:id="lblTongTien" text="0đ" textFill="#4A4A4A">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
+                <Label fx:id="lblTongTien" text="0đ" textFill="#4A4A4A">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Label>
             
-            <Button fx:id="btnMuaHang" mnemonicParsing="false" prefHeight="45.0" prefWidth="140.0" style="-fx-background-color: #888888; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;" text="Mua hàng ">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Button>
-         </children>
-      </HBox>
-   </children>
+                <Button fx:id="btnMuaHang" mnemonicParsing="false" prefHeight="45.0" prefWidth="140.0" style="-fx-background-color: #888888; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;" text="Mua hàng ">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Button>
+            </children>
+        </HBox>
+    </children>
 </AnchorPane>

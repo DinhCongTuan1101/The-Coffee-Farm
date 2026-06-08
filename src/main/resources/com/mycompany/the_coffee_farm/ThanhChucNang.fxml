@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -9,95 +13,125 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
+<?import javafx.scene.text.Font?>
 
 <StackPane prefHeight="700.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.the_coffee_farm.ThanhChucNang_Controller">
-   <children>
-      <BorderPane fx:id="khungChinh" prefHeight="700.0" prefWidth="500.0">
-         <bottom>
-            <HBox alignment="CENTER" prefHeight="70.0" prefWidth="200.0" spacing="40.0" style="-fx-background-color: white; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 10, 0, 0, -2);" BorderPane.alignment="CENTER">
-               <children>
-                  <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#bamNutHome" style="-fx-background-color: transparent; -fx-cursor: hand; -fx-text-fill: #707070;" text="Home">
-                     <graphic>
-                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@images/home.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button fx:id="btnShippingMethod" contentDisplay="TOP" mnemonicParsing="false" onAction="#bamNutShippingMethod" style="-fx-background-color: transparent; -fx-cursor: hand; -fx-text-fill: #707070;" text="Shipping">
-                     <graphic>
-                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@images/menu.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button fx:id="btnShoppingCart" contentDisplay="TOP" mnemonicParsing="false" onAction="#moManHinhGioHang" style="-fx-background-color: transparent; -fx-cursor: hand; -fx-text-fill: #707070;" text="Cart">
-                     <graphic>
-                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@images/shoppingcart.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button fx:id="btnAccount" contentDisplay="TOP" mnemonicParsing="false" onAction="#bamNutAccount" style="-fx-background-color: transparent; -fx-cursor: hand; -fx-text-fill: #707070;" text="Account">
-                     <graphic>
-                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@images/user.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-               </children>
-            </HBox>
-         </bottom>
-      </BorderPane>
+    <children>
+        <BorderPane fx:id="khungChinh" prefHeight="700.0" prefWidth="500.0">
+            <bottom>
+                <HBox alignment="CENTER" prefHeight="70.0" prefWidth="200.0" spacing="40.0" style="-fx-background-color: white; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 10, 0, 0, -2);" BorderPane.alignment="CENTER">
+                    <children>
+                        <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#bamNutHome" style="-fx-background-color: transparent; -fx-cursor: hand; -fx-text-fill: #707070;" text="Home">
+                            <graphic>
+                                <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@images/home.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                        <Button fx:id="btnShippingMethod" contentDisplay="TOP" mnemonicParsing="false" onAction="#bamNutShippingMethod" style="-fx-background-color: transparent; -fx-cursor: hand; -fx-text-fill: #707070;" text="Shipping">
+                            <graphic>
+                                <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@images/menu.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                        <Button fx:id="btnShoppingCart" contentDisplay="TOP" mnemonicParsing="false" onAction="#moManHinhGioHang" style="-fx-background-color: transparent; -fx-cursor: hand; -fx-text-fill: #707070;" text="Cart">
+                            <graphic>
+                                <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@images/shoppingcart.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                        <Button fx:id="btnAccount" contentDisplay="TOP" mnemonicParsing="false" onAction="#bamNutAccount" style="-fx-background-color: transparent; -fx-cursor: hand; -fx-text-fill: #707070;" text="Account">
+                            <graphic>
+                                <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@images/user.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                    </children>
+                </HBox>
+            </bottom>
+        </BorderPane>
 
-      <AnchorPane fx:id="lopPhuShippingMethod" prefHeight="200.0" prefWidth="200.0" visible="false">
-         <children>
-            <Button mnemonicParsing="false" onAction="#dongPopupShipping" style="-fx-background-color: rgba(0, 0, 0, 0.5); -fx-background-radius: 0;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+        <AnchorPane fx:id="lopPhuShippingMethod" prefHeight="200.0" prefWidth="200.0" visible="false">
+            <children>
+                <Button mnemonicParsing="false" onAction="#dongPopupShipping" style="-fx-background-color: rgba(0, 0, 0, 0.5); -fx-background-radius: 0;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
             
-            <VBox layoutY="450.0" prefHeight="250.0" prefWidth="500.0" style="-fx-background-color: white; -fx-background-radius: 20 20 0 0; -fx-padding: 15;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-               <children>
-                  <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0">
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold; -fx-font-size: 15px;" text="Phương Thức Nhận Hàng" />
-                     </children>
-                  </HBox>
-                  <Button fx:id="btnGiaoTanNoi" mnemonicParsing="false" onAction="#chonGiaoHang" prefHeight="50.0" prefWidth="500.0" style="-fx-background-color: transparent; -fx-cursor: hand; -fx-alignment: center-left; -fx-padding: 0 0 0 40;" text="Giao Hàng Tận Nơi">
-                     <graphic>
-                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@images/delivery-truck.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button fx:id="btnLayMangDi" mnemonicParsing="false" onAction="#chonMangDi" prefHeight="50.0" prefWidth="500.0" style="-fx-background-color: transparent; -fx-cursor: hand; -fx-alignment: center-left; -fx-padding: 0 0 0 40;" text="Đến Lấy Mang Đi">
-                     <graphic>
-                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@images/shop.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button fx:id="btnDungTaiQuan" mnemonicParsing="false" onAction="#chonTaiQuan" prefHeight="50.0" prefWidth="500.0" style="-fx-background-color: transparent; -fx-cursor: hand; -fx-alignment: center-left; -fx-padding: 0 0 0 40;" text="Dùng Tại Quán">
-                     <graphic>
-                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@images/soft-drink.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-               </children>
-            </VBox>
-         </children>
-      </AnchorPane>
-   </children>
+                <VBox fx:id="vboxChonPhuongThuc" layoutY="450.0" prefHeight="250.0" prefWidth="500.0" style="-fx-background-color: white; -fx-background-radius: 20 20 0 0; -fx-padding: 15;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                    <children>
+                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0">
+                            <children>
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold; -fx-font-size: 15px;" text="Phương Thức Nhận Hàng" />
+                            </children>
+                        </HBox>
+                        
+                        <fx:define>
+                            <ToggleGroup fx:id="nhomNhanHang" />
+                        </fx:define>
+
+                        <RadioButton fx:id="rdoGiaoTanNoi" onAction="#chonGiaoHang" prefHeight="50.0" prefWidth="500.0" style="-fx-cursor: hand; -fx-padding: 0 0 0 40;" text=" Giao Hàng Tận Nơi" toggleGroup="$nhomNhanHang">
+                            <graphic>
+                                <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@images/delivery-truck.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </RadioButton>
+
+                        <RadioButton fx:id="rdoLayMangDi" onAction="#chonMangDi" prefHeight="50.0" prefWidth="500.0" style="-fx-cursor: hand; -fx-padding: 0 0 0 40;" text=" Đến Lấy Mang Đi" toggleGroup="$nhomNhanHang">
+                            <graphic>
+                                <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@images/shop.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </RadioButton>
+
+                        <RadioButton fx:id="rdoDungTaiQuan" onAction="#chonTaiQuan" prefHeight="50.0" prefWidth="500.0" style="-fx-cursor: hand; -fx-padding: 0 0 0 40;" text=" Dùng Tại Quán" toggleGroup="$nhomNhanHang">
+                            <graphic>
+                                <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@images/soft-drink.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </RadioButton>
+                    </children>
+                </VBox>
+
+                <VBox fx:id="vboxNhapThongTin" layoutY="350.0" prefHeight="350.0" prefWidth="500.0" spacing="15.0" style="-fx-background-color: white; -fx-background-radius: 20 20 0 0; -fx-padding: 20;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                    <children>
+                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0">
+                            <children>
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold; -fx-font-size: 16px;" text="Thông Tin Giao Hàng" />
+                            </children>
+                        </HBox>
+                        
+                        <TextField fx:id="txtHoTenNhan" prefHeight="40.0" promptText="Họ và tên người nhận" style="-fx-background-radius: 10;" />
+                        <TextField fx:id="txtSDTNhan" prefHeight="40.0" promptText="Số điện thoại" style="-fx-background-radius: 10;" />
+                        <TextField fx:id="txtDiaChiNhan" prefHeight="40.0" promptText="Địa chỉ chi tiết (Số nhà, đường, phường...)" style="-fx-background-radius: 10;" />
+                        
+                        <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" spacing="20.0">
+                            <children>
+                                <Button mnemonicParsing="false" onAction="#huyNhapThongTin" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #f0f0f0; -fx-text-fill: black; -fx-background-radius: 10;" text="Quay lại" />
+                                <Button mnemonicParsing="false" onAction="#xacNhanGiaoHang" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #00FFFF; -fx-text-fill: black; -fx-font-weight: bold; -fx-background-radius: 10;" text="Xác Nhận" />
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+
+            </children>
+        </AnchorPane>
+    </children>
 </StackPane>

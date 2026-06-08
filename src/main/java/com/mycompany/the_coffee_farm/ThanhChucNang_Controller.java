@@ -1,4 +1,3 @@
-
 package com.mycompany.the_coffee_farm;
 
 import javafx.event.ActionEvent;
@@ -20,7 +19,21 @@ public class ThanhChucNang_Controller {
 
     @FXML
     private javafx.scene.layout.AnchorPane lopPhuShippingMethod;
+
+    @FXML private javafx.scene.layout.VBox vboxChonPhuongThuc;
+    @FXML private javafx.scene.layout.VBox vboxNhapThongTin;
+    
+    @FXML private javafx.scene.control.RadioButton rdoGiaoTanNoi;
+    @FXML private javafx.scene.control.RadioButton rdoLayMangDi;
+    @FXML private javafx.scene.control.RadioButton rdoDungTaiQuan;
+    
+    @FXML private javafx.scene.control.TextField txtHoTenNhan;
+    @FXML private javafx.scene.control.TextField txtSDTNhan;
+    @FXML private javafx.scene.control.TextField txtDiaChiNhan;
+    // -----------------------------------
+
     public static String trangChuCuaNhanh = "FoodAndDrink.fxml"; 
+
     @FXML
     private void bamNutHome(javafx.event.ActionEvent event) {
         try {
@@ -44,6 +57,7 @@ public class ThanhChucNang_Controller {
             System.out.println("Lỗi: Chưa nối ID lớp phủ bên Scene Builder!");
         }
     }
+
     @FXML
     public void bamNutAccount(javafx.event.ActionEvent event) {
         try {
@@ -61,10 +75,11 @@ public class ThanhChucNang_Controller {
             e.printStackTrace(); 
         }
     }
-            @FXML
+
+    @FXML
     private Button btnBack;
     
-        @FXML
+    @FXML
     public void veTrangChu(ActionEvent event){
         try{
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -83,39 +98,58 @@ public class ThanhChucNang_Controller {
             lopPhuShippingMethod.setVisible(false);
         }
     }
+
     @FXML
     public void chonGiaoHang(javafx.event.ActionEvent event) {
-        System.out.println("Bạn đã chọn: Giao hàng tận nơi");
-        if(btnShippingMethod != null) {
-            btnShippingMethod.setText("Giao tận nơi");
-        }
-        if(lopPhuShippingMethod != null) {
-            lopPhuShippingMethod.setVisible(false); 
+        if (rdoGiaoTanNoi.isSelected()) {
+            TaiKhoan.phuongThucNhan = 1; 
+            if (vboxChonPhuongThuc != null) vboxChonPhuongThuc.setVisible(false);
+            if (vboxNhapThongTin != null) vboxNhapThongTin.setVisible(true);
         }
     }
 
     @FXML
     public void chonMangDi(javafx.event.ActionEvent event) {
-        System.out.println("Bạn đã chọn: Đến lấy mang đi");
-        if(btnShippingMethod != null) {
-            btnShippingMethod.setText("Mang đi");
-        }
-        if(lopPhuShippingMethod != null) {
-            lopPhuShippingMethod.setVisible(false); 
+        if (rdoLayMangDi.isSelected()) {
+            TaiKhoan.phuongThucNhan = 2;
+            System.out.println("Bạn đã chọn: Đến lấy mang đi");
+            if(btnShippingMethod != null) {
+                btnShippingMethod.setText("Mang đi");
+            }
+            dongPopupShipping(event);
         }
     }
 
     @FXML
     public void chonTaiQuan(javafx.event.ActionEvent event) {
-        System.out.println("Bạn đã chọn: Dùng tại quán");
-        if(btnShippingMethod != null) {
-            btnShippingMethod.setText("Tại quán");
-        }
-        if(lopPhuShippingMethod != null) {
-            lopPhuShippingMethod.setVisible(false); 
+        if (rdoDungTaiQuan.isSelected()) {
+            TaiKhoan.phuongThucNhan = 3;
+            System.out.println("Bạn đã chọn: Dùng tại quán");
+            if(btnShippingMethod != null) {
+                btnShippingMethod.setText("Tại quán");
+            }
+            dongPopupShipping(event); 
         }
     }
-      @FXML
+
+    @FXML
+    public void huyNhapThongTin(javafx.event.ActionEvent event) {
+        if (vboxNhapThongTin != null) vboxNhapThongTin.setVisible(false);
+        if (vboxChonPhuongThuc != null) vboxChonPhuongThuc.setVisible(true);
+        if (rdoGiaoTanNoi != null) rdoGiaoTanNoi.setSelected(false);
+    }
+
+    @FXML
+    public void xacNhanGiaoHang(javafx.event.ActionEvent event) {
+        System.out.println("Giao đến: " + txtHoTenNhan.getText() + " - " + txtDiaChiNhan.getText());
+        if(btnShippingMethod != null) {
+            btnShippingMethod.setText("Giao tận nơi");
+        }
+        dongPopupShipping(event); 
+    }
+    // ----------------------------------------------
+
+    @FXML
     private void moManHinhGioHang(javafx.event.ActionEvent event) {
         try {
             javafx.scene.Parent root = javafx.fxml.FXMLLoader.load(getClass().getResource("Order_Screen.fxml"));

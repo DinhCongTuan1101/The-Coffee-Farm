@@ -14,286 +14,286 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" fx:id="khungFoodAndDrink" prefHeight="700.0" prefWidth="500.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.the_coffee_farm.FoodAndDrink_Controller">
-   <children>
-      <Button fx:id="btnBack" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#veTrangChu" prefHeight="20.0" prefWidth="62.0" style="-fx-background-color: transparent;" text="←">
-         <font>
-            <Font size="23.0" />
-         </font>
-      </Button>
-      <Label layoutX="76.0" layoutY="24.0" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #4A4A4A;" text="Food And Drink" />
-      <TextField fx:id="txtTimMon" layoutX="45.0" layoutY="76.0" onKeyReleased="#timKiem" prefHeight="30.0" prefWidth="411.0" promptText="Tìm món" style="-fx-background-color: white; -fx-border-color: #cccccc; -fx-border-radius: 25; -fx-border-width: 1; -fx-padding: 5 10 5 40; -fx-background-radius: 25;" />
-      <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="56.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/loupe.png" />
-         </image>
-      </ImageView>
-      <SplitPane dividerPositions="0.1941272430668842" layoutX="2.0" layoutY="131.0" prefHeight="566.0" prefWidth="492.0">
-        <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-               <children>
-                  <VBox prefHeight="200.0" prefWidth="100.0" spacing="15.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <children>
-                        <Button mnemonicParsing="false" onAction="#showDoUong" prefHeight="70.0" prefWidth="100.0" style="-fx-background-radius: 15;" text="Đồ Uống" />
-                        <Button mnemonicParsing="false" onAction="#showDoAn" prefHeight="70.0" prefWidth="100.0" style="-fx-background-radius: 15;" text="Đồ Ăn" />
-                     </children>
-                  </VBox>
-               </children>
-            </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="565.0" prefWidth="369.0">
-               <children>
-                  <ScrollPane layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <content>
-                        <StackPane prefHeight="563.0" prefWidth="390.0">
-                           <children>
-                              <VBox fx:id="vboxDoAn" prefHeight="300.0" prefWidth="100.0">
-                                 <children>
-                                    <AnchorPane prefHeight="100.0" prefWidth="407.0" style="-fx-border-color: #E8E8E8; -fx-border-radius: 15; -fx-background-radius: 15; -fx-background-color: white;">
-                                       <children>
-                                          <Label layoutX="89.0" layoutY="10.0" prefHeight="45.0" prefWidth="290.0" style="-fx-font-family: 'Arial'; -fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #333333;" styleClass="ten-mon" text="Bánh Bông Lan Cà Phê" wrapText="true" />
-                                          <Label layoutX="89.0" layoutY="48.0" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-text-fill: #888888;" text="40.000đ/Hộp" />
-                                          <Button layoutX="343.0" layoutY="54.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="26.0" style="-fx-background-color: #EAEAEA; -fx-background-radius: 14; -fx-cursor: hand; -fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #707070; -fx-padding: 0;" text="+" />
-                                          <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#EAEAEA" height="70.0" layoutX="8.0" layoutY="10.0" stroke="TRANSPARENT" width="73.0" />
-                                          <ImageView fitHeight="77.0" fitWidth="74.0" layoutX="8.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@images/banhbonglancaphe.png" />
-                                             </image>
-                                          </ImageView>
-                                       </children>
-                                    </AnchorPane>
-                                    <AnchorPane prefHeight="100.0" prefWidth="407.0" style="-fx-border-color: #E8E8E8; -fx-border-radius: 15; -fx-background-radius: 15; -fx-background-color: white;">
-                                       <children>
-                                          <Label layoutX="89.0" layoutY="10.0" prefHeight="45.0" prefWidth="290.0" style="-fx-font-family: 'Arial'; -fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #333333;" styleClass="ten-mon" text="Bánh Cheese Cake Cà Phê" wrapText="true" />
-                                          <Label layoutX="89.0" layoutY="48.0" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-text-fill: #888888;" text="40.000đ/Hộp" />
-                                          <Button layoutX="343.0" layoutY="54.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="26.0" style="-fx-background-color: #EAEAEA; -fx-background-radius: 14; -fx-cursor: hand; -fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #707070; -fx-padding: 0;" text="+" />
-                                          <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#EAEAEA" height="70.0" layoutX="8.0" layoutY="10.0" stroke="TRANSPARENT" width="73.0" />
-                                          <ImageView fitHeight="77.0" fitWidth="74.0" layoutX="8.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@images/banhcheesecakecaphe.png" />
-                                             </image>
-                                          </ImageView>
-                                       </children>
-                                    </AnchorPane>
-                                    <AnchorPane prefHeight="100.0" prefWidth="407.0" style="-fx-border-color: #E8E8E8; -fx-border-radius: 15; -fx-background-radius: 15; -fx-background-color: white;">
-                                       <children>
-                                          <Label layoutX="89.0" layoutY="10.0" prefHeight="45.0" prefWidth="290.0" style="-fx-font-family: 'Arial'; -fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #333333;" styleClass="ten-mon" text="Bánh Chiffon Cà Phê" wrapText="true" />
-                                          <Label layoutX="89.0" layoutY="48.0" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-text-fill: #888888;" text="40.000đ/Hộp" />
-                                          <Button layoutX="340.0" layoutY="54.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="26.0" style="-fx-background-color: #EAEAEA; -fx-background-radius: 14; -fx-cursor: hand; -fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #707070; -fx-padding: 0;" text="+" />
-                                          <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#EAEAEA" height="70.0" layoutX="8.0" layoutY="10.0" stroke="TRANSPARENT" width="73.0" />
-                                          <ImageView fitHeight="77.0" fitWidth="74.0" layoutX="8.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@images/banhchiffoncaphe.png" />
-                                             </image>
-                                          </ImageView>
-                                       </children>
-                                    </AnchorPane>
-                                    <AnchorPane prefHeight="100.0" prefWidth="407.0" style="-fx-border-color: #E8E8E8; -fx-border-radius: 15; -fx-background-radius: 15; -fx-background-color: white;">
-                                       <children>
-                                          <Label layoutX="89.0" layoutY="10.0" prefHeight="45.0" prefWidth="290.0" style="-fx-font-family: 'Arial'; -fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #333333;" styleClass="ten-mon" text="Bánh Da Bò Cà Phê" wrapText="true" />
-                                          <Label layoutX="89.0" layoutY="48.0" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-text-fill: #888888;" text="40.000đ/Hộp" />
-                                          <Button layoutX="343.0" layoutY="54.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="26.0" style="-fx-background-color: #EAEAEA; -fx-background-radius: 14; -fx-cursor: hand; -fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #707070; -fx-padding: 0;" text="+" />
-                                          <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#EAEAEA" height="70.0" layoutX="8.0" layoutY="10.0" stroke="TRANSPARENT" width="73.0" />
-                                          <ImageView fitHeight="77.0" fitWidth="74.0" layoutX="8.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@images/banhdabocaphe.png" />
-                                             </image>
-                                          </ImageView>
-                                       </children>
-                                    </AnchorPane>
-                                    <AnchorPane prefHeight="100.0" prefWidth="407.0" style="-fx-border-color: #E8E8E8; -fx-border-radius: 15; -fx-background-radius: 15; -fx-background-color: white;">
-                                       <children>
-                                          <Label layoutX="89.0" layoutY="10.0" prefHeight="45.0" prefWidth="290.0" style="-fx-font-family: 'Arial'; -fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #333333;" styleClass="ten-mon" text="Bánh Tiramisu" wrapText="true" />
-                                          <Label layoutX="89.0" layoutY="48.0" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-text-fill: #888888;" text="40.000đ/Hộp" />
-                                          <Button layoutX="343.0" layoutY="54.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="26.0" style="-fx-background-color: #EAEAEA; -fx-background-radius: 14; -fx-cursor: hand; -fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #707070; -fx-padding: 0;" text="+" />
-                                          <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#EAEAEA" height="70.0" layoutX="8.0" layoutY="10.0" stroke="TRANSPARENT" width="73.0" />
-                                          <ImageView fitHeight="77.0" fitWidth="74.0" layoutX="8.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@images/banhtiramisu.png" />
-                                             </image>
-                                          </ImageView>
-                                       </children>
-                                    </AnchorPane>
-                                    <AnchorPane prefHeight="100.0" prefWidth="407.0" style="-fx-border-color: #E8E8E8; -fx-border-radius: 15; -fx-background-radius: 15; -fx-background-color: white;">
-                                       <children>
-                                          <Label layoutX="89.0" layoutY="10.0" prefHeight="45.0" prefWidth="290.0" style="-fx-font-family: 'Arial'; -fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #333333;" styleClass="ten-mon" text="Bánh Quy Hạt Cà Phê" wrapText="true" />
-                                          <Label layoutX="89.0" layoutY="48.0" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-text-fill: #888888;" text="40.000đ/Hộp" />
-                                          <Button layoutX="343.0" layoutY="54.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="26.0" style="-fx-background-color: #EAEAEA; -fx-background-radius: 14; -fx-cursor: hand; -fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #707070; -fx-padding: 0;" text="+" />
-                                          <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#EAEAEA" height="70.0" layoutX="8.0" layoutY="10.0" stroke="TRANSPARENT" width="73.0" />
-                                          <ImageView fitHeight="77.0" fitWidth="74.0" layoutX="8.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@images/banhquyhatcaphe.png" />
-                                             </image>
-                                          </ImageView>
-                                       </children>
-                                    </AnchorPane>
-                                    <AnchorPane prefHeight="100.0" prefWidth="407.0" style="-fx-border-color: #E8E8E8; -fx-border-radius: 15; -fx-background-radius: 15; -fx-background-color: white;">
-                                       <children>
-                                          <Label layoutX="89.0" layoutY="10.0" prefHeight="45.0" prefWidth="290.0" style="-fx-font-family: 'Arial'; -fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #333333;" styleClass="ten-mon" text="Bánh Papparoti" wrapText="true" />
-                                          <Label layoutX="89.0" layoutY="48.0" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-text-fill: #888888;" text="40.000đ/Hộp" />
-                                          <Button layoutX="343.0" layoutY="54.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="26.0" style="-fx-background-color: #EAEAEA; -fx-background-radius: 14; -fx-cursor: hand; -fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #707070; -fx-padding: 0;" text="+" />
-                                          <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#EAEAEA" height="70.0" layoutX="8.0" layoutY="10.0" stroke="TRANSPARENT" width="73.0" />
-                                          <ImageView fitHeight="77.0" fitWidth="74.0" layoutX="8.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@images/banhpapparoti.png" />
-                                             </image>
-                                          </ImageView>
-                                       </children>
-                                    </AnchorPane>
-                                    <AnchorPane prefHeight="100.0" prefWidth="407.0" style="-fx-border-color: #E8E8E8; -fx-border-radius: 15; -fx-background-radius: 15; -fx-background-color: white;">
-                                       <children>
-                                          <Label layoutX="89.0" layoutY="10.0" prefHeight="45.0" prefWidth="290.0" style="-fx-font-family: 'Arial'; -fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #333333;" styleClass="ten-mon" text="Bánh Muffin Cà Phê" wrapText="true" />
-                                          <Label layoutX="89.0" layoutY="48.0" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-text-fill: #888888;" text="40.000đ/Hộp" />
-                                          <Button layoutX="343.0" layoutY="54.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="26.0" style="-fx-background-color: #EAEAEA; -fx-background-radius: 14; -fx-cursor: hand; -fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #707070; -fx-padding: 0;" text="+" />
-                                          <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#EAEAEA" height="70.0" layoutX="8.0" layoutY="10.0" stroke="TRANSPARENT" width="73.0" />
-                                          <ImageView fitHeight="77.0" fitWidth="74.0" layoutX="8.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@images/banhmuffincaphe.png" />
-                                             </image>
-                                          </ImageView>
-                                       </children>
-                                    </AnchorPane>
-                                    <AnchorPane prefHeight="100.0" prefWidth="407.0" style="-fx-border-color: #E8E8E8; -fx-border-radius: 15; -fx-background-radius: 15; -fx-background-color: white;">
-                                       <children>
-                                          <Label layoutX="89.0" layoutY="10.0" prefHeight="45.0" prefWidth="290.0" style="-fx-font-family: 'Arial'; -fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #333333;" styleClass="ten-mon" text="Bánh Mì Bơ Cà Phê" wrapText="true" />
-                                          <Label layoutX="89.0" layoutY="48.0" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-text-fill: #888888;" text="40.000đ/Hộp" />
-                                          <Button layoutX="343.0" layoutY="54.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="26.0" style="-fx-background-color: #EAEAEA; -fx-background-radius: 14; -fx-cursor: hand; -fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #707070; -fx-padding: 0;" text="+" />
-                                          <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#EAEAEA" height="70.0" layoutX="8.0" layoutY="10.0" stroke="TRANSPARENT" width="73.0" />
-                                          <ImageView fitHeight="77.0" fitWidth="74.0" layoutX="8.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@images/banhmibocaphe.png" />
-                                             </image>
-                                          </ImageView>
-                                       </children>
-                                    </AnchorPane>
-                                 </children>
-                              </VBox>
-                              <VBox fx:id="vboxDoUong" prefHeight="300.0" prefWidth="100.0">
-                                 <children>
-                                    <AnchorPane prefHeight="100.0" prefWidth="407.0" style="-fx-border-color: #E8E8E8; -fx-border-radius: 15; -fx-background-radius: 15; -fx-background-color: white;">
-                                       <children>
-                                          <Label layoutX="89.0" layoutY="10.0" prefHeight="45.0" prefWidth="290.0" style="-fx-font-family: 'Arial'; -fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #333333;" styleClass="ten-mon" text="Cafe Đen" wrapText="true" />
-                                          <Label layoutX="89.0" layoutY="48.0" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-text-fill: #888888;" text="30.000đ/ly" />
-                                          <Button layoutX="343.0" layoutY="54.0" mnemonicParsing="false" onAction="#ThemGioHang" prefHeight="18.0" prefWidth="26.0" style="-fx-background-color: #EAEAEA; -fx-background-radius: 14; -fx-cursor: hand; -fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #707070; -fx-padding: 0;" text="+" />
-                                          <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#EAEAEA" height="70.0" layoutX="8.0" layoutY="10.0" stroke="TRANSPARENT" width="73.0" />
-                                          <ImageView fitHeight="77.0" fitWidth="74.0" layoutX="8.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@images/cafeden.png" />
-                                             </image>
-                                          </ImageView>
-                                       </children>
-                                    </AnchorPane>
-                                    <AnchorPane prefHeight="100.0" prefWidth="407.0" style="-fx-border-color: #E8E8E8; -fx-border-radius: 15; -fx-background-radius: 15; -fx-background-color: white;">
-                                       <children>
-                                          <Label layoutX="89.0" layoutY="10.0" prefHeight="45.0" prefWidth="290.0" style="-fx-font-family: 'Arial'; -fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #333333;" styleClass="ten-mon" text="Cafe Nâu" wrapText="true" />
-                                          <Label layoutX="89.0" layoutY="48.0" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-text-fill: #888888;" text="35.000đ/ly" />
-                                          <Button layoutX="343.0" layoutY="54.0" mnemonicParsing="false" onAction="#ThemGioHang" prefHeight="18.0" prefWidth="26.0" style="-fx-background-color: #EAEAEA; -fx-background-radius: 14; -fx-cursor: hand; -fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #707070; -fx-padding: 0;" text="+" />
-                                          <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#EAEAEA" height="70.0" layoutX="8.0" layoutY="10.0" stroke="TRANSPARENT" width="73.0" />
-                                          <ImageView fitHeight="77.0" fitWidth="74.0" layoutX="8.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@images/cafenau.png" />
-                                             </image>
-                                          </ImageView>
-                                       </children>
-                                    </AnchorPane>
-                                    <AnchorPane prefHeight="100.0" prefWidth="407.0" style="-fx-border-color: #E8E8E8; -fx-border-radius: 15; -fx-background-radius: 15; -fx-background-color: white;">
-                                       <children>
-                                          <Label layoutX="89.0" layoutY="10.0" prefHeight="45.0" prefWidth="290.0" style="-fx-font-family: 'Arial'; -fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #333333;" styleClass="ten-mon" text="Bạc Xỉu" wrapText="true" />
-                                          <Label layoutX="89.0" layoutY="48.0" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-text-fill: #888888;" text="40.000đ/ly" />
-                                          <Button layoutX="340.0" layoutY="54.0" mnemonicParsing="false" onAction="#ThemGioHang" prefHeight="18.0" prefWidth="26.0" style="-fx-background-color: #EAEAEA; -fx-background-radius: 14; -fx-cursor: hand; -fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #707070; -fx-padding: 0;" text="+" />
-                                          <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#EAEAEA" height="70.0" layoutX="8.0" layoutY="10.0" stroke="TRANSPARENT" width="73.0" />
-                                          <ImageView fitHeight="77.0" fitWidth="74.0" layoutX="8.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@images/bacxiu.png" />
-                                             </image>
-                                          </ImageView>
-                                       </children>
-                                    </AnchorPane>
-                                    <AnchorPane prefHeight="100.0" prefWidth="407.0" style="-fx-border-color: #E8E8E8; -fx-border-radius: 15; -fx-background-radius: 15; -fx-background-color: white;">
-                                       <children>
-                                          <Label layoutX="89.0" layoutY="10.0" prefHeight="45.0" prefWidth="290.0" style="-fx-font-family: 'Arial'; -fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #333333;" styleClass="ten-mon" text="Cafe Latte" wrapText="true" />
-                                          <Label layoutX="89.0" layoutY="48.0" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-text-fill: #888888;" text="40.000đ/ly" />
-                                          <Button layoutX="343.0" layoutY="54.0" mnemonicParsing="false" onAction="#ThemGioHang" prefHeight="18.0" prefWidth="26.0" style="-fx-background-color: #EAEAEA; -fx-background-radius: 14; -fx-cursor: hand; -fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #707070; -fx-padding: 0;" text="+" />
-                                          <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#EAEAEA" height="70.0" layoutX="8.0" layoutY="10.0" stroke="TRANSPARENT" width="73.0" />
-                                          <ImageView fitHeight="77.0" fitWidth="74.0" layoutX="8.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@images/cafelatte.png" />
-                                             </image>
-                                          </ImageView>
-                                       </children>
-                                    </AnchorPane>
-                                    <AnchorPane prefHeight="100.0" prefWidth="407.0" style="-fx-border-color: #E8E8E8; -fx-border-radius: 15; -fx-background-radius: 15; -fx-background-color: white;">
-                                       <children>
-                                          <Label layoutX="89.0" layoutY="10.0" prefHeight="45.0" prefWidth="290.0" style="-fx-font-family: 'Arial'; -fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #333333;" styleClass="ten-mon" text="Cafe Mocha" wrapText="true" />
-                                          <Label layoutX="89.0" layoutY="48.0" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-text-fill: #888888;" text="40.000đ/ly" />
-                                          <Button layoutX="343.0" layoutY="54.0" mnemonicParsing="false" onAction="#ThemGioHang" prefHeight="18.0" prefWidth="26.0" style="-fx-background-color: #EAEAEA; -fx-background-radius: 14; -fx-cursor: hand; -fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #707070; -fx-padding: 0;" text="+" />
-                                          <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#EAEAEA" height="70.0" layoutX="8.0" layoutY="10.0" stroke="TRANSPARENT" width="73.0" />
-                                          <ImageView fitHeight="77.0" fitWidth="74.0" layoutX="8.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@images/cafemocha.png" />
-                                             </image>
-                                          </ImageView>
-                                       </children>
-                                    </AnchorPane>
-                                    <AnchorPane prefHeight="100.0" prefWidth="407.0" style="-fx-border-color: #E8E8E8; -fx-border-radius: 15; -fx-background-radius: 15; -fx-background-color: white;">
-                                       <children>
-                                          <Label layoutX="89.0" layoutY="10.0" prefHeight="45.0" prefWidth="290.0" style="-fx-font-family: 'Arial'; -fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #333333;" styleClass="ten-mon" text="Espresso" wrapText="true" />
-                                          <Label layoutX="89.0" layoutY="48.0" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-text-fill: #888888;" text="40.000đ/ly" />
-                                          <Button layoutX="343.0" layoutY="54.0" mnemonicParsing="false" onAction="#ThemGioHang" prefHeight="18.0" prefWidth="26.0" style="-fx-background-color: #EAEAEA; -fx-background-radius: 14; -fx-cursor: hand; -fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #707070; -fx-padding: 0;" text="+" />
-                                          <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#EAEAEA" height="70.0" layoutX="8.0" layoutY="10.0" stroke="TRANSPARENT" width="73.0" />
-                                          <ImageView fitHeight="77.0" fitWidth="74.0" layoutX="8.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@images/expresso.png" />
-                                             </image>
-                                          </ImageView>
-                                       </children>
-                                    </AnchorPane>
-                                    <AnchorPane prefHeight="100.0" prefWidth="407.0" style="-fx-border-color: #E8E8E8; -fx-border-radius: 15; -fx-background-radius: 15; -fx-background-color: white;">
-                                       <children>
-                                          <Label layoutX="89.0" layoutY="10.0" prefHeight="45.0" prefWidth="290.0" style="-fx-font-family: 'Arial'; -fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #333333;" styleClass="ten-mon" text="Cappuchino" wrapText="true" />
-                                          <Label layoutX="89.0" layoutY="48.0" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-text-fill: #888888;" text="40.000đ/ly" />
-                                          <Button layoutX="343.0" layoutY="54.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="26.0" style="-fx-background-color: #EAEAEA; -fx-background-radius: 14; -fx-cursor: hand; -fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #707070; -fx-padding: 0;" text="+" />
-                                          <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#EAEAEA" height="70.0" layoutX="8.0" layoutY="10.0" stroke="TRANSPARENT" width="73.0" />
-                                          <ImageView fitHeight="77.0" fitWidth="74.0" layoutX="8.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@images/cappuchino.png" />
-                                             </image>
-                                          </ImageView>
-                                       </children>
-                                    </AnchorPane>
-                                    <AnchorPane prefHeight="100.0" prefWidth="407.0" style="-fx-border-color: #E8E8E8; -fx-border-radius: 15; -fx-background-radius: 15; -fx-background-color: white;">
-                                       <children>
-                                          <Label layoutX="89.0" layoutY="10.0" prefHeight="45.0" prefWidth="290.0" style="-fx-font-family: 'Arial'; -fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #333333;" styleClass="ten-mon" text="Caramel Matchiato" wrapText="true" />
-                                          <Label layoutX="89.0" layoutY="48.0" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-text-fill: #888888;" text="40.000đ/ly" />
-                                          <Button layoutX="343.0" layoutY="54.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="26.0" style="-fx-background-color: #EAEAEA; -fx-background-radius: 14; -fx-cursor: hand; -fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #707070; -fx-padding: 0;" text="+" />
-                                          <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#EAEAEA" height="70.0" layoutX="8.0" layoutY="10.0" stroke="TRANSPARENT" width="73.0" />
-                                          <ImageView fitHeight="77.0" fitWidth="74.0" layoutX="8.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@images/caramelmacchiato.png" />
-                                             </image>
-                                          </ImageView>
-                                       </children>
-                                    </AnchorPane>
-                                    <AnchorPane prefHeight="100.0" prefWidth="407.0" style="-fx-border-color: #E8E8E8; -fx-border-radius: 15; -fx-background-radius: 15; -fx-background-color: white;">
-                                       <children>
-                                          <Label layoutX="89.0" layoutY="10.0" prefHeight="45.0" prefWidth="290.0" style="-fx-font-family: 'Arial'; -fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #333333;" styleClass="ten-mon" text="Americano" wrapText="true" />
-                                          <Label layoutX="89.0" layoutY="48.0" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-text-fill: #888888;" text="40.000đ/ly" />
-                                          <Button layoutX="343.0" layoutY="54.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="26.0" style="-fx-background-color: #EAEAEA; -fx-background-radius: 14; -fx-cursor: hand; -fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #707070; -fx-padding: 0;" text="+" />
-                                          <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#EAEAEA" height="70.0" layoutX="8.0" layoutY="10.0" stroke="TRANSPARENT" width="73.0" />
-                                          <ImageView fitHeight="77.0" fitWidth="74.0" layoutX="8.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@images/americano.png" />
-                                             </image>
-                                          </ImageView>
-                                       </children>
-                                    </AnchorPane>
-                                 </children>
-                              </VBox>
-                           </children>
-                        </StackPane>
-                     </content>
-                  </ScrollPane>
-               </children>
-            </AnchorPane>
-        </items>
-      </SplitPane>
-   </children>
+    <children>
+        <Button fx:id="btnBack" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#veTrangChu" prefHeight="20.0" prefWidth="62.0" style="-fx-background-color: transparent;" text="←">
+            <font>
+                <Font size="23.0" />
+            </font>
+        </Button>
+        <Label layoutX="76.0" layoutY="24.0" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #4A4A4A;" text="Food And Drink" />
+        <TextField fx:id="txtTimMon" layoutX="45.0" layoutY="76.0" onKeyReleased="#timKiem" prefHeight="30.0" prefWidth="411.0" promptText="Tìm món" style="-fx-background-color: white; -fx-border-color: #cccccc; -fx-border-radius: 25; -fx-border-width: 1; -fx-padding: 5 10 5 40; -fx-background-radius: 25;" />
+        <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="56.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/loupe.png" />
+            </image>
+        </ImageView>
+        <SplitPane dividerPositions="0.1941272430668842" layoutX="2.0" layoutY="131.0" prefHeight="566.0" prefWidth="492.0">
+            <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                    <children>
+                        <VBox prefHeight="200.0" prefWidth="100.0" spacing="15.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <children>
+                                <Button mnemonicParsing="false" onAction="#showDoUong" prefHeight="70.0" prefWidth="100.0" style="-fx-background-radius: 15;" text="Đồ Uống" />
+                                <Button mnemonicParsing="false" onAction="#showDoAn" prefHeight="70.0" prefWidth="100.0" style="-fx-background-radius: 15;" text="Đồ Ăn" />
+                            </children>
+                        </VBox>
+                    </children>
+                </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="565.0" prefWidth="369.0">
+                    <children>
+                        <ScrollPane layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <content>
+                                <StackPane prefHeight="563.0" prefWidth="390.0">
+                                    <children>
+                                        <VBox fx:id="vboxDoAn" prefHeight="300.0" prefWidth="100.0">
+                                            <children>
+                                                <AnchorPane prefHeight="100.0" prefWidth="407.0" style="-fx-border-color: #E8E8E8; -fx-border-radius: 15; -fx-background-radius: 15; -fx-background-color: white;">
+                                                    <children>
+                                                        <Label layoutX="89.0" layoutY="10.0" prefHeight="45.0" prefWidth="290.0" style="-fx-font-family: 'Arial'; -fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #333333;" styleClass="ten-mon" text="Bánh Bông Lan Cà Phê" wrapText="true" />
+                                                        <Label layoutX="89.0" layoutY="48.0" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-text-fill: #888888;" text="40.000đ/Hộp" />
+                                                        <Button layoutX="343.0" layoutY="54.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="26.0" style="-fx-background-color: #EAEAEA; -fx-background-radius: 14; -fx-cursor: hand; -fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #707070; -fx-padding: 0;" text="+" />
+                                                        <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#EAEAEA" height="70.0" layoutX="8.0" layoutY="10.0" stroke="TRANSPARENT" width="73.0" />
+                                                        <ImageView fitHeight="77.0" fitWidth="74.0" layoutX="8.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                                                            <image>
+                                                                <Image url="@images/banhbonglancaphe.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                    </children>
+                                                </AnchorPane>
+                                                <AnchorPane prefHeight="100.0" prefWidth="407.0" style="-fx-border-color: #E8E8E8; -fx-border-radius: 15; -fx-background-radius: 15; -fx-background-color: white;">
+                                                    <children>
+                                                        <Label layoutX="89.0" layoutY="10.0" prefHeight="45.0" prefWidth="290.0" style="-fx-font-family: 'Arial'; -fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #333333;" styleClass="ten-mon" text="Bánh Cheese Cake Cà Phê" wrapText="true" />
+                                                        <Label layoutX="89.0" layoutY="48.0" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-text-fill: #888888;" text="40.000đ/Hộp" />
+                                                        <Button layoutX="343.0" layoutY="54.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="26.0" style="-fx-background-color: #EAEAEA; -fx-background-radius: 14; -fx-cursor: hand; -fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #707070; -fx-padding: 0;" text="+" />
+                                                        <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#EAEAEA" height="70.0" layoutX="8.0" layoutY="10.0" stroke="TRANSPARENT" width="73.0" />
+                                                        <ImageView fitHeight="77.0" fitWidth="74.0" layoutX="8.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                                                            <image>
+                                                                <Image url="@images/banhcheesecakecaphe.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                    </children>
+                                                </AnchorPane>
+                                                <AnchorPane prefHeight="100.0" prefWidth="407.0" style="-fx-border-color: #E8E8E8; -fx-border-radius: 15; -fx-background-radius: 15; -fx-background-color: white;">
+                                                    <children>
+                                                        <Label layoutX="89.0" layoutY="10.0" prefHeight="45.0" prefWidth="290.0" style="-fx-font-family: 'Arial'; -fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #333333;" styleClass="ten-mon" text="Bánh Chiffon Cà Phê" wrapText="true" />
+                                                        <Label layoutX="89.0" layoutY="48.0" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-text-fill: #888888;" text="40.000đ/Hộp" />
+                                                        <Button layoutX="340.0" layoutY="54.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="26.0" style="-fx-background-color: #EAEAEA; -fx-background-radius: 14; -fx-cursor: hand; -fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #707070; -fx-padding: 0;" text="+" />
+                                                        <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#EAEAEA" height="70.0" layoutX="8.0" layoutY="10.0" stroke="TRANSPARENT" width="73.0" />
+                                                        <ImageView fitHeight="77.0" fitWidth="74.0" layoutX="8.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                                                            <image>
+                                                                <Image url="@images/banhchiffoncaphe.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                    </children>
+                                                </AnchorPane>
+                                                <AnchorPane prefHeight="100.0" prefWidth="407.0" style="-fx-border-color: #E8E8E8; -fx-border-radius: 15; -fx-background-radius: 15; -fx-background-color: white;">
+                                                    <children>
+                                                        <Label layoutX="89.0" layoutY="10.0" prefHeight="45.0" prefWidth="290.0" style="-fx-font-family: 'Arial'; -fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #333333;" styleClass="ten-mon" text="Bánh Da Bò Cà Phê" wrapText="true" />
+                                                        <Label layoutX="89.0" layoutY="48.0" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-text-fill: #888888;" text="40.000đ/Hộp" />
+                                                        <Button layoutX="343.0" layoutY="54.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="26.0" style="-fx-background-color: #EAEAEA; -fx-background-radius: 14; -fx-cursor: hand; -fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #707070; -fx-padding: 0;" text="+" />
+                                                        <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#EAEAEA" height="70.0" layoutX="8.0" layoutY="10.0" stroke="TRANSPARENT" width="73.0" />
+                                                        <ImageView fitHeight="77.0" fitWidth="74.0" layoutX="8.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                                                            <image>
+                                                                <Image url="@images/banhdabocaphe.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                    </children>
+                                                </AnchorPane>
+                                                <AnchorPane prefHeight="100.0" prefWidth="407.0" style="-fx-border-color: #E8E8E8; -fx-border-radius: 15; -fx-background-radius: 15; -fx-background-color: white;">
+                                                    <children>
+                                                        <Label layoutX="89.0" layoutY="10.0" prefHeight="45.0" prefWidth="290.0" style="-fx-font-family: 'Arial'; -fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #333333;" styleClass="ten-mon" text="Bánh Tiramisu" wrapText="true" />
+                                                        <Label layoutX="89.0" layoutY="48.0" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-text-fill: #888888;" text="40.000đ/Hộp" />
+                                                        <Button layoutX="343.0" layoutY="54.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="26.0" style="-fx-background-color: #EAEAEA; -fx-background-radius: 14; -fx-cursor: hand; -fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #707070; -fx-padding: 0;" text="+" />
+                                                        <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#EAEAEA" height="70.0" layoutX="8.0" layoutY="10.0" stroke="TRANSPARENT" width="73.0" />
+                                                        <ImageView fitHeight="77.0" fitWidth="74.0" layoutX="8.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                                                            <image>
+                                                                <Image url="@images/banhtiramisu.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                    </children>
+                                                </AnchorPane>
+                                                <AnchorPane prefHeight="100.0" prefWidth="407.0" style="-fx-border-color: #E8E8E8; -fx-border-radius: 15; -fx-background-radius: 15; -fx-background-color: white;">
+                                                    <children>
+                                                        <Label layoutX="89.0" layoutY="10.0" prefHeight="45.0" prefWidth="290.0" style="-fx-font-family: 'Arial'; -fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #333333;" styleClass="ten-mon" text="Bánh Quy Hạt Cà Phê" wrapText="true" />
+                                                        <Label layoutX="89.0" layoutY="48.0" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-text-fill: #888888;" text="40.000đ/Hộp" />
+                                                        <Button layoutX="343.0" layoutY="54.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="26.0" style="-fx-background-color: #EAEAEA; -fx-background-radius: 14; -fx-cursor: hand; -fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #707070; -fx-padding: 0;" text="+" />
+                                                        <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#EAEAEA" height="70.0" layoutX="8.0" layoutY="10.0" stroke="TRANSPARENT" width="73.0" />
+                                                        <ImageView fitHeight="77.0" fitWidth="74.0" layoutX="8.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                                                            <image>
+                                                                <Image url="@images/banhquyhatcaphe.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                    </children>
+                                                </AnchorPane>
+                                                <AnchorPane prefHeight="100.0" prefWidth="407.0" style="-fx-border-color: #E8E8E8; -fx-border-radius: 15; -fx-background-radius: 15; -fx-background-color: white;">
+                                                    <children>
+                                                        <Label layoutX="89.0" layoutY="10.0" prefHeight="45.0" prefWidth="290.0" style="-fx-font-family: 'Arial'; -fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #333333;" styleClass="ten-mon" text="Bánh Papparoti" wrapText="true" />
+                                                        <Label layoutX="89.0" layoutY="48.0" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-text-fill: #888888;" text="40.000đ/Hộp" />
+                                                        <Button layoutX="343.0" layoutY="54.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="26.0" style="-fx-background-color: #EAEAEA; -fx-background-radius: 14; -fx-cursor: hand; -fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #707070; -fx-padding: 0;" text="+" />
+                                                        <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#EAEAEA" height="70.0" layoutX="8.0" layoutY="10.0" stroke="TRANSPARENT" width="73.0" />
+                                                        <ImageView fitHeight="77.0" fitWidth="74.0" layoutX="8.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                                                            <image>
+                                                                <Image url="@images/banhpapparoti.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                    </children>
+                                                </AnchorPane>
+                                                <AnchorPane prefHeight="100.0" prefWidth="407.0" style="-fx-border-color: #E8E8E8; -fx-border-radius: 15; -fx-background-radius: 15; -fx-background-color: white;">
+                                                    <children>
+                                                        <Label layoutX="89.0" layoutY="10.0" prefHeight="45.0" prefWidth="290.0" style="-fx-font-family: 'Arial'; -fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #333333;" styleClass="ten-mon" text="Bánh Muffin Cà Phê" wrapText="true" />
+                                                        <Label layoutX="89.0" layoutY="48.0" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-text-fill: #888888;" text="40.000đ/Hộp" />
+                                                        <Button layoutX="343.0" layoutY="54.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="26.0" style="-fx-background-color: #EAEAEA; -fx-background-radius: 14; -fx-cursor: hand; -fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #707070; -fx-padding: 0;" text="+" />
+                                                        <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#EAEAEA" height="70.0" layoutX="8.0" layoutY="10.0" stroke="TRANSPARENT" width="73.0" />
+                                                        <ImageView fitHeight="77.0" fitWidth="74.0" layoutX="8.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                                                            <image>
+                                                                <Image url="@images/banhmuffincaphe.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                    </children>
+                                                </AnchorPane>
+                                                <AnchorPane prefHeight="100.0" prefWidth="407.0" style="-fx-border-color: #E8E8E8; -fx-border-radius: 15; -fx-background-radius: 15; -fx-background-color: white;">
+                                                    <children>
+                                                        <Label layoutX="89.0" layoutY="10.0" prefHeight="45.0" prefWidth="290.0" style="-fx-font-family: 'Arial'; -fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #333333;" styleClass="ten-mon" text="Bánh Mì Bơ Cà Phê" wrapText="true" />
+                                                        <Label layoutX="89.0" layoutY="48.0" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-text-fill: #888888;" text="40.000đ/Hộp" />
+                                                        <Button layoutX="343.0" layoutY="54.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="26.0" style="-fx-background-color: #EAEAEA; -fx-background-radius: 14; -fx-cursor: hand; -fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #707070; -fx-padding: 0;" text="+" />
+                                                        <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#EAEAEA" height="70.0" layoutX="8.0" layoutY="10.0" stroke="TRANSPARENT" width="73.0" />
+                                                        <ImageView fitHeight="77.0" fitWidth="74.0" layoutX="8.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                                                            <image>
+                                                                <Image url="@images/banhmibocaphe.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                    </children>
+                                                </AnchorPane>
+                                            </children>
+                                        </VBox>
+                                        <VBox fx:id="vboxDoUong" prefHeight="300.0" prefWidth="100.0">
+                                            <children>
+                                                <AnchorPane prefHeight="100.0" prefWidth="407.0" style="-fx-border-color: #E8E8E8; -fx-border-radius: 15; -fx-background-radius: 15; -fx-background-color: white;">
+                                                    <children>
+                                                        <Label layoutX="89.0" layoutY="10.0" prefHeight="45.0" prefWidth="290.0" style="-fx-font-family: 'Arial'; -fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #333333;" styleClass="ten-mon" text="Cafe Đen" wrapText="true" />
+                                                        <Label layoutX="89.0" layoutY="48.0" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-text-fill: #888888;" text="30.000đ/ly" />
+                                                        <Button layoutX="343.0" layoutY="54.0" mnemonicParsing="false" onAction="#ThemGioHang" prefHeight="18.0" prefWidth="26.0" style="-fx-background-color: #EAEAEA; -fx-background-radius: 14; -fx-cursor: hand; -fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #707070; -fx-padding: 0;" text="+" />
+                                                        <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#EAEAEA" height="70.0" layoutX="8.0" layoutY="10.0" stroke="TRANSPARENT" width="73.0" />
+                                                        <ImageView fitHeight="77.0" fitWidth="74.0" layoutX="8.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                                                            <image>
+                                                                <Image url="@images/cafeden.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                    </children>
+                                                </AnchorPane>
+                                                <AnchorPane prefHeight="100.0" prefWidth="407.0" style="-fx-border-color: #E8E8E8; -fx-border-radius: 15; -fx-background-radius: 15; -fx-background-color: white;">
+                                                    <children>
+                                                        <Label layoutX="89.0" layoutY="10.0" prefHeight="45.0" prefWidth="290.0" style="-fx-font-family: 'Arial'; -fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #333333;" styleClass="ten-mon" text="Cafe Nâu" wrapText="true" />
+                                                        <Label layoutX="89.0" layoutY="48.0" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-text-fill: #888888;" text="35.000đ/ly" />
+                                                        <Button layoutX="343.0" layoutY="54.0" mnemonicParsing="false" onAction="#ThemGioHang" prefHeight="18.0" prefWidth="26.0" style="-fx-background-color: #EAEAEA; -fx-background-radius: 14; -fx-cursor: hand; -fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #707070; -fx-padding: 0;" text="+" />
+                                                        <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#EAEAEA" height="70.0" layoutX="8.0" layoutY="10.0" stroke="TRANSPARENT" width="73.0" />
+                                                        <ImageView fitHeight="77.0" fitWidth="74.0" layoutX="8.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                                                            <image>
+                                                                <Image url="@images/cafenau.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                    </children>
+                                                </AnchorPane>
+                                                <AnchorPane prefHeight="100.0" prefWidth="407.0" style="-fx-border-color: #E8E8E8; -fx-border-radius: 15; -fx-background-radius: 15; -fx-background-color: white;">
+                                                    <children>
+                                                        <Label layoutX="89.0" layoutY="10.0" prefHeight="45.0" prefWidth="290.0" style="-fx-font-family: 'Arial'; -fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #333333;" styleClass="ten-mon" text="Bạc Xỉu" wrapText="true" />
+                                                        <Label layoutX="89.0" layoutY="48.0" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-text-fill: #888888;" text="40.000đ/ly" />
+                                                        <Button layoutX="340.0" layoutY="54.0" mnemonicParsing="false" onAction="#ThemGioHang" prefHeight="18.0" prefWidth="26.0" style="-fx-background-color: #EAEAEA; -fx-background-radius: 14; -fx-cursor: hand; -fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #707070; -fx-padding: 0;" text="+" />
+                                                        <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#EAEAEA" height="70.0" layoutX="8.0" layoutY="10.0" stroke="TRANSPARENT" width="73.0" />
+                                                        <ImageView fitHeight="77.0" fitWidth="74.0" layoutX="8.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                                                            <image>
+                                                                <Image url="@images/bacxiu.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                    </children>
+                                                </AnchorPane>
+                                                <AnchorPane prefHeight="100.0" prefWidth="407.0" style="-fx-border-color: #E8E8E8; -fx-border-radius: 15; -fx-background-radius: 15; -fx-background-color: white;">
+                                                    <children>
+                                                        <Label layoutX="89.0" layoutY="10.0" prefHeight="45.0" prefWidth="290.0" style="-fx-font-family: 'Arial'; -fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #333333;" styleClass="ten-mon" text="Cafe Latte" wrapText="true" />
+                                                        <Label layoutX="89.0" layoutY="48.0" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-text-fill: #888888;" text="40.000đ/ly" />
+                                                        <Button layoutX="343.0" layoutY="54.0" mnemonicParsing="false" onAction="#ThemGioHang" prefHeight="18.0" prefWidth="26.0" style="-fx-background-color: #EAEAEA; -fx-background-radius: 14; -fx-cursor: hand; -fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #707070; -fx-padding: 0;" text="+" />
+                                                        <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#EAEAEA" height="70.0" layoutX="8.0" layoutY="10.0" stroke="TRANSPARENT" width="73.0" />
+                                                        <ImageView fitHeight="77.0" fitWidth="74.0" layoutX="8.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                                                            <image>
+                                                                <Image url="@images/cafelatte.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                    </children>
+                                                </AnchorPane>
+                                                <AnchorPane prefHeight="100.0" prefWidth="407.0" style="-fx-border-color: #E8E8E8; -fx-border-radius: 15; -fx-background-radius: 15; -fx-background-color: white;">
+                                                    <children>
+                                                        <Label layoutX="89.0" layoutY="10.0" prefHeight="45.0" prefWidth="290.0" style="-fx-font-family: 'Arial'; -fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #333333;" styleClass="ten-mon" text="Cafe Mocha" wrapText="true" />
+                                                        <Label layoutX="89.0" layoutY="48.0" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-text-fill: #888888;" text="40.000đ/ly" />
+                                                        <Button layoutX="343.0" layoutY="54.0" mnemonicParsing="false" onAction="#ThemGioHang" prefHeight="18.0" prefWidth="26.0" style="-fx-background-color: #EAEAEA; -fx-background-radius: 14; -fx-cursor: hand; -fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #707070; -fx-padding: 0;" text="+" />
+                                                        <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#EAEAEA" height="70.0" layoutX="8.0" layoutY="10.0" stroke="TRANSPARENT" width="73.0" />
+                                                        <ImageView fitHeight="77.0" fitWidth="74.0" layoutX="8.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                                                            <image>
+                                                                <Image url="@images/cafemocha.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                    </children>
+                                                </AnchorPane>
+                                                <AnchorPane prefHeight="100.0" prefWidth="407.0" style="-fx-border-color: #E8E8E8; -fx-border-radius: 15; -fx-background-radius: 15; -fx-background-color: white;">
+                                                    <children>
+                                                        <Label layoutX="89.0" layoutY="10.0" prefHeight="45.0" prefWidth="290.0" style="-fx-font-family: 'Arial'; -fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #333333;" styleClass="ten-mon" text="Espresso" wrapText="true" />
+                                                        <Label layoutX="89.0" layoutY="48.0" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-text-fill: #888888;" text="40.000đ/ly" />
+                                                        <Button layoutX="343.0" layoutY="54.0" mnemonicParsing="false" onAction="#ThemGioHang" prefHeight="18.0" prefWidth="26.0" style="-fx-background-color: #EAEAEA; -fx-background-radius: 14; -fx-cursor: hand; -fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #707070; -fx-padding: 0;" text="+" />
+                                                        <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#EAEAEA" height="70.0" layoutX="8.0" layoutY="10.0" stroke="TRANSPARENT" width="73.0" />
+                                                        <ImageView fitHeight="77.0" fitWidth="74.0" layoutX="8.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                                                            <image>
+                                                                <Image url="@images/expresso.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                    </children>
+                                                </AnchorPane>
+                                                <AnchorPane prefHeight="100.0" prefWidth="407.0" style="-fx-border-color: #E8E8E8; -fx-border-radius: 15; -fx-background-radius: 15; -fx-background-color: white;">
+                                                    <children>
+                                                        <Label layoutX="89.0" layoutY="10.0" prefHeight="45.0" prefWidth="290.0" style="-fx-font-family: 'Arial'; -fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #333333;" styleClass="ten-mon" text="Cappuchino" wrapText="true" />
+                                                        <Label layoutX="89.0" layoutY="48.0" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-text-fill: #888888;" text="40.000đ/ly" />
+                                                        <Button layoutX="343.0" layoutY="54.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="26.0" style="-fx-background-color: #EAEAEA; -fx-background-radius: 14; -fx-cursor: hand; -fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #707070; -fx-padding: 0;" text="+" />
+                                                        <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#EAEAEA" height="70.0" layoutX="8.0" layoutY="10.0" stroke="TRANSPARENT" width="73.0" />
+                                                        <ImageView fitHeight="77.0" fitWidth="74.0" layoutX="8.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                                                            <image>
+                                                                <Image url="@images/cappuchino.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                    </children>
+                                                </AnchorPane>
+                                                <AnchorPane prefHeight="100.0" prefWidth="407.0" style="-fx-border-color: #E8E8E8; -fx-border-radius: 15; -fx-background-radius: 15; -fx-background-color: white;">
+                                                    <children>
+                                                        <Label layoutX="89.0" layoutY="10.0" prefHeight="45.0" prefWidth="290.0" style="-fx-font-family: 'Arial'; -fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #333333;" styleClass="ten-mon" text="Caramel Matchiato" wrapText="true" />
+                                                        <Label layoutX="89.0" layoutY="48.0" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-text-fill: #888888;" text="40.000đ/ly" />
+                                                        <Button layoutX="343.0" layoutY="54.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="26.0" style="-fx-background-color: #EAEAEA; -fx-background-radius: 14; -fx-cursor: hand; -fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #707070; -fx-padding: 0;" text="+" />
+                                                        <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#EAEAEA" height="70.0" layoutX="8.0" layoutY="10.0" stroke="TRANSPARENT" width="73.0" />
+                                                        <ImageView fitHeight="77.0" fitWidth="74.0" layoutX="8.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                                                            <image>
+                                                                <Image url="@images/caramelmacchiato.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                    </children>
+                                                </AnchorPane>
+                                                <AnchorPane prefHeight="100.0" prefWidth="407.0" style="-fx-border-color: #E8E8E8; -fx-border-radius: 15; -fx-background-radius: 15; -fx-background-color: white;">
+                                                    <children>
+                                                        <Label layoutX="89.0" layoutY="10.0" prefHeight="45.0" prefWidth="290.0" style="-fx-font-family: 'Arial'; -fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #333333;" styleClass="ten-mon" text="Americano" wrapText="true" />
+                                                        <Label layoutX="89.0" layoutY="48.0" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-text-fill: #888888;" text="40.000đ/ly" />
+                                                        <Button layoutX="343.0" layoutY="54.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="26.0" style="-fx-background-color: #EAEAEA; -fx-background-radius: 14; -fx-cursor: hand; -fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #707070; -fx-padding: 0;" text="+" />
+                                                        <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#EAEAEA" height="70.0" layoutX="8.0" layoutY="10.0" stroke="TRANSPARENT" width="73.0" />
+                                                        <ImageView fitHeight="77.0" fitWidth="74.0" layoutX="8.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                                                            <image>
+                                                                <Image url="@images/americano.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                    </children>
+                                                </AnchorPane>
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </StackPane>
+                            </content>
+                        </ScrollPane>
+                    </children>
+                </AnchorPane>
+            </items>
+        </SplitPane>
+    </children>
 </AnchorPane>

@@ -14,195 +14,195 @@
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="700.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.the_coffee_farm.Account_Screen_Controller">
-   <children>
-      <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #F8F8F8; -fx-padding: 20; -fx-spacing: 20;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <HBox prefHeight="33.0" prefWidth="460.0">
-               <children>
-                  <Label text="TÀI KHOẢN">
-                     <font>
-                        <Font name="Arial" size="24.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
-            <GridPane hgap="15.0" vgap="15.0">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="221.20001220703125" minWidth="10.0" prefWidth="221.20001220703125" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="222.79998779296875" minWidth="10.0" prefWidth="222.79998779296875" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                  <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#moLichSuDonHang" prefHeight="66.0" prefWidth="230.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-cursor: hand; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 10, 0, 0, 2);" text="Lịch sử đơn hàng" GridPane.rowIndex="1">
-                     <graphic>
-                        <ImageView fitHeight="64.0" fitWidth="36.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@images/file.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <font>
-                        <Font name="Arial Bold" size="12.0" />
-                     </font>
-                  </Button>
-                  <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#moTimKiemDonHang" prefHeight="66.0" prefWidth="230.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-cursor: hand; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 10, 0, 0, 2);" text="Tìm kiếm đơn hàng" GridPane.rowIndex="3">
-                     <graphic>
-                        <ImageView fitHeight="64.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@images/shoppingcart.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Button>
-                  <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#moDieuKhoan" prefHeight="66.0" prefWidth="230.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-cursor: hand; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 10, 0, 0, 2);" text="Điều khoản" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                     <graphic>
-                        <ImageView fitHeight="64.0" fitWidth="36.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@images/protection.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <font>
-                        <Font name="Arial Bold" size="12.0" />
-                     </font>
-                  </Button>
-                  <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#moUuDaiCuaBan" prefHeight="66.0" prefWidth="230.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-cursor: hand; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 10, 0, 0, 2);" text="Ưu đãi của bạn" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                     <graphic>
-                        <ImageView fitHeight="64.0" fitWidth="36.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@images/coupon.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <font>
-                        <Font name="Arial Bold" size="12.0" />
-                     </font>
-                  </Button>
-               </children>
-            </GridPane>
-            <Label prefHeight="29.0" prefWidth="82.0" text="Hỗ Trợ">
-               <font>
-                  <Font name="Arial Bold" size="17.0" />
-               </font>
-            </Label>
-            <VBox prefHeight="161.0" prefWidth="460.0" style="-fx-background-color: white; -fx-background-radius: 12; -fx-padding: 10 0 10 0;">
-               <children>
-                  <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="39.0" prefWidth="490.0" style="-fx-background-color: transparent; -fx-cursor: hand; -fx-font-size: 14px; -fx-padding: 5;" text="Đánh giá đơn hàng">
-                     <graphic>
-                        <ImageView fitHeight="22.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@images/star.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Button>
-                  <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="38.0" prefWidth="554.0" style="-fx-background-color: transparent; -fx-cursor: hand; -fx-font-size: 14px; -fx-padding: 5;" text="Điều khoản                                                                                       &gt;">
-                     <graphic>
-                        <ImageView fitHeight="23.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@images/protection.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Button>
-                  <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="42.0" prefWidth="462.0" style="-fx-background-color: transparent; -fx-cursor: hand; -fx-font-size: 14px; -fx-padding: 5;" text="Liên hệ và góp ý                                                                               &gt;">
-                     <graphic>
-                        <ImageView fitHeight="25.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@images/chat.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <font>
-                        <Font name="Arial Bold" size="12.0" />
-                     </font>
-                  </Button>
-                  <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="38.0" prefWidth="547.0" style="-fx-background-color: transparent; -fx-font-size: 14px; -fx-cursor: hand; -fx-padding: 5;" text="Hướng dẫn xuất hóa đơn GTGT                                                       &gt;">
-                     <graphic>
-                        <ImageView fitHeight="23.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@images/invoice.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Button>
-               </children>
-            </VBox>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tài Khoản">
-               <font>
-                  <Font name="Arial Bold" size="17.0" />
-               </font>
-            </Text>
-            <VBox prefHeight="161.0" prefWidth="460.0" style="-fx-background-color: white; -fx-background-radius: 12; -fx-padding: 10 0 10 0;">
-               <children>
-                  <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="39.0" prefWidth="490.0" style="-fx-background-color: transparent; -fx-cursor: hand; -fx-font-size: 14px; -fx-padding: 5;" text="Thông tin cá nhân">
-                     <graphic>
-                        <ImageView fitHeight="22.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@images/account.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Button>
-                  <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="38.0" prefWidth="554.0" style="-fx-background-color: transparent; -fx-cursor: hand; -fx-font-size: 14px; -fx-padding: 5;" text="Địa chỉ đã lưu">
-                     <graphic>
-                        <ImageView fitHeight="23.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@images/placeholder.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Button>
-                  <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="42.0" prefWidth="462.0" style="-fx-background-color: transparent; -fx-cursor: hand; -fx-font-size: 14px; -fx-padding: 5;" text="Về chúng tôi                                                                                    &gt;">
-                     <graphic>
-                        <ImageView fitHeight="25.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@images/info.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <font>
-                        <Font name="Arial Bold" size="12.0" />
-                     </font>
-                  </Button>
-                  <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="38.0" prefWidth="547.0" style="-fx-background-color: transparent; -fx-font-size: 14px; -fx-cursor: hand; -fx-padding: 5;" text="Đăng xuất">
-                     <graphic>
-                        <ImageView fitHeight="23.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@images/logout.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Button>
-               </children>
-            </VBox>
-         </children>
-      </VBox>
-   </children>
+    <children>
+        <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #F8F8F8; -fx-padding: 20; -fx-spacing: 20;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <HBox prefHeight="33.0" prefWidth="460.0">
+                    <children>
+                        <Label text="TÀI KHOẢN">
+                            <font>
+                                <Font name="Arial" size="24.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </HBox>
+                <GridPane hgap="15.0" vgap="15.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="221.20001220703125" minWidth="10.0" prefWidth="221.20001220703125" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="222.79998779296875" minWidth="10.0" prefWidth="222.79998779296875" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#moLichSuDonHang" prefHeight="66.0" prefWidth="230.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-cursor: hand; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 10, 0, 0, 2);" text="Lịch sử đơn hàng" GridPane.rowIndex="1">
+                            <graphic>
+                                <ImageView fitHeight="64.0" fitWidth="36.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@images/file.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <font>
+                                <Font name="Arial Bold" size="12.0" />
+                            </font>
+                        </Button>
+                        <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#moTimKiemDonHang" prefHeight="66.0" prefWidth="230.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-cursor: hand; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 10, 0, 0, 2);" text="Tìm kiếm đơn hàng" GridPane.rowIndex="3">
+                            <graphic>
+                                <ImageView fitHeight="64.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@images/shoppingcart.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font>
+                        </Button>
+                        <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#moDieuKhoan" prefHeight="66.0" prefWidth="230.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-cursor: hand; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 10, 0, 0, 2);" text="Điều khoản" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                            <graphic>
+                                <ImageView fitHeight="64.0" fitWidth="36.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@images/protection.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <font>
+                                <Font name="Arial Bold" size="12.0" />
+                            </font>
+                        </Button>
+                        <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#moUuDaiCuaBan" prefHeight="66.0" prefWidth="230.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-cursor: hand; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 10, 0, 0, 2);" text="Ưu đãi của bạn" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                            <graphic>
+                                <ImageView fitHeight="64.0" fitWidth="36.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@images/coupon.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <font>
+                                <Font name="Arial Bold" size="12.0" />
+                            </font>
+                        </Button>
+                    </children>
+                </GridPane>
+                <Label prefHeight="29.0" prefWidth="82.0" text="Hỗ Trợ">
+                    <font>
+                        <Font name="Arial Bold" size="17.0" />
+                    </font>
+                </Label>
+                <VBox prefHeight="161.0" prefWidth="460.0" style="-fx-background-color: white; -fx-background-radius: 12; -fx-padding: 10 0 10 0;">
+                    <children>
+                        <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="39.0" prefWidth="490.0" style="-fx-background-color: transparent; -fx-cursor: hand; -fx-font-size: 14px; -fx-padding: 5;" text="Đánh giá đơn hàng">
+                            <graphic>
+                                <ImageView fitHeight="22.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@images/star.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font>
+                        </Button>
+                        <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="38.0" prefWidth="554.0" style="-fx-background-color: transparent; -fx-cursor: hand; -fx-font-size: 14px; -fx-padding: 5;" text="Điều khoản                                                                                       &gt;">
+                            <graphic>
+                                <ImageView fitHeight="23.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@images/protection.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font>
+                        </Button>
+                        <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="42.0" prefWidth="462.0" style="-fx-background-color: transparent; -fx-cursor: hand; -fx-font-size: 14px; -fx-padding: 5;" text="Liên hệ và góp ý                                                                               &gt;">
+                            <graphic>
+                                <ImageView fitHeight="25.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@images/chat.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <font>
+                                <Font name="Arial Bold" size="12.0" />
+                            </font>
+                        </Button>
+                        <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="38.0" prefWidth="547.0" style="-fx-background-color: transparent; -fx-font-size: 14px; -fx-cursor: hand; -fx-padding: 5;" text="Hướng dẫn xuất hóa đơn GTGT                                                       &gt;">
+                            <graphic>
+                                <ImageView fitHeight="23.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@images/invoice.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font>
+                        </Button>
+                    </children>
+                </VBox>
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tài Khoản">
+                    <font>
+                        <Font name="Arial Bold" size="17.0" />
+                    </font>
+                </Text>
+                <VBox prefHeight="161.0" prefWidth="460.0" style="-fx-background-color: white; -fx-background-radius: 12; -fx-padding: 10 0 10 0;">
+                    <children>
+                        <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="39.0" prefWidth="490.0" style="-fx-background-color: transparent; -fx-cursor: hand; -fx-font-size: 14px; -fx-padding: 5;" text="Thông tin cá nhân">
+                            <graphic>
+                                <ImageView fitHeight="22.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@images/account.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font>
+                        </Button>
+                        <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="38.0" prefWidth="554.0" style="-fx-background-color: transparent; -fx-cursor: hand; -fx-font-size: 14px; -fx-padding: 5;" text="Địa chỉ đã lưu">
+                            <graphic>
+                                <ImageView fitHeight="23.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@images/placeholder.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font>
+                        </Button>
+                        <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="42.0" prefWidth="462.0" style="-fx-background-color: transparent; -fx-cursor: hand; -fx-font-size: 14px; -fx-padding: 5;" text="Về chúng tôi                                                                                    &gt;">
+                            <graphic>
+                                <ImageView fitHeight="25.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@images/info.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <font>
+                                <Font name="Arial Bold" size="12.0" />
+                            </font>
+                        </Button>
+                        <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="38.0" prefWidth="547.0" style="-fx-background-color: transparent; -fx-font-size: 14px; -fx-cursor: hand; -fx-padding: 5;" text="Đăng xuất">
+                            <graphic>
+                                <ImageView fitHeight="23.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@images/logout.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font>
+                        </Button>
+                    </children>
+                </VBox>
+            </children>
+        </VBox>
+    </children>
 </AnchorPane>
