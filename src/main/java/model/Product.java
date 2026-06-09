@@ -1,6 +1,7 @@
 package model;
 
 public class Product {
+
     private String id;
     private String name;
     private double price;
@@ -13,6 +14,11 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public String getName() { return name; }
-    public double getPrice() { return price; }
+    public String getName() {
+        return name;
+    }
+
+    public double getPrice() {
+        return price;
+    }
 }

@@ -1,4 +1,3 @@
-
 package com.mycompany.the_coffee_farm;
 
 import java.net.URL;
@@ -16,17 +15,18 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class FoodAndDrink_Controller {
-        @FXML
+
+    @FXML
     private Button btnBack;
-    
-        @FXML
-    public void veTrangChu(ActionEvent event){
-        try{
+
+    @FXML
+    public void veTrangChu(ActionEvent event) {
+        try {
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Parent rooPrimary = FXMLLoader.load(getClass().getResource("primary.fxml"));
             Scene sceneMoi = new Scene(rooPrimary);
             stage.setScene(sceneMoi);
-        } catch(Exception e){
+        } catch (Exception e) {
             System.out.println("Lỗi không quay lại được trang trước!");
             e.printStackTrace();
         }
@@ -42,6 +42,7 @@ public class FoodAndDrink_Controller {
         vboxDoUong.setVisible(false);
         vboxDoUong.setManaged(false);
     }
+
     @FXML
     private void showDoAn(ActionEvent event) {
         vboxDoAn.setVisible(true);
@@ -49,6 +50,7 @@ public class FoodAndDrink_Controller {
         vboxDoUong.setVisible(false);
         vboxDoUong.setManaged(false);
     }
+
     @FXML
     private void showDoUong(ActionEvent event) {
         vboxDoAn.setVisible(false);
@@ -57,7 +59,8 @@ public class FoodAndDrink_Controller {
         vboxDoUong.setManaged(true);
     }
     @FXML
-    private TextField txtTimMon; 
+    private TextField txtTimMon;
+
     @FXML
     private void timKiem(KeyEvent event) {
         String tuKhoa = txtTimMon.getText().toLowerCase().trim();
@@ -66,7 +69,7 @@ public class FoodAndDrink_Controller {
         locDanhSach(vboxDoUong, tuKhoa);
     }
 
-private void locDanhSach(VBox danhSach, String tuKhoa) {
+    private void locDanhSach(VBox danhSach, String tuKhoa) {
         for (javafx.scene.Node node : danhSach.getChildren()) {
             if (node instanceof javafx.scene.layout.AnchorPane) {
                 javafx.scene.layout.AnchorPane theMon = (javafx.scene.layout.AnchorPane) node;
@@ -76,7 +79,7 @@ private void locDanhSach(VBox danhSach, String tuKhoa) {
                         javafx.scene.control.Label lbl = (javafx.scene.control.Label) thanhPhan;
                         if (lbl.getText().toLowerCase().contains(tuKhoa)) {
                             giuLai = true;
-                            break; 
+                            break;
                         }
                     }
                 }
@@ -85,27 +88,28 @@ private void locDanhSach(VBox danhSach, String tuKhoa) {
             }
         }
     }
-@FXML
+
+    @FXML
     private void ThemGioHang(ActionEvent event) {
         javafx.scene.control.Button btnClicked = (javafx.scene.control.Button) event.getSource();
-        
+
         javafx.scene.layout.AnchorPane theMon = (javafx.scene.layout.AnchorPane) btnClicked.getParent();
-        
+
         String tenMon = "";
         String chuoiGia = "";
-        
+
         for (javafx.scene.Node node : theMon.getChildren()) {
             if (node instanceof javafx.scene.control.Label) {
                 javafx.scene.control.Label lbl = (javafx.scene.control.Label) node;
-                
+
                 if (lbl.getText().contains("đ")) {
-                    chuoiGia = lbl.getText(); 
+                    chuoiGia = lbl.getText();
                 } else {
-                    tenMon = lbl.getText();  
+                    tenMon = lbl.getText();
                 }
             }
         }
-        
+
         int giaTien = 0;
         try {
             String soNguyen = chuoiGia.replaceAll("[^0-9]", "");
@@ -114,22 +118,21 @@ private void locDanhSach(VBox danhSach, String tuKhoa) {
             System.out.println("Lỗi đọc giá tiền món: " + tenMon);
         }
 
-  
         boolean daCoTrongGio = false;
-        int soLuongHienTai = 1; 
+        int soLuongHienTai = 1;
 
         for (GioHang.MonHang mh : GioHang.danhSachMua) {
             if (mh.tenMon.equals(tenMon)) {
-                mh.soLuong += 1; 
-                soLuongHienTai = mh.soLuong; 
+                mh.soLuong += 1;
+                soLuongHienTai = mh.soLuong;
                 daCoTrongGio = true;
                 break;
             }
         }
-        
+
         if (!daCoTrongGio) {
             GioHang.danhSachMua.add(new GioHang.MonHang(tenMon, giaTien, 1));
         }
-                System.out.println(" Vừa thêm: " + tenMon + " | Giá: " + giaTien + " | Số lượng: " + soLuongHienTai);
+        System.out.println(" Vừa thêm: " + tenMon + " | Giá: " + giaTien + " | Số lượng: " + soLuongHienTai);
     }
 }

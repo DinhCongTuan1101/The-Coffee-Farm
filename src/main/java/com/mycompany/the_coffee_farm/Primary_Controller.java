@@ -1,4 +1,4 @@
-package com.mycompany.the_coffee_farm; 
+package com.mycompany.the_coffee_farm;
 
 import java.io.IOException;
 import java.net.URL;
@@ -24,7 +24,7 @@ public class Primary_Controller implements Initializable {
     private ImageView bannerImage;
 
     private int imageIndex = 0;
-    
+
     private String[] danhSachAnh = {
         "/com/mycompany/the_coffee_farm/images/anh1.png",
         "/com/mycompany/the_coffee_farm/images/anh2.png",
@@ -34,21 +34,24 @@ public class Primary_Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Rectangle khuonBoGoc = new Rectangle(350,200);
+        Rectangle khuonBoGoc = new Rectangle(350, 200);
         khuonBoGoc.setArcWidth(30);
         khuonBoGoc.setArcHeight(30);
         bannerImage.setClip(khuonBoGoc);
         try {
             bannerImage.setImage(new Image(getClass().getResourceAsStream(danhSachAnh[0])));
-            
+
             Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3), event -> {
                 imageIndex++;
-                if (imageIndex >= danhSachAnh.length) imageIndex = 0;
+                if (imageIndex >= danhSachAnh.length) {
+                    imageIndex = 0;
+                }
                 try {
                     bannerImage.setImage(new Image(getClass().getResourceAsStream(danhSachAnh[imageIndex])));
-                } catch (Exception e) {}
+                } catch (Exception e) {
+                }
             }));
-            
+
             timeline.setCycleCount(Timeline.INDEFINITE);
             timeline.play();
         } catch (Exception e) {
@@ -67,17 +70,17 @@ public class Primary_Controller implements Initializable {
             System.out.println("Lỗi không load được file thông tin!");
         }
     }
-    
+
     @FXML
     public void vaoNguyenLieuTho(javafx.event.ActionEvent event) {
         try {
-            ThanhChucNang_Controller.trangChuCuaNhanh = "NguyenLieuTho.fxml"; 
+            ThanhChucNang_Controller.trangChuCuaNhanh = "NguyenLieuTho.fxml";
 
             javafx.stage.Stage stage = (javafx.stage.Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
             javafx.scene.layout.StackPane voChinh = javafx.fxml.FXMLLoader.load(getClass().getResource("ThanhChucNang.fxml"));
             javafx.scene.Parent ruotNLT = javafx.fxml.FXMLLoader.load(getClass().getResource("NguyenLieuTho.fxml"));
             javafx.scene.layout.BorderPane khungChinh = (javafx.scene.layout.BorderPane) voChinh.lookup("#khungChinh");
-            
+
             khungChinh.setCenter(ruotNLT);
             stage.setScene(new javafx.scene.Scene(voChinh));
         } catch (Exception e) {
@@ -95,7 +98,7 @@ public class Primary_Controller implements Initializable {
             javafx.scene.layout.StackPane voChinh = javafx.fxml.FXMLLoader.load(getClass().getResource("ThanhChucNang.fxml"));
             javafx.scene.Parent ruotNLSC = javafx.fxml.FXMLLoader.load(getClass().getResource("NguyenLieuSoChe.fxml"));
             javafx.scene.layout.BorderPane khungChinh = (javafx.scene.layout.BorderPane) voChinh.lookup("#khungChinh");
-            
+
             khungChinh.setCenter(ruotNLSC);
             stage.setScene(new javafx.scene.Scene(voChinh));
         } catch (Exception e) {
@@ -113,7 +116,7 @@ public class Primary_Controller implements Initializable {
             javafx.scene.layout.StackPane voChinh = javafx.fxml.FXMLLoader.load(getClass().getResource("ThanhChucNang.fxml"));
             javafx.scene.Parent ruotFood = javafx.fxml.FXMLLoader.load(getClass().getResource("FoodAndDrink.fxml"));
             javafx.scene.layout.BorderPane khungChinh = (javafx.scene.layout.BorderPane) voChinh.lookup("#khungChinh");
-            
+
             khungChinh.setCenter(ruotFood);
             stage.setScene(new javafx.scene.Scene(voChinh));
         } catch (Exception e) {
@@ -121,12 +124,13 @@ public class Primary_Controller implements Initializable {
             e.printStackTrace();
         }
     }
+
     @FXML
     public void moTrangDangNhap(javafx.event.ActionEvent event) {
         try {
-        
+
             javafx.stage.Stage stage = (javafx.stage.Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-            javafx.scene.Parent root = javafx.fxml.FXMLLoader.load(getClass().getResource("DangNhap.fxml")); 
+            javafx.scene.Parent root = javafx.fxml.FXMLLoader.load(getClass().getResource("DangNhap.fxml"));
             javafx.scene.Scene scene = new javafx.scene.Scene(root);
             stage.setScene(scene);
             stage.show();

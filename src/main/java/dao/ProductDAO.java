@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class ProductDAO {
+
     public ArrayList<Product> getAllProducts() {
         ArrayList<Product> list = new ArrayList<>();
         try {
@@ -19,10 +20,10 @@ public class ProductDAO {
 
                 while (rs.next()) {
                     list.add(new Product(
-                        rs.getString("id"),
-                        rs.getString("name"),
-                        rs.getDouble("price"),
-                        rs.getInt("quantity")
+                            rs.getString("id"),
+                            rs.getString("name"),
+                            rs.getDouble("price"),
+                            rs.getInt("quantity")
                     ));
                 }
                 conn.close();
