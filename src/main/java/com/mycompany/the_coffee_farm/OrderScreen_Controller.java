@@ -1,9 +1,13 @@
 package com.mycompany.the_coffee_farm;
 
+import database.DBConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,7 +26,7 @@ import javafx.stage.Stage;
 
 
 public class OrderScreen_Controller implements Initializable {
-
+    private final ExecutorService threadPool = Executors.newFixedThreadPool(5);
     @FXML
     private VBox vboxGioHang;
     @FXML
@@ -213,16 +217,126 @@ public class OrderScreen_Controller implements Initializable {
                 return; 
             }
 
-            if (rdoOnline.isSelected()) {
-                lopPhuQR.toFront(); 
-                lopPhuQR.setVisible(true);
-            } else if (rdoTaiQuay.isSelected()) {
-                xoaCacMonDaMua(); 
-                chuyenTrang(event, "DanhSachCoSo.fxml");
+            List<DongGioHang> dsMonDuocChon = new ArrayList<>();
+            for (DongGioHang dong : danhSachMonTrongGio) {
+                if (dong.chkChonMua.isSelected()) {
+                    dsMonDuocChon.add(dong);
+                }
             }
+            
+            
+            int userId = TaiKhoan.id; 
+            String shippingAddress = (rdoOnline.isSelected()) ? "Giao hàng tận nơi" : "Nhận tại quầy";
+
+            
+            threadPool.execute(() -> {
+                System.out.println("[Thread: " + Thread.currentThread().getName() + "] Đang xử lý giao dịch tại DB...");
+                
+                boolean dbSuccess = executeDatabaseTransaction(userId, tongTien, shippingAddress, dsMonDuocChon);
+                
+                
+                Platform.runLater(() -> {
+                    if (dbSuccess) {
+                        
+                        xoaCacMonDaMua(); 
+                        
+                        
+                        if (rdoOnline.isSelected()) {
+                            lopPhuQR.toFront(); 
+                            lopPhuQR.setVisible(true);
+                        } else if (rdoTaiQuay.isSelected()) {
+                            chuyenTrang(event, "DanhSachCoSo.fxml");
+                        }
+                    } else {                       
+                        System.err.println("Thanh toán thất bại do lỗi hệ thống hoặc hết hàng kho!");
+                    }
+                });
+            });
         } catch (Exception e) {
             System.out.println("Lỗi trong lúc xử lý mua hàng:");
             e.printStackTrace(); 
+        }
+    }
+    private boolean executeDatabaseTransaction(int userId, int tongTien, String shippingAddress, List<DongGioHang> dsMonDuocChon) {
+        java.sql.Connection conn = null;
+        try {
+            conn = DBConnection.getConnection();
+            conn.setAutoCommit(false);
+
+            for (DongGioHang dong : dsMonDuocChon) {
+                int soLuongMua = Integer.parseInt(dong.lblSoLuong.getText());
+                String checkStockSql = "SELECT product_id, stock_quantity FROM products WITH (UPDLOCK) WHERE product_name = ?";
+                int productId = -1;
+                try (java.sql.PreparedStatement psCheck = conn.prepareStatement(checkStockSql)) {
+                    psCheck.setString(1, dong.tenMon);
+                    try (java.sql.ResultSet rs = psCheck.executeQuery()) {
+                        if (rs.next()) {
+                            productId = rs.getInt("product_id");
+                            int currentStock = rs.getInt("stock_quantity");
+                            if (currentStock < soLuongMua) {
+                                System.err.println(dong.tenMon + " không đủ hàng!");
+                                conn.rollback();
+                                return false;
+                            }
+                        } else {
+                            System.err.println("Không tìm thấy món: " + dong.tenMon);
+                            conn.rollback();
+                            return false;
+                        }
+                    }
+                }
+                String updateStockSql = "UPDATE products SET stock_quantity = stock_quantity - ? WHERE product_id = ?";
+                try (java.sql.PreparedStatement psUpdate = conn.prepareStatement(updateStockSql)) {
+                    psUpdate.setInt(1, soLuongMua);
+                    psUpdate.setInt(2, productId);
+                    psUpdate.executeUpdate();
+                }
+            }
+            String insertOrderSql = "INSERT INTO orders (user_id, total_amount, shipping_address, order_status, ordered_at) VALUES (?, ?, ?, ?, GETDATE())";
+            int generatedOrderId = -1;
+            try (java.sql.PreparedStatement psOrder = conn.prepareStatement(insertOrderSql, java.sql.Statement.RETURN_GENERATED_KEYS)) {
+                psOrder.setInt(1, userId);
+                psOrder.setDouble(2, tongTien);
+                psOrder.setString(3, shippingAddress);
+                psOrder.setString(4, "PENDING");
+                psOrder.executeUpdate();
+
+                try (java.sql.ResultSet generatedKeys = psOrder.getGeneratedKeys()) {
+                    if (generatedKeys.next()) {
+                        generatedOrderId = generatedKeys.getInt(1);
+                    }
+                }
+            }
+
+            if (generatedOrderId == -1) {
+                conn.rollback();
+                return false;
+            }
+            String insertDetailSql = "INSERT INTO order_details (order_id, product_id, quantity, historical_price) " +
+                                     "VALUES (?, (SELECT product_id FROM products WHERE product_name = ?), ?, ?)";
+            try (java.sql.PreparedStatement psDetail = conn.prepareStatement(insertDetailSql)) {
+                for (DongGioHang dong : dsMonDuocChon) {
+                    int soLuongMua = Integer.parseInt(dong.lblSoLuong.getText());
+                    psDetail.setInt(1, generatedOrderId);
+                    psDetail.setString(2, dong.tenMon);
+                    psDetail.setInt(3, soLuongMua);
+                    psDetail.setDouble(4, dong.giaTienMotMon);
+                    psDetail.addBatch();
+                }
+                psDetail.executeBatch();
+            }
+            conn.commit();
+            return true;
+        } catch (java.sql.SQLException e) {
+            e.printStackTrace();
+            if (conn != null) {
+                try { conn.rollback(); } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
+            }
+            return false;
+        } finally {
+            if (conn != null) {
+                try { conn.setAutoCommit(true); conn.close(); } catch (java.sql.SQLException e) { e.printStackTrace(); }
+            }
         }
     }
 

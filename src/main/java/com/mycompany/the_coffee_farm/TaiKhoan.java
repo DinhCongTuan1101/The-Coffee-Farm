@@ -8,4 +8,5 @@ public class TaiKhoan {
     public static javafx.scene.Scene sceneTruocKhiVaoGio;
     public static java.util.Map<String, int[]> gioHangChung = new java.util.HashMap<>();
     public static String trangTruocDo = "primary.fxml";
+    public static int id=0;
 }
