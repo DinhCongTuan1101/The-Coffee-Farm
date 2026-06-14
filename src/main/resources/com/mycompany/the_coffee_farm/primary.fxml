@@ -18,7 +18,7 @@
                         <Image url="@images/anh1.png" />
                     </image>
                 </ImageView>
-                <Button mnemonicParsing="false" onAction="#moTrangDangNhap" style="-fx-background-radius: 100; -fx-cursor: hand; -fx-background-color: transperent;" StackPane.alignment="TOP_RIGHT">
+                <Button mnemonicParsing="false" onAction="#clickVaoIconTaiKhoan" style="-fx-background-radius: 100; -fx-cursor: hand; -fx-background-color: transperent;" StackPane.alignment="TOP_RIGHT">
                     <StackPane.margin>
                         <Insets right="10.0" top="10.0" />
                     </StackPane.margin>

@@ -22,8 +22,9 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 public class DangNhap_Controller {
+
     private final ExecutorService threadPool = Executors.newFixedThreadPool(2);
-    
+
     @FXML
     private Button btnBack;
 
@@ -39,6 +40,7 @@ public class DangNhap_Controller {
             e.printStackTrace();
         }
     }
+
     @FXML
     public void moTrangDangKi(javafx.event.ActionEvent event) {
         try {
@@ -69,15 +71,21 @@ public class DangNhap_Controller {
         }
         threadPool.execute(() -> {
             try {
-                String matKhauHash = hashPasswordSHA256(mk);               
+                String matKhauHash = hashPasswordSHA256(mk);
                 int userId = checkLoginInDB(tk, matKhauHash);
                 Platform.runLater(() -> {
                     if (userId != -1) {
                         System.out.println("Đăng nhập thành công!");
                         TaiKhoan.daDangNhap = true;
-                        TaiKhoan.id = userId; 
-                        TaiKhoan.tenTaiKhoan = tk;                         
-                        veTrangChu(event);
+                        TaiKhoan.id = userId;
+                        TaiKhoan.tenTaiKhoan = tk;
+                        try {
+                            javafx.scene.Parent root = javafx.fxml.FXMLLoader.load(getClass().getResource("DangNhapThanhCong.fxml"));
+                            javafx.stage.Stage stage = (javafx.stage.Stage) txtSDT.getScene().getWindow();
+                            stage.setScene(new javafx.scene.Scene(root));
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                     } else {
                         System.out.println("Sai tài khoản hoặc mật khẩu!");
                         hienThongBao(Alert.AlertType.ERROR, "Lỗi đăng nhập", "Số điện thoại hoặc mật khẩu không chính xác!");
@@ -91,19 +99,20 @@ public class DangNhap_Controller {
             }
         });
     }
+
     private int checkLoginInDB(String sdt, String passwordHash) {
         Connection conn = null;
         try {
-            conn = DBConnection.getConnection();           
+            conn = DBConnection.getConnection();
             String loginSql = "SELECT user_id FROM users WHERE phone_number = ? AND password_hash = ?";
-            
+
             try (PreparedStatement ps = conn.prepareStatement(loginSql)) {
                 ps.setString(1, sdt);
                 ps.setString(2, passwordHash);
-                
+
                 try (ResultSet rs = ps.executeQuery()) {
                     if (rs.next()) {
-                        return rs.getInt("user_id"); 
+                        return rs.getInt("user_id");
                     }
                 }
             }
@@ -111,15 +120,20 @@ public class DangNhap_Controller {
             e.printStackTrace();
         } finally {
             if (conn != null) {
-                try { conn.close(); } catch (SQLException e) { e.printStackTrace(); }
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
         }
         return -1;
-    }    
+    }
+
     private String hashPasswordSHA256(String password) throws Exception {
         MessageDigest digest = MessageDigest.getInstance("SHA-256");
         byte[] encodedHash = digest.digest(password.getBytes(StandardCharsets.UTF_8));
-        
+
         StringBuilder hexString = new StringBuilder(2 * encodedHash.length);
         for (byte b : encodedHash) {
             String hex = Integer.toHexString(0xff & b);
@@ -130,6 +144,7 @@ public class DangNhap_Controller {
         }
         return hexString.toString();
     }
+
     private void hienThongBao(Alert.AlertType type, String tieuDe, String noiDung) {
         Alert alert = new Alert(type);
         alert.setTitle(tieuDe);

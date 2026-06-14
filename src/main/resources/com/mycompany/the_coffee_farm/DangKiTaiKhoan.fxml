@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.the_coffee_farm.DangKiTaiKhoan_Controller">
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="500.0" style="-fx-background-color: #FFFDE7;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.the_coffee_farm.DangKiTaiKhoan_Controller">
     <children>
         <Label layoutX="80.0" layoutY="64.0" text="Chào mừng bạn đến với The Cofe Farm" textFill="#ecbb07">
             <font>
@@ -27,43 +27,76 @@
                 <Font size="23.0" />
             </font>
         </Button>
-        <TextField fx:id="txtSDT" layoutX="94.0" layoutY="195.0" prefHeight="35.0" prefWidth="330.0" promptText="Mobile phone number" style="-fx-background-radius: 15;">
+        <TextField fx:id="txtSDT" layoutX="83.0" layoutY="263.0" prefHeight="35.0" prefWidth="330.0" promptText="Mobile phone number" style="-fx-background-radius: 15;">
             <padding>
                 <Insets left="40.0" />
             </padding>
         </TextField>
-        <PasswordField fx:id="txtPass1" layoutX="94.0" layoutY="269.0" prefHeight="35.0" prefWidth="330.0" promptText="Password" style="-fx-background-radius: 15;">
+        <PasswordField fx:id="txtPass1" layoutX="85.0" layoutY="473.0" prefHeight="35.0" prefWidth="330.0" promptText="Password" style="-fx-background-radius: 15;">
             <padding>
                 <Insets left="40.0" />
             </padding>
         </PasswordField>
-        <Label fx:id="lblSDT" layoutX="175.0" layoutY="177.0" text="Vui lòng nhập số điện thoại!" textFill="#f70b0b" />
-        <PasswordField fx:id="txtPass2" layoutX="94.0" layoutY="350.0" prefHeight="35.0" prefWidth="330.0" promptText="Password" style="-fx-background-radius: 15;">
+        <Label fx:id="lblSDT" layoutX="173.0" layoutY="245.0" text="Vui lòng nhập số điện thoại!" textFill="#f70b0b" />
+        <PasswordField fx:id="txtPass2" layoutX="85.0" layoutY="547.0" prefHeight="35.0" prefWidth="330.0" promptText="Password" style="-fx-background-radius: 15;">
             <padding>
                 <Insets left="40.0" />
             </padding>
         </PasswordField>
-        <Label fx:id="lblPass1" layoutX="184.0" layoutY="251.0" text="Vui lòng nhập mật khẩu!" textFill="#ea0f0f" />
-        <Label fx:id="lblPass2" layoutX="177.0" layoutY="332.0" text="Vui lòng nhập lại mật khẩu!" textFill="#ea0a0a" />
-        <Button layoutX="184.0" layoutY="419.0" mnemonicParsing="false" onAction="#xuLyDangKy" prefHeight="34.0" prefWidth="131.0" style="-fx-background-color: #00FFFF; -fx-background-radius: 20;" text="Đăng Kí">
+        <Label fx:id="lblPass1" layoutX="174.0" layoutY="455.0" text="Vui lòng nhập mật khẩu!" textFill="#ea0f0f" />
+        <Label fx:id="lblPass2" layoutX="174.0" layoutY="529.0" text="Vui lòng nhập lại mật khẩu!" textFill="#ea0a0a" />
+        <Button layoutX="184.0" layoutY="617.0" mnemonicParsing="false" onAction="#xuLyDangKy" prefHeight="34.0" prefWidth="131.0" style="-fx-background-color: #00FFFF; -fx-background-radius: 20;" text="Đăng Kí">
             <font>
                 <Font name="Arial Bold" size="18.0" />
             </font>
         </Button>
-        <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="102.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="96.0" layoutY="268.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@images/smartphone.png" />
             </image>
         </ImageView>
-        <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="102.0" layoutY="274.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="96.0" layoutY="478.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@images/locked.png" />
             </image>
         </ImageView>
-        <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="102.0" layoutY="355.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="96.0" layoutY="552.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@images/locked.png" />
             </image>
         </ImageView>
+      <TextField fx:id="txtEmail" layoutX="83.0" layoutY="332.0" prefHeight="35.0" prefWidth="330.0" promptText="Email" style="-fx-background-radius: 15;">
+         <padding>
+            <Insets left="40.0" />
+         </padding>
+      </TextField>
+      <TextField fx:id="txtDiaChi" layoutX="83.0" layoutY="402.0" prefHeight="35.0" prefWidth="330.0" promptText="Address" style="-fx-background-radius: 15;">
+         <padding>
+            <Insets left="40.0" />
+         </padding>
+      </TextField>
+      <Label fx:id="lblEmail" layoutX="173.0" layoutY="314.0" text="Vui lòng nhập Email!" textFill="#f70b0b" />
+      <Label fx:id="lblDiaChi" layoutX="174.0" layoutY="384.0" text="Vui lòng nhập địa chỉ!" textFill="#f70b0b" />
+      <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="96.0" layoutY="337.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/email%20(1).png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="96.0" layoutY="407.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/location.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="txtTenNguoiDung" layoutX="82.0" layoutY="194.0" prefHeight="35.0" prefWidth="330.0" promptText="User name" style="-fx-background-radius: 15;">
+         <padding>
+            <Insets left="40.0" />
+         </padding>
+      </TextField>
+      <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="96.0" layoutY="199.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/user%20(3).png" />
+         </image>
+      </ImageView>
+      <Label fx:id="lblTenNguoiDung" layoutX="172.0" layoutY="176.0" text="Vui lòng nhập tên người dùng!" textFill="#f70b0b" />
     </children>
 </AnchorPane>

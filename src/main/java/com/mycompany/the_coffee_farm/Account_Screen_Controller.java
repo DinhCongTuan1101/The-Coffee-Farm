@@ -28,41 +28,19 @@ public class Account_Screen_Controller implements Initializable {
         if (btnThongTin != null) btnThongTin.setDisable(chuaLogin);
         if (btnDiaChi != null) btnDiaChi.setDisable(chuaLogin);
         if (btnDangXuat != null) btnDangXuat.setDisable(chuaLogin);
-    }
 
-    @FXML
-    private void moDieuKhoan(javafx.event.ActionEvent event) {
-        try {
-            javafx.scene.Parent root = javafx.fxml.FXMLLoader.load(getClass().getResource("DieuKhoan.fxml"));
-            javafx.scene.Scene scene = new javafx.scene.Scene(root);
-
-            javafx.stage.Stage stage = (javafx.stage.Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
-        } catch (Exception e) {
-            System.out.println("Lỗi chuyển sang Điều Khoản!");
-            e.printStackTrace();
+        if (lopPhuDangXuat != null) {
+            lopPhuDangXuat.setVisible(false);
         }
     }
 
     @FXML
-    private void moLichSuDonHang(javafx.event.ActionEvent event) {
-        System.out.println("Đã xác nhận tài khoản. Đang tải Lịch sử đơn hàng!");
-    }
+    public void xuLyDangXuat(javafx.event.ActionEvent event) { 
+        if (!TaiKhoan.daDangNhap) return; 
 
-    @FXML
-    private void moTimKiemDonHang(javafx.event.ActionEvent event) {
-        System.out.println("Đã xác nhận tài khoản. Đang tải Tìm kiếm đơn hàng!");
-    }
-
-    @FXML
-    private void moUuDaiCuaBan(javafx.event.ActionEvent event) {
-        System.out.println("Đã xác nhận tài khoản. Đang tải Ưu đãi của bạn!");
-    }
-
-    @FXML
-    public void xuLyDangXuat(javafx.event.ActionEvent event) {
-        TaiKhoan.daDangNhap = false; 
+        TaiKhoan.daDangNhap = false;
+        TaiKhoan.id = 0;
+        TaiKhoan.tenTaiKhoan = "";
         TaiKhoan.gioHangChung.clear();
         TaiKhoan.phuongThucNhan = 0;
 
@@ -74,56 +52,68 @@ public class Account_Screen_Controller implements Initializable {
     @FXML
     public void chuyenVePrimary(javafx.scene.input.MouseEvent event) {
         try {
-            lopPhuDangXuat.setVisible(false);
+            if (lopPhuDangXuat != null) {
+                lopPhuDangXuat.setVisible(false);
+            }
 
             javafx.scene.Parent root = javafx.fxml.FXMLLoader.load(getClass().getResource("primary.fxml"));
             javafx.scene.Scene scene = new javafx.scene.Scene(root);
-            
             javafx.stage.Stage stage = (javafx.stage.Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
             stage.show();
-            
         } catch (Exception e) {
             System.out.println("Lỗi không về trang chủ được!");
             e.printStackTrace();
         }
     }
-        @FXML
-    private void quayLaiAccount(javafx.event.ActionEvent event) {
+
+    @FXML
+    public void moDieuKhoan(javafx.event.ActionEvent event) {
+        try {
+            javafx.scene.Parent root = javafx.fxml.FXMLLoader.load(getClass().getResource("DieuKhoan.fxml"));
+            javafx.stage.Stage stage = (javafx.stage.Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new javafx.scene.Scene(root));
+            stage.show();
+        } catch (Exception e) { e.printStackTrace(); }
+    }
+
+    @FXML
+    public void moLienHeVaGopY(javafx.event.ActionEvent event) {
+        try {
+            javafx.scene.Parent root = javafx.fxml.FXMLLoader.load(getClass().getResource("LienHeVaGopY.fxml"));
+            javafx.stage.Stage stage = (javafx.stage.Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new javafx.scene.Scene(root));
+            stage.show();
+            TaiKhoan.trangTruocDo = "Account_Screen.fxml";
+        } catch (Exception e) { e.printStackTrace(); }
+    }
+
+    @FXML
+    public void moLichSuDonHang(javafx.event.ActionEvent event) {
+        System.out.println("Đang mở Lịch sử đơn hàng!");
+    }
+
+    @FXML
+    public void moTimKiemDonHang(javafx.event.ActionEvent event) {
+        System.out.println("Đang mở Tìm kiếm đơn hàng!");
+    }
+
+    @FXML
+    public void moUuDaiCuaBan(javafx.event.ActionEvent event) {
+        System.out.println("Đang mở Ưu đãi!");
+    }
+
+    @FXML
+    public void quayLaiAccount(javafx.event.ActionEvent event) {
         try {
             javafx.scene.Parent voChinh = javafx.fxml.FXMLLoader.load(getClass().getResource("ThanhChucNang.fxml"));
             javafx.scene.Parent ruotAccount = javafx.fxml.FXMLLoader.load(getClass().getResource("Account_Screen.fxml"));
-
             javafx.scene.layout.BorderPane khungChinh = (javafx.scene.layout.BorderPane) voChinh.lookup("#khungChinh");
             khungChinh.setCenter(ruotAccount);
 
             javafx.stage.Stage stage = (javafx.stage.Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
             stage.setScene(new javafx.scene.Scene(voChinh));
             stage.show();
-
-        } catch (Exception e) {
-            System.out.println("Lỗi lúc quay về màn Account!");
-            e.printStackTrace();
-        }
-    }
-    @FXML
-    private void moLienHeVaGopY(javafx.event.ActionEvent event) {
-        try {
-            // "LienHeVaGopY.fxml" phải khớp chính xác với tên file FXML m vừa làm
-            javafx.scene.Parent root = javafx.fxml.FXMLLoader.load(getClass().getResource("LienHeVaGopY.fxml"));
-            javafx.scene.Scene scene = new javafx.scene.Scene(root);
-            
-            // Lấy Stage hiện tại để chuyển cảnh
-            javafx.stage.Stage stage = (javafx.stage.Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
-            
-            // Quan trọng: Lưu vết trang Tài khoản để nút Back nó biết đường về
-            TaiKhoan.trangTruocDo = "Account_Screen.fxml";
-            
-        } catch (Exception e) {
-            System.out.println("Lỗi không sang được trang Liên hệ!");
-            e.printStackTrace();
-        }
+        } catch (Exception e) { e.printStackTrace(); }
     }
 }

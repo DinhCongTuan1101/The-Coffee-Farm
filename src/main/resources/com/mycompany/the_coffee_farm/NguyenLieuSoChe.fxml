@@ -22,7 +22,7 @@
             <content>
                 <VBox prefHeight="754.0" prefWidth="495.0" spacing="12.0" style="-fx-background-color: #FFFDE7; -fx-padding: 15;">
                     <children>
-                        <AnchorPane prefHeight="110.0" prefWidth="460.0" style="-fx-border-color: #E8E8E8; -fx-border-radius: 12; -fx-background-radius: 12; -fx-background-color: white;">
+                        <AnchorPane id="1" prefHeight="110.0" prefWidth="460.0" style="-fx-border-color: #E8E8E8; -fx-border-radius: 12; -fx-background-radius: 12; -fx-background-color: white;">
                             <children>
                                 <Label layoutX="115.0" layoutY="15.0" prefHeight="45.0" prefWidth="290.0" style="-fx-font-family: 'Arial'; -fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #333333;" text="Hạt Cà Phê Robusta" wrapText="true" />
                                 <Label layoutX="115.0" layoutY="70.0" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-text-fill: #888888;" text="60.000đ/kg" />
@@ -48,7 +48,7 @@
                                 </ImageView>
                             </children>
                         </AnchorPane>
-                        <AnchorPane prefHeight="110.0" prefWidth="460.0" style="-fx-border-color: #E8E8E8; -fx-border-radius: 12; -fx-background-radius: 12; -fx-background-color: white;">
+                        <AnchorPane id="2" prefHeight="110.0" prefWidth="460.0" style="-fx-border-color: #E8E8E8; -fx-border-radius: 12; -fx-background-radius: 12; -fx-background-color: white;">
                             <children>
                                 <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#EAEAEA" height="90.0" layoutX="10.0" layoutY="10.0" stroke="TRANSPARENT" width="90.0" />
                                 <Label layoutX="115.0" layoutY="15.0" prefHeight="45.0" prefWidth="290.0" style="-fx-font-family: 'Arial'; -fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #333333;" text="Hạt Cà phê Arabica " wrapText="true" />

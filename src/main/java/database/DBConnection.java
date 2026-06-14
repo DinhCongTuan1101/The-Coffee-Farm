@@ -13,7 +13,7 @@ public class DBConnection {
                     + "trustServerCertificate=true;";
 
             String user = "sa";
-            String password = "qaz@123";
+            String password = "Qaz@123";
 
             return DriverManager.getConnection(url, user, password);
         } catch (Exception e) {

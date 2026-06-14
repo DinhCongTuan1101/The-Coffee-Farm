@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="500.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.the_coffee_farm.DaDangNhap_Controller">
+    <children>
+        <Button fx:id="btnBack" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#bamNutBack" prefHeight="20.0" prefWidth="62.0" style="-fx-background-color: transparent;" text="←">
+            <font>
+                <Font size="23.0" />
+            </font>
+        </Button>
+        <ImageView fitHeight="116.0" fitWidth="131.0" layoutX="185.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/user%20(2).png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="40.0" fitWidth="28.0" layoutX="262.0" layoutY="169.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/check.png" />
+            </image>
+        </ImageView>
+        <Button layoutX="76.0" layoutY="423.0" mnemonicParsing="false" onAction="#bamChuyenDoiTaiKhoan" style="-fx-background-color: #00FFFF; -fx-background-radius: 10;" text="Đổi tài khoản" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+        </Button>
+        <VBox layoutX="63.0" layoutY="210.0" prefHeight="200.0" prefWidth="374.0" spacing="15.0">
+            <children>
+            <HBox spacing="5.0">
+               <children>
+                      <Label text="Tên người dùng :">
+                          <font>
+                              <Font size="15.0" />
+                          </font>
+                      </Label>
+                  <Text fx:id="txtHienThiTen" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="252.5367374420166">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox spacing="5.0">
+               <children>
+                      <Label text="Số điện thoại :">
+                          <font>
+                              <Font size="15.0" />
+                          </font>
+                      </Label>
+                  <Text fx:id="txtHienThiSDT" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox spacing="5.0">
+               <children>
+                      <Label text="Email :">
+                          <font>
+                              <Font size="15.0" />
+                          </font>
+                      </Label>
+                  <Text fx:id="txtHienThiEmail" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox spacing="5.0">
+               <children>
+                      <Label text="Địa chỉ :">
+                          <font>
+                              <Font size="15.0" />
+                          </font>
+                      </Label>
+                  <Text fx:id="txtHienThiDiaChi" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            </children>
+        </VBox>
+        <Button fx:id="btnDangXuat" layoutX="276.0" layoutY="423.0" mnemonicParsing="false" onAction="#xuLyDangXuat" style="-fx-background-color: red; -fx-background-radius: 10;" text="Đăng xuất" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+        </Button>
+        <AnchorPane fx:id="lopPhuXacNhan" prefHeight="700.0" prefWidth="500.0" style="-fx-background-color: rgba(0, 0, 0, 0.5);" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <VBox alignment="CENTER" layoutX="50.0" layoutY="280.0" prefHeight="140.0" prefWidth="400.0" spacing="20.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 0);">
+                    <children>
+                        <Text fx:id="txtNoiDungXacNhan" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 16px;" text="Bạn có chắc chắn không?" textAlignment="CENTER" wrappingWidth="360.0" />
+                        <HBox alignment="CENTER" spacing="30.0">
+                            <children>
+                                <Button mnemonicParsing="false" onAction="#bamNutHuyXacNhan" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: #e0e0e0; -fx-background-radius: 20; -fx-cursor: hand; -fx-font-weight: bold; -fx-font-size: 14px;" text="Hủy" textFill="#555555" />
+                                <Button mnemonicParsing="false" onAction="#bamNutDongYXacNhan" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: #ff4c4c; -fx-background-radius: 20; -fx-cursor: hand; -fx-font-weight: bold; -fx-font-size: 14px;" text="Đồng ý" textFill="WHITE" />
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>

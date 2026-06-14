@@ -9,4 +9,7 @@ public class TaiKhoan {
     public static java.util.Map<String, int[]> gioHangChung = new java.util.HashMap<>();
     public static String trangTruocDo = "primary.fxml";
     public static int id=0;
+    public static String email = "";
+    public static String diaChi = "";
+    public static String tenNguoiDung = "";
 }

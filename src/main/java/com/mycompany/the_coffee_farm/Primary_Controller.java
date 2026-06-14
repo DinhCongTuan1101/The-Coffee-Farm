@@ -141,4 +141,17 @@ public class Primary_Controller implements Initializable {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    public void clickVaoIconTaiKhoan(javafx.event.ActionEvent event) {
+        try {
+            String trangCanMo = TaiKhoan.daDangNhap ? "DaDangNhap.fxml" : "DangNhap.fxml";
+
+            javafx.scene.Parent root = javafx.fxml.FXMLLoader.load(getClass().getResource(trangCanMo));
+            javafx.stage.Stage stage = (javafx.stage.Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new javafx.scene.Scene(root));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
