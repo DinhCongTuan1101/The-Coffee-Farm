@@ -3,11 +3,6 @@ package com.mycompany.the_coffee_farm;
 import database.DBConnection;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import javafx.application.Platform;
@@ -20,6 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import model.User;
 
 public class DangNhap_Controller {
 
@@ -27,6 +23,12 @@ public class DangNhap_Controller {
 
     @FXML
     private Button btnBack;
+
+    @FXML
+    private javafx.scene.control.TextField txtSDT;
+
+    @FXML
+    private javafx.scene.control.PasswordField txtMatKhau;
 
     @FXML
     public void veTrangChu(ActionEvent event) {
@@ -55,30 +57,57 @@ public class DangNhap_Controller {
             e.printStackTrace();
         }
     }
-    @FXML
-    private javafx.scene.control.TextField txtSDT;
-
-    @FXML
-    private javafx.scene.control.PasswordField txtMatKhau;
 
     @FXML
     public void xuLyDangNhap(javafx.event.ActionEvent event) {
         String tk = txtSDT.getText().trim();
         String mk = txtMatKhau.getText();
+
         if (tk.isEmpty() || mk.isEmpty()) {
             hienThongBao(Alert.AlertType.WARNING, "Thông báo", "Vui lòng nhập đầy đủ số điện thoại và mật khẩu!");
             return;
         }
+
         threadPool.execute(() -> {
             try {
                 String matKhauHash = hashPasswordSHA256(mk);
-                int userId = checkLoginInDB(tk, matKhauHash);
-                Platform.runLater(() -> {
-                    if (userId != -1) {
-                        System.out.println("Đăng nhập thành công!");
-                        TaiKhoan.daDangNhap = true;
-                        TaiKhoan.id = userId;
-                        TaiKhoan.tenTaiKhoan = tk;
+
+                User user = DBConnection.checkLoginInDB(tk, matKhauHash);
+
+                if (user != null) {
+                    System.out.println("Đăng nhập thành công!");
+
+                    TaiKhoan.daDangNhap = false;
+                    TaiKhoan.id = 0;
+                    TaiKhoan.tenTaiKhoan = null;
+                    TaiKhoan.sdt = null;
+                    TaiKhoan.email = null;
+                    TaiKhoan.diaChi = null;
+                    if (TaiKhoan.gioHangChung != null) {
+                        TaiKhoan.gioHangChung.clear();
+                    }
+
+                    TaiKhoan.daDangNhap = true;
+                    TaiKhoan.id = user.getUserId();
+                    TaiKhoan.tenTaiKhoan = user.getUsername();
+                    TaiKhoan.sdt = user.getPhoneNumber();
+                    TaiKhoan.email = user.getEmail();
+                    TaiKhoan.diaChi = user.getAddress();
+
+                    System.out.println("⚡ Đang tải lại giỏ hàng cũ từ cơ sở dữ liệu...");
+                    java.util.Map<String, int[]> gioHangCu = DBConnection.taiGioHangCuTuDB(TaiKhoan.id);
+
+                    if (gioHangCu != null && !gioHangCu.isEmpty()) {
+                        if (TaiKhoan.gioHangChung == null) {
+                            TaiKhoan.gioHangChung = new java.util.HashMap<>();
+                        }
+                        TaiKhoan.gioHangChung.putAll(gioHangCu);
+                        System.out.println("🛒 Đã khôi phục thành công " + gioHangCu.size() + " mặt hàng vào giỏ!");
+                    } else {
+                        System.out.println("🛒 Người dùng này chưa có sản phẩm nào trong giỏ hàng ở DB.");
+                    }
+
+                    Platform.runLater(() -> {
                         try {
                             javafx.scene.Parent root = javafx.fxml.FXMLLoader.load(getClass().getResource("DangNhapThanhCong.fxml"));
                             javafx.stage.Stage stage = (javafx.stage.Stage) txtSDT.getScene().getWindow();
@@ -86,11 +115,14 @@ public class DangNhap_Controller {
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-                    } else {
+                    });
+
+                } else {
+                    Platform.runLater(() -> {
                         System.out.println("Sai tài khoản hoặc mật khẩu!");
                         hienThongBao(Alert.AlertType.ERROR, "Lỗi đăng nhập", "Số điện thoại hoặc mật khẩu không chính xác!");
-                    }
-                });
+                    });
+                }
             } catch (Exception e) {
                 e.printStackTrace();
                 Platform.runLater(() -> {
@@ -98,36 +130,6 @@ public class DangNhap_Controller {
                 });
             }
         });
-    }
-
-    private int checkLoginInDB(String sdt, String passwordHash) {
-        Connection conn = null;
-        try {
-            conn = DBConnection.getConnection();
-            String loginSql = "SELECT user_id FROM users WHERE phone_number = ? AND password_hash = ?";
-
-            try (PreparedStatement ps = conn.prepareStatement(loginSql)) {
-                ps.setString(1, sdt);
-                ps.setString(2, passwordHash);
-
-                try (ResultSet rs = ps.executeQuery()) {
-                    if (rs.next()) {
-                        return rs.getInt("user_id");
-                    }
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        return -1;
     }
 
     private String hashPasswordSHA256(String password) throws Exception {

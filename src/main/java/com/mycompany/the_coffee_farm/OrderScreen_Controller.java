@@ -19,11 +19,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import static javafx.scene.input.KeyCode.N;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
 
 public class OrderScreen_Controller implements Initializable {
     private final ExecutorService threadPool = Executors.newFixedThreadPool(5);
@@ -39,12 +39,15 @@ public class OrderScreen_Controller implements Initializable {
     private Label lblTongTien;
     @FXML
     private CheckBox chkTatCa;
+    @FXML
+    private javafx.scene.layout.AnchorPane lopPhuQR;
+    @FXML 
+    private javafx.scene.layout.AnchorPane lopPhuCanhBao; 
 
     private boolean dangSuaMode = false;
     private List<Button> danhSachNutXoa = new ArrayList<>();
 
     class DongGioHang {
-
         CheckBox chkChonMua;
         Label lblSoLuong;
         int giaTienMotMon;
@@ -87,7 +90,7 @@ public class OrderScreen_Controller implements Initializable {
             });
 
             Label lblTen = new Label(tenMon);
-            lblTen.setStyle("-fx-font-weight: bold; -fx-font-size: 14px;");
+            lblTen.setStyle("-fx-font-weight: bold; -fx-font-size: 14px; -fx-min-width: 160px; -fx-pref-width: 240px; -fx-max-width: 240px; -fx-wrap-text: false;");
 
             HBox khongGianTrong = new HBox();
             HBox.setHgrow(khongGianTrong, Priority.ALWAYS);
@@ -101,17 +104,29 @@ public class OrderScreen_Controller implements Initializable {
 
             btnCong.setOnAction(e -> {
                 int sl = Integer.parseInt(lblSoLuong.getText());
-                lblSoLuong.setText(String.valueOf(sl + 1));
-                TaiKhoan.gioHangChung.get(tenMon)[0] = sl + 1;
+                int slMoi = sl + 1;
+                lblSoLuong.setText(String.valueOf(slMoi));
+                TaiKhoan.gioHangChung.get(tenMon)[0] = slMoi;
                 capNhatTongTien();
+                if (TaiKhoan.daDangNhap && TaiKhoan.id > 0) {
+                    threadPool.execute(() -> {
+                        database.DBConnection.capNhatSoLuongGioHangDB(TaiKhoan.id, tenMon, slMoi);
+                    });
+                }
             });
 
             btnTru.setOnAction(e -> {
                 int sl = Integer.parseInt(lblSoLuong.getText());
                 if (sl > 1) {
-                    lblSoLuong.setText(String.valueOf(sl - 1));
-                    TaiKhoan.gioHangChung.get(tenMon)[0] = sl - 1;
+                    int slMoi = sl - 1;
+                    lblSoLuong.setText(String.valueOf(slMoi));
+                    TaiKhoan.gioHangChung.get(tenMon)[0] = slMoi;
                     capNhatTongTien();
+                    if (TaiKhoan.daDangNhap && TaiKhoan.id > 0) {
+                        threadPool.execute(() -> {
+                            database.DBConnection.capNhatSoLuongGioHangDB(TaiKhoan.id, tenMon, slMoi);
+                        });
+                    }
                 }
             });
             HBox boxSoLuong = new HBox(5, btnTru, lblSoLuong, btnCong);
@@ -119,7 +134,7 @@ public class OrderScreen_Controller implements Initializable {
 
             String giaChu = String.format("%,dđ", giaTien).replace(",", ".");
             Label lblGia = new Label(giaChu);
-            lblGia.setStyle("-fx-pref-width: 70px; -fx-alignment: center-right;");
+            lblGia.setStyle("-fx-min-width: 80px; -fx-pref-width: 100px; -fx-max-width: 100px; -fx-alignment: center-right;");
 
             Button btnXoa = new Button("X");
             btnXoa.setStyle("-fx-background-color: #ff3333; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-cursor: hand;");
@@ -140,6 +155,11 @@ public class OrderScreen_Controller implements Initializable {
                 danhSachMonTrongGio.remove(dongDuLieu);
                 TaiKhoan.gioHangChung.remove(tenMon);
                 capNhatTongTien();
+                if (TaiKhoan.daDangNhap && TaiKhoan.id > 0) {
+                    threadPool.execute(() -> {
+                        database.DBConnection.xoaMonKhoiGioHangDB(TaiKhoan.id, tenMon);
+                    });
+                }
             });
 
             dongMonHang.getChildren().addAll(chkChonMua, lblTen, khongGianTrong, boxSoLuong, lblGia, btnXoa);
@@ -201,10 +221,8 @@ public class OrderScreen_Controller implements Initializable {
             stage.setScene(TaiKhoan.sceneTruocKhiVaoGio);
         }
     }
-    @FXML
-    private javafx.scene.layout.AnchorPane lopPhuQR;
 
-@FXML
+    @FXML
     private void xuLyMuaHang(ActionEvent event) {
         try {
             int tongTien = Integer.parseInt(lblTongTien.getText().replace(".", "").replace("đ", "").trim());
@@ -224,28 +242,24 @@ public class OrderScreen_Controller implements Initializable {
                 }
             }
             
-            
             int userId = TaiKhoan.id; 
             String shippingAddress = (rdoOnline.isSelected()) ? "Giao hàng tận nơi" : "Nhận tại quầy";
 
-            
             threadPool.execute(() -> {
                 System.out.println("[Thread: " + Thread.currentThread().getName() + "] Đang xử lý giao dịch tại DB...");
                 
                 boolean dbSuccess = executeDatabaseTransaction(userId, tongTien, shippingAddress, dsMonDuocChon);
                 
-                
                 Platform.runLater(() -> {
                     if (dbSuccess) {
-                        
                         xoaCacMonDaMua(); 
-                        
+                        taiDuLieuTuGioHangChung();
                         
                         if (rdoOnline.isSelected()) {
                             lopPhuQR.toFront(); 
                             lopPhuQR.setVisible(true);
                         } else if (rdoTaiQuay.isSelected()) {
-                            chuyenTrang(event, "DanhSachCoSo.fxml");
+                            chuyenTrang(event, "MuaHangThanhCong(Onl).fxml");
                         }
                     } else {                       
                         System.err.println("Thanh toán thất bại do lỗi hệ thống hoặc hết hàng kho!");
@@ -257,6 +271,7 @@ public class OrderScreen_Controller implements Initializable {
             e.printStackTrace(); 
         }
     }
+
     private boolean executeDatabaseTransaction(int userId, int tongTien, String shippingAddress, List<DongGioHang> dsMonDuocChon) {
         java.sql.Connection conn = null;
         try {
@@ -292,13 +307,14 @@ public class OrderScreen_Controller implements Initializable {
                     psUpdate.executeUpdate();
                 }
             }
+
             String insertOrderSql = "INSERT INTO orders (user_id, total_amount, shipping_address, order_status, ordered_at) VALUES (?, ?, ?, ?, GETDATE())";
             int generatedOrderId = -1;
             try (java.sql.PreparedStatement psOrder = conn.prepareStatement(insertOrderSql, java.sql.Statement.RETURN_GENERATED_KEYS)) {
                 psOrder.setInt(1, userId);
                 psOrder.setDouble(2, tongTien);
                 psOrder.setString(3, shippingAddress);
-                psOrder.setString(4, "PENDING");
+                psOrder.setString(4, "Chờ duyệt");
                 psOrder.executeUpdate();
 
                 try (java.sql.ResultSet generatedKeys = psOrder.getGeneratedKeys()) {
@@ -312,6 +328,7 @@ public class OrderScreen_Controller implements Initializable {
                 conn.rollback();
                 return false;
             }
+
             String insertDetailSql = "INSERT INTO order_details (order_id, product_id, quantity, historical_price) " +
                                      "VALUES (?, (SELECT product_id FROM products WHERE product_name = ?), ?, ?)";
             try (java.sql.PreparedStatement psDetail = conn.prepareStatement(insertDetailSql)) {
@@ -325,6 +342,18 @@ public class OrderScreen_Controller implements Initializable {
                 }
                 psDetail.executeBatch();
             }
+
+            String deleteCartDetailsSql = "DELETE cd FROM cart_details cd JOIN carts c ON cd.cart_id = c.cart_id " +
+                                          "WHERE c.user_id = ? AND cd.product_id = (SELECT product_id FROM products WHERE product_name = ?)";
+            try (java.sql.PreparedStatement psDelCart = conn.prepareStatement(deleteCartDetailsSql)) {
+                for (DongGioHang dong : dsMonDuocChon) {
+                    psDelCart.setInt(1, userId);
+                    psDelCart.setString(2, dong.tenMon);
+                    psDelCart.addBatch();
+                }
+                psDelCart.executeBatch();
+            }
+
             conn.commit();
             return true;
         } catch (java.sql.SQLException e) {
@@ -364,10 +393,9 @@ public class OrderScreen_Controller implements Initializable {
             stage.setScene(new Scene(root));
         } catch (Exception e) {
             e.printStackTrace();
-
         }
     }
-    @FXML private javafx.scene.layout.AnchorPane lopPhuCanhBao; 
+
     private void xoaCacMonDaMua() {
         java.util.List<String> monCanXoa = new java.util.ArrayList<>();
         for (DongGioHang dong : danhSachMonTrongGio) {
@@ -379,6 +407,7 @@ public class OrderScreen_Controller implements Initializable {
             TaiKhoan.gioHangChung.remove(tenMon);
         }
     }
+
     @FXML
     private void anLopPhuCanhBao(javafx.scene.input.MouseEvent event) {
         lopPhuCanhBao.setVisible(false); 

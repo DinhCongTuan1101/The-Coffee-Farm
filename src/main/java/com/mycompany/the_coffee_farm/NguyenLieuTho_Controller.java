@@ -1,5 +1,7 @@
 package com.mycompany.the_coffee_farm;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,6 +13,7 @@ import javafx.stage.Stage;
 
 public class NguyenLieuTho_Controller {
 
+    private final ExecutorService threadPool = Executors.newFixedThreadPool(2);
     @FXML
     private Button btnBack;
 
@@ -27,7 +30,7 @@ public class NguyenLieuTho_Controller {
         }
     }
 
-@FXML
+    @FXML
     private void ThemGioHang(ActionEvent event) {
         javafx.scene.control.Button btnClicked = (javafx.scene.control.Button) event.getSource();
         javafx.scene.layout.AnchorPane theMon = (javafx.scene.layout.AnchorPane) btnClicked.getParent();
@@ -46,20 +49,35 @@ public class NguyenLieuTho_Controller {
             }
         }
 
+        final String tenMonFinal = tenMon.trim();
+
         int giaTien = 0;
         try {
             String soNguyen = chuoiGia.replaceAll("[^0-9]", "");
             giaTien = Integer.parseInt(soNguyen);
         } catch (Exception e) {
-            System.out.println("Lỗi đọc giá tiền món: " + tenMon);
+            System.out.println("Lỗi đọc giá tiền món: " + tenMonFinal);
+            return;
         }
-        if (TaiKhoan.gioHangChung.containsKey(tenMon)) {
-            TaiKhoan.gioHangChung.get(tenMon)[0] += 1;
-            System.out.println("Đã +1 số lượng món: " + tenMon + " (Tổng: " + TaiKhoan.gioHangChung.get(tenMon)[0] + ")");
+
+        final int giaTienFinal = giaTien;
+
+        if (TaiKhoan.gioHangChung.containsKey(tenMonFinal)) {
+            TaiKhoan.gioHangChung.get(tenMonFinal)[0] += 1;
+            System.out.println("Đã +1 số lượng món: " + tenMonFinal + " (Tổng: " + TaiKhoan.gioHangChung.get(tenMonFinal)[0] + ")");
         } else {
-            TaiKhoan.gioHangChung.put(tenMon, new int[]{1, giaTien});
-            System.out.println("Vừa thêm mới vào giỏ: " + tenMon + " | Giá: " + giaTien);
+            TaiKhoan.gioHangChung.put(tenMonFinal, new int[]{1, giaTienFinal});
+            System.out.println("Vừa thêm mới vào giỏ: " + tenMonFinal + " | Giá: " + giaTienFinal);
         }
-        
+
+        if (TaiKhoan.daDangNhap && TaiKhoan.id > 0) {
+            threadPool.execute(() -> {
+                database.DBConnection.themSanPhamVaoGioHangDB(TaiKhoan.id, tenMonFinal);
+                System.out.println("⚡ Đã đồng bộ chi tiết món [" + tenMonFinal + "] vào DB thành công!");
+            });
+        } else {
+            System.out.println("⚠️ Tài khoản vãng lai chưa đăng nhập -> Chỉ lưu tạm thời trên RAM ứng dụng.");
+        }
     }
+
 }
