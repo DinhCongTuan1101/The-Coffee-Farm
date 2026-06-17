@@ -12,6 +12,11 @@
 
 <AnchorPane prefHeight="700.0" prefWidth="500.0" style="-fx-background-color: #FFFDE7;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.the_coffee_farm.NguyenLieuTho_Controller">
     <children>
+        <Button fx:id="btnBack" layoutX="14.0" layoutY="4.0" mnemonicParsing="false" onAction="#veTrangChu" prefHeight="20.0" prefWidth="62.0" style="-fx-background-color: transparent;" text="←">
+            <font>
+                <Font size="23.0" />
+            </font>
+        </Button>
         <Label layoutX="90.0" layoutY="14.0" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #4A4A4A;" text="Nguyên Liệu Thô" />
 
         <ScrollPane fitToWidth="true" hbarPolicy="NEVER" layoutY="55.0" prefHeight="575.0" prefWidth="500.0" style="-fx-background-color: #FFFDE7; -fx-background: white; -fx-border-color: transparent;" vbarPolicy="AS_NEEDED" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="55.0">
@@ -19,11 +24,11 @@
                 <VBox spacing="12.0" style="-fx-background-color: #FFFDE7; -fx-padding: 15;">
                     <children>
                   
-                        <AnchorPane prefHeight="110.0" prefWidth="460.0" style="-fx-border-color: #E8E8E8; -fx-border-radius: 12; -fx-background-radius: 12; -fx-background-color: white;">
+                        <AnchorPane prefHeight="110.0" prefWidth="460.0" style="-fx-background-radius: 15; -fx-background-color: white; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.06), 10, 0, 2, 4);">
                             <children>
                                 <Label layoutX="115.0" layoutY="15.0" prefHeight="45.0" prefWidth="290.0" style="-fx-font-family: 'Arial'; -fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #333333;" text="Cà phê Robusta (Xanh)" wrapText="true" />
                                 <Label layoutX="115.0" layoutY="70.0" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-text-fill: #888888;" text="40.000đ/kg" />
-                                <Button layoutX="415.0" layoutY="65.0" mnemonicParsing="false" onAction="#ThemGioHang" prefHeight="28.0" prefWidth="28.0" style="-fx-background-color: #EAEAEA; -fx-background-radius: 14; -fx-cursor: hand; -fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #707070; -fx-padding: 0;" text="+" />
+                                <Button layoutX="415.0" layoutY="65.0" mnemonicParsing="false" onAction="#ThemGioHang" prefHeight="28.0" prefWidth="28.0" style="-fx-background-color: #00cec9; -fx-background-radius: 14; -fx-cursor: hand; -fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: white; -fx-padding: 0;" text="+" />
                                 <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#EAEAEA" height="90.0" layoutX="8.0" layoutY="10.0" stroke="TRANSPARENT" width="90.0" />
                                 <ImageView fitHeight="90.0" fitWidth="90.0" layoutX="8.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -33,12 +38,12 @@
                             </children>
                         </AnchorPane>
 
-                        <AnchorPane prefHeight="110.0" prefWidth="460.0" style="-fx-border-color: #E8E8E8; -fx-border-radius: 12; -fx-background-radius: 12; -fx-background-color: white;">
+                        <AnchorPane prefHeight="110.0" prefWidth="460.0" style="-fx-background-radius: 15; -fx-background-color: white; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.06), 10, 0, 2, 4);">
                             <children>
                                 <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#EAEAEA" height="90.0" layoutX="10.0" layoutY="10.0" stroke="TRANSPARENT" width="90.0" />
                                 <Label layoutX="115.0" layoutY="15.0" prefHeight="45.0" prefWidth="290.0" style="-fx-font-family: 'Arial'; -fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #333333;" text="Cà phê Robusta (Chín)" wrapText="true" />
                                 <Label layoutX="115.0" layoutY="70.0" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-text-fill: #888888;" text="45.000đ/kg" />
-                                <Button layoutX="415.0" layoutY="65.0" mnemonicParsing="false" onAction="#ThemGioHang" prefHeight="28.0" prefWidth="28.0" style="-fx-background-color: #EAEAEA; -fx-background-radius: 14; -fx-cursor: hand; -fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #707070; -fx-padding: 0;" text="+" />
+                                <Button layoutX="415.0" layoutY="65.0" mnemonicParsing="false" onAction="#ThemGioHang" prefHeight="28.0" prefWidth="28.0" style="-fx-background-color: #00cec9; -fx-background-radius: 14; -fx-cursor: hand; -fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: white; -fx-padding: 0;" text="+" />
                                 <ImageView fitHeight="90.0" fitWidth="90.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
                                         <Image url="@images/Robusta_chin.png" />
@@ -47,12 +52,12 @@
                             </children>
                         </AnchorPane>
 
-                        <AnchorPane prefHeight="110.0" prefWidth="460.0" style="-fx-border-color: #E8E8E8; -fx-border-radius: 12; -fx-background-radius: 12; -fx-background-color: white;">
+                        <AnchorPane prefHeight="110.0" prefWidth="460.0" style="-fx-background-radius: 15; -fx-background-color: white; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.06), 10, 0, 2, 4);">
                             <children>
                                 <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#EAEAEA" height="90.0" layoutX="10.0" layoutY="10.0" stroke="TRANSPARENT" width="90.0" />
                                 <Label layoutX="115.0" layoutY="15.0" prefHeight="45.0" prefWidth="290.0" style="-fx-font-family: 'Arial'; -fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #333333;" text="Cà phê Arabica (Xanh)" wrapText="true" />
                                 <Label layoutX="115.0" layoutY="70.0" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-text-fill: #888888;" text="50.000đ/kg" />
-                                <Button layoutX="415.0" layoutY="65.0" mnemonicParsing="false" onAction="#ThemGioHang" prefHeight="28.0" prefWidth="28.0" style="-fx-background-color: #EAEAEA; -fx-background-radius: 14; -fx-cursor: hand; -fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #707070; -fx-padding: 0;" text="+" />
+                                <Button layoutX="415.0" layoutY="65.0" mnemonicParsing="false" onAction="#ThemGioHang" prefHeight="28.0" prefWidth="28.0" style="-fx-background-color: #00cec9; -fx-background-radius: 14; -fx-cursor: hand; -fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: white; -fx-padding: 0;" text="+" />
                                 <ImageView fitHeight="90.0" fitWidth="90.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
                                         <Image url="@images/arabica_xanh.png" />
@@ -61,12 +66,12 @@
                             </children>
                         </AnchorPane>
 
-                        <AnchorPane prefHeight="110.0" prefWidth="460.0" style="-fx-border-color: #E8E8E8; -fx-border-radius: 12; -fx-background-radius: 12; -fx-background-color: white;">
+                        <AnchorPane prefHeight="110.0" prefWidth="460.0" style="-fx-background-radius: 15; -fx-background-color: white; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.06), 10, 0, 2, 4);">
                             <children>
                                 <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#EAEAEA" height="90.0" layoutX="10.0" layoutY="10.0" stroke="TRANSPARENT" width="90.0" />
                                 <Label layoutX="115.0" layoutY="15.0" prefHeight="45.0" prefWidth="290.0" style="-fx-font-family: 'Arial'; -fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #333333;" text="Cà phê Arabica (Chín)" wrapText="true" />
                                 <Label layoutX="115.0" layoutY="70.0" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-text-fill: #888888;" text="55.000đ/kg" />
-                                <Button layoutX="415.0" layoutY="65.0" mnemonicParsing="false" onAction="#ThemGioHang" prefHeight="28.0" prefWidth="28.0" style="-fx-background-color: #EAEAEA; -fx-background-radius: 14; -fx-cursor: hand; -fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #707070; -fx-padding: 0;" text="+" />
+                                <Button layoutX="415.0" layoutY="65.0" mnemonicParsing="false" onAction="#ThemGioHang" prefHeight="28.0" prefWidth="28.0" style="-fx-background-color: #00cec9; -fx-background-radius: 14; -fx-cursor: hand; -fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: white; -fx-padding: 0;" text="+" />
                                 <ImageView fitHeight="90.0" fitWidth="90.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
                                         <Image url="@images/arabica_chin.png" />
@@ -75,12 +80,12 @@
                             </children>
                         </AnchorPane>
 
-                        <AnchorPane prefHeight="110.0" prefWidth="460.0" style="-fx-border-color: #E8E8E8; -fx-border-radius: 12; -fx-background-radius: 12; -fx-background-color: white;">
+                        <AnchorPane prefHeight="110.0" prefWidth="460.0" style="-fx-background-radius: 15; -fx-background-color: white; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.06), 10, 0, 2, 4);">
                             <children>
                                 <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#EAEAEA" height="90.0" layoutX="10.0" layoutY="10.0" stroke="TRANSPARENT" width="90.0" />
                                 <Label layoutX="115.0" layoutY="15.0" prefHeight="45.0" prefWidth="290.0" style="-fx-font-family: 'Arial'; -fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #333333;" text="Cà phê Xanh Lùn (Xanh)" wrapText="true" />
                                 <Label layoutX="115.0" layoutY="70.0" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-text-fill: #888888;" text="42.000đ/kg" />
-                                <Button layoutX="415.0" layoutY="65.0" mnemonicParsing="false" onAction="#ThemGioHang" prefHeight="28.0" prefWidth="28.0" style="-fx-background-color: #EAEAEA; -fx-background-radius: 14; -fx-cursor: hand; -fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #707070; -fx-padding: 0;" text="+" />
+                                <Button layoutX="415.0" layoutY="65.0" mnemonicParsing="false" onAction="#ThemGioHang" prefHeight="28.0" prefWidth="28.0" style="-fx-background-color: #00cec9; -fx-background-radius: 14; -fx-cursor: hand; -fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: white; -fx-padding: 0;" text="+" />
                                 <ImageView fitHeight="90.0" fitWidth="90.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
                                         <Image url="@images/xanhlun_xanh.png" />
@@ -89,12 +94,12 @@
                             </children>
                         </AnchorPane>
 
-                        <AnchorPane prefHeight="110.0" prefWidth="460.0" style="-fx-border-color: #E8E8E8; -fx-border-radius: 12; -fx-background-radius: 12; -fx-background-color: white;">
+                        <AnchorPane prefHeight="110.0" prefWidth="460.0" style="-fx-background-radius: 15; -fx-background-color: white; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.06), 10, 0, 2, 4);">
                             <children>
                                 <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#EAEAEA" height="90.0" layoutX="10.0" layoutY="10.0" stroke="TRANSPARENT" width="90.0" />
                                 <Label layoutX="115.0" layoutY="15.0" prefHeight="45.0" prefWidth="290.0" style="-fx-font-family: 'Arial'; -fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #333333;" text="Cà phê Xanh Lùn (Chín)" wrapText="true" />
                                 <Label layoutX="115.0" layoutY="70.0" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-text-fill: #888888;" text="48.000đ/kg" />
-                                <Button layoutX="415.0" layoutY="65.0" mnemonicParsing="false" onAction="#ThemGioHang" prefHeight="28.0" prefWidth="28.0" style="-fx-background-color: #EAEAEA; -fx-background-radius: 14; -fx-cursor: hand; -fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #707070; -fx-padding: 0;" text="+" />
+                                <Button layoutX="415.0" layoutY="65.0" mnemonicParsing="false" onAction="#ThemGioHang" prefHeight="28.0" prefWidth="28.0" style="-fx-background-color: #00cec9; -fx-background-radius: 14; -fx-cursor: hand; -fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: white; -fx-padding: 0;" text="+" />
                                 <ImageView fitHeight="90.0" fitWidth="90.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
                                         <Image url="@images/xanhlun_chin.png" />
@@ -107,10 +112,5 @@
                 </VBox>
             </content>
         </ScrollPane>
-        <Button fx:id="btnBack" layoutX="14.0" layoutY="4.0" mnemonicParsing="false" onAction="#veTrangChu" prefHeight="20.0" prefWidth="62.0" style="-fx-background-color: transparent;" text="←">
-            <font>
-                <Font size="23.0" />
-            </font>
-        </Button>
     </children>
 </AnchorPane>

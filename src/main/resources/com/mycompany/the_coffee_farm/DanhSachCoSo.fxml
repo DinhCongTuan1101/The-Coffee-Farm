@@ -22,7 +22,7 @@
       </Label>
       <VBox layoutY="116.0" prefHeight="473.0" prefWidth="500.0" spacing="15.0">
          <children>
-            <HBox alignment="CENTER_LEFT" prefHeight="62.0" prefWidth="500.0" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 10; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 5, 0, 0, 2);">
+            <HBox alignment="CENTER_LEFT" prefHeight="62.0" prefWidth="500.0" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 10; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 15, 0, 4, 4); -fx-background-radius: 20;">
                <children>
                   <Label text="The Coffee Farm - Hoàn Kiếm">
                      <font>
@@ -37,7 +37,7 @@
                   </RadioButton>
                </children>
             </HBox>
-            <HBox alignment="CENTER_LEFT" prefHeight="62.0" prefWidth="500.0" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 10; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 5, 0, 0, 2);">
+            <HBox alignment="CENTER_LEFT" prefHeight="62.0" prefWidth="500.0" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 5, 0, 0, 2);">
                <children>
                   <Label text="The Coffee Farm - Hai Bà Trưng">
                      <font>
@@ -48,7 +48,7 @@
                   <RadioButton fx:id="rdoHBT" mnemonicParsing="false" toggleGroup="$nhomCoSo" />
                </children>
             </HBox>
-            <HBox alignment="CENTER_LEFT" prefHeight="62.0" prefWidth="500.0" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 10; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 5, 0, 0, 2);">
+            <HBox alignment="CENTER_LEFT" prefHeight="62.0" prefWidth="500.0" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 5, 0, 0, 2);">
                <children>
                   <Label text="The Coffee Farm - Cầu Giấy">
                      <font>
@@ -59,7 +59,7 @@
                   <RadioButton fx:id="rdoCG" mnemonicParsing="false" toggleGroup="$nhomCoSo" />
                </children>
             </HBox>
-            <HBox alignment="CENTER_LEFT" prefHeight="62.0" prefWidth="500.0" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 10; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 5, 0, 0, 2);">
+            <HBox alignment="CENTER_LEFT" prefHeight="62.0" prefWidth="500.0" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 5, 0, 0, 2);">
                <children>
                   <Label text="The Coffee Farm - Long Biên">
                      <font>
@@ -70,7 +70,7 @@
                   <RadioButton fx:id="rdoLB" mnemonicParsing="false" toggleGroup="$nhomCoSo" />
                </children>
             </HBox>
-            <HBox alignment="CENTER_LEFT" prefHeight="62.0" prefWidth="500.0" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 10; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 5, 0, 0, 2);">
+            <HBox alignment="CENTER_LEFT" prefHeight="62.0" prefWidth="500.0" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 5, 0, 0, 2);">
                <children>
                   <Label text="The Coffee Farm - Thanh Xuân">
                      <font>
@@ -81,7 +81,7 @@
                   <RadioButton fx:id="rdoTX" mnemonicParsing="false" toggleGroup="$nhomCoSo" />
                </children>
             </HBox>
-            <HBox alignment="CENTER_LEFT" prefHeight="62.0" prefWidth="500.0" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 10; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 5, 0, 0, 2);">
+            <HBox alignment="CENTER_LEFT" prefHeight="62.0" prefWidth="500.0" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 5, 0, 0, 2);">
                <children>
                   <Label text="The Coffee Farm - Hà Đông">
                      <font>
@@ -94,7 +94,7 @@
             </HBox>
          </children>
       </VBox>
-      <Button layoutX="180.0" layoutY="612.0" mnemonicParsing="false" onAction="#xacNhanCoSo" prefHeight="39.0" prefWidth="139.0" style="-fx-background-color: #87CEEB; -fx-background-radius: 15;" text="Xác Nhận ">
+      <Button layoutX="150.0" layoutY="609.0" mnemonicParsing="false" onAction="#xacNhanCoSo" prefHeight="45.0" prefWidth="200.0" style="-fx-background-color: #00cec9; -fx-background-radius: 25; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 17; -fx-cursor: hand; -fx-effect: dropshadow(three-pass-box, rgba(0, 206, 201, 0.4), 10, 0, 0, 4);" text="Xác Nhận ">
          <font>
             <Font size="15.0" />
          </font>

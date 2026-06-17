@@ -154,4 +154,14 @@ public class DangNhap_Controller {
         alert.setContentText(noiDung);
         alert.showAndWait();
     }
+    @FXML
+    public void moTrangQuenMatKhau(ActionEvent event) {
+        try {
+            javafx.scene.Parent root = javafx.fxml.FXMLLoader.load(getClass().getResource("QuenMatKhau.fxml"));
+            javafx.stage.Stage stage = (javafx.stage.Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new javafx.scene.Scene(root));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

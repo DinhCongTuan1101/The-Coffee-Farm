@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" prefHeight="700.0" prefWidth="500.0" spacing="20.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.the_coffee_farm.Primary_Controller">
+<VBox alignment="TOP_CENTER" prefHeight="700.0" prefWidth="500.0" spacing="20.0" style="-fx-background-color: #F8F5F0;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.the_coffee_farm.Primary_Controller">
     <children>
       
         <StackPane prefHeight="200.0" prefWidth="500.0" style="-fx-background-color: #FFFDE7;">
@@ -33,25 +33,25 @@
             </children>
         </StackPane>
 
-        <Button fx:id="btnThongTin" mnemonicParsing="false" onAction="#chuyenTrangThongTin" prefHeight="60.0" prefWidth="380.0" style="-fx-background-color: #F7E85A; -fx-background-radius: 15;" text="Thông tin doanh nghiệp">
+        <Button fx:id="btnThongTin" mnemonicParsing="false" onAction="#chuyenTrangThongTin" prefHeight="60.0" prefWidth="380.0" style="-fx-background-color: linear-gradient(to bottom right, #D4A373, #A47148); -fx-background-radius: 20; -fx-effect: dropshadow(three-pass-box, rgba(164, 113, 72, 0.4), 15, 0, 5, 5); -fx-text-fill: white;" text="Thông tin doanh nghiệp">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>
         </Button>
       
-        <Button fx:id="btnNguyenLieuTho" mnemonicParsing="false" onAction="#vaoNguyenLieuTho" prefHeight="60.0" prefWidth="380.0" style="-fx-background-color: #F7E85A; -fx-background-radius: 15;" text="Nguyên liệu thô">
+        <Button fx:id="btnNguyenLieuTho" mnemonicParsing="false" onAction="#vaoNguyenLieuTho" prefHeight="60.0" prefWidth="380.0" style="-fx-background-color: linear-gradient(to bottom right, #D4A373, #A47148); -fx-background-radius: 20; -fx-effect: dropshadow(three-pass-box, rgba(164, 113, 72, 0.4), 15, 0, 5, 5); -fx-text-fill: white;" text="Nguyên liệu thô">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>
         </Button>
       
-        <Button fx:id="btnNguyenLieuSoChe" mnemonicParsing="false" onAction="#vaoNguyenLieuSoChe" prefHeight="60.0" prefWidth="380.0" style="-fx-background-color: #F7E85A; -fx-background-radius: 15;" text="Nguyên liệu sơ chế">
+        <Button fx:id="btnNguyenLieuSoChe" mnemonicParsing="false" onAction="#vaoNguyenLieuSoChe" prefHeight="60.0" prefWidth="380.0" style="-fx-background-color: linear-gradient(to bottom right, #D4A373, #A47148); -fx-background-radius: 20; -fx-effect: dropshadow(three-pass-box, rgba(164, 113, 72, 0.4), 15, 0, 5, 5); -fx-text-fill: white;" text="Nguyên liệu sơ chế">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>
         </Button>
       
-        <Button fx:id="btnFoodDrink" mnemonicParsing="false" onAction="#vaoFoodAndDrink" prefHeight="60.0" prefWidth="380.0" style="-fx-background-color: #F7E85A; -fx-background-radius: 15;" text="Food and Drink">
+        <Button fx:id="btnFoodDrink" mnemonicParsing="false" onAction="#vaoFoodAndDrink" prefHeight="60.0" prefWidth="380.0" style="-fx-background-color: linear-gradient(to bottom right, #D4A373, #A47148); -fx-background-radius: 20; -fx-effect: dropshadow(three-pass-box, rgba(164, 113, 72, 0.4), 15, 0, 5, 5); -fx-text-fill: white;" text="Food and Drink" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>

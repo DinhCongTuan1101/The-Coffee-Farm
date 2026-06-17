@@ -17,7 +17,7 @@
     <children>
         <BorderPane fx:id="khungChinh" prefHeight="700.0" prefWidth="500.0">
             <bottom>
-                <HBox alignment="CENTER" prefHeight="70.0" prefWidth="200.0" spacing="40.0" style="-fx-background-color: #E7FFCD; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 10, 0, 0, -2);" BorderPane.alignment="CENTER">
+                <HBox alignment="CENTER" prefHeight="70.0" prefWidth="200.0" spacing="50.0" style="-fx-background-color: white; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 20, 0, 0, -5); -fx-background-radius: 25 25 0 0;" BorderPane.alignment="CENTER">
                     <children>
                         <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#bamNutHome" style="-fx-background-color: transparent; -fx-cursor: hand; -fx-text-fill: #707070;" text="Home">
                             <graphic>
