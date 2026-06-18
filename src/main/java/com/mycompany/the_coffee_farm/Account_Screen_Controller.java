@@ -7,27 +7,49 @@ import java.util.ResourceBundle;
 
 public class Account_Screen_Controller implements Initializable {
 
-    @FXML private javafx.scene.Node btnLichSu;
-    @FXML private javafx.scene.Node btnTimKiem;
-    @FXML private javafx.scene.Node btnUuDai;
-    @FXML private javafx.scene.Node btnDanhGia;
-    @FXML private javafx.scene.Node btnThongTin;
-    @FXML private javafx.scene.Node btnDiaChi;
-    @FXML private javafx.scene.Node btnDangXuat;
+    @FXML
+    private javafx.scene.Node btnLichSu;
+    @FXML
+    private javafx.scene.Node btnTimKiem;
+    @FXML
+    private javafx.scene.Node btnUuDai;
+    @FXML
+    private javafx.scene.Node btnDanhGia;
+    @FXML
+    private javafx.scene.Node btnThongTin;
+    @FXML
+    private javafx.scene.Node btnDiaChi;
+    @FXML
+    private javafx.scene.Node btnDangXuat;
 
-    @FXML private javafx.scene.layout.AnchorPane lopPhuDangXuat;
+    @FXML
+    private javafx.scene.layout.AnchorPane lopPhuDangXuat;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         boolean chuaLogin = !TaiKhoan.daDangNhap;
 
-        if (btnLichSu != null) btnLichSu.setDisable(chuaLogin);
-        if (btnTimKiem != null) btnTimKiem.setDisable(chuaLogin);
-        if (btnUuDai != null) btnUuDai.setDisable(chuaLogin);
-        if (btnDanhGia != null) btnDanhGia.setDisable(chuaLogin);
-        if (btnThongTin != null) btnThongTin.setDisable(chuaLogin);
-        if (btnDiaChi != null) btnDiaChi.setDisable(chuaLogin);
-        if (btnDangXuat != null) btnDangXuat.setDisable(chuaLogin);
+        if (btnLichSu != null) {
+            btnLichSu.setDisable(chuaLogin);
+        }
+        if (btnTimKiem != null) {
+            btnTimKiem.setDisable(chuaLogin);
+        }
+        if (btnUuDai != null) {
+            btnUuDai.setDisable(chuaLogin);
+        }
+        if (btnDanhGia != null) {
+            btnDanhGia.setDisable(chuaLogin);
+        }
+        if (btnThongTin != null) {
+            btnThongTin.setDisable(chuaLogin);
+        }
+        if (btnDiaChi != null) {
+            btnDiaChi.setDisable(chuaLogin);
+        }
+        if (btnDangXuat != null) {
+            btnDangXuat.setDisable(chuaLogin);
+        }
 
         if (lopPhuDangXuat != null) {
             lopPhuDangXuat.setVisible(false);
@@ -35,8 +57,10 @@ public class Account_Screen_Controller implements Initializable {
     }
 
     @FXML
-    public void xuLyDangXuat(javafx.event.ActionEvent event) { 
-        if (!TaiKhoan.daDangNhap) return; 
+    public void xuLyDangXuat(javafx.event.ActionEvent event) {
+        if (!TaiKhoan.daDangNhap) {
+            return;
+        }
 
         TaiKhoan.daDangNhap = false;
         TaiKhoan.id = 0;
@@ -74,7 +98,9 @@ public class Account_Screen_Controller implements Initializable {
             javafx.stage.Stage stage = (javafx.stage.Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
             stage.setScene(new javafx.scene.Scene(root));
             stage.show();
-        } catch (Exception e) { e.printStackTrace(); }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -85,14 +111,43 @@ public class Account_Screen_Controller implements Initializable {
             stage.setScene(new javafx.scene.Scene(root));
             stage.show();
             TaiKhoan.trangTruocDo = "Account_Screen.fxml";
-        } catch (Exception e) { e.printStackTrace(); }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     public void moLichSuDonHang(javafx.event.ActionEvent event) {
-        System.out.println("Đang mở Lịch sử đơn hàng!");
-    }
 
+        try {
+
+            javafx.scene.Parent root = javafx.fxml.FXMLLoader.load(getClass().getResource("LichsudonHang.fxml"));
+
+            javafx.stage.Stage stage = (javafx.stage.Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new javafx.scene.Scene(root));
+
+        } catch (Exception e) {
+            e.printStackTrace(); 
+
+        }
+    }
+    
+
+    @FXML
+    public void moVeChungToi(javafx.event.ActionEvent event) {
+
+        try {
+
+            javafx.scene.Parent root = javafx.fxml.FXMLLoader.load(getClass().getResource("VeChungToi.fxml"));
+
+            javafx.stage.Stage stage = (javafx.stage.Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new javafx.scene.Scene(root));
+
+        } catch (Exception e) {
+            e.printStackTrace(); 
+
+        }
+    }
     @FXML
     public void moTimKiemDonHang(javafx.event.ActionEvent event) {
         System.out.println("Đang mở Tìm kiếm đơn hàng!");
@@ -114,6 +169,8 @@ public class Account_Screen_Controller implements Initializable {
             javafx.stage.Stage stage = (javafx.stage.Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
             stage.setScene(new javafx.scene.Scene(voChinh));
             stage.show();
-        } catch (Exception e) { e.printStackTrace(); }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

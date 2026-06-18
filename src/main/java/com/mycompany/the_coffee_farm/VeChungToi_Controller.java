@@ -1,9 +1,17 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package com.mycompany.the_coffee_farm;
 
 import javafx.fxml.FXML;
 
-public class DieuKhoan_Controller {
-
+/**
+ *
+ * @author admin
+ */
+public class VeChungToi_Controller {
+    
     @FXML
     private void quayLaiAccount(javafx.event.ActionEvent event) {
         try {
@@ -18,6 +26,7 @@ public class DieuKhoan_Controller {
             stage.show();
 
         } catch (Exception e) {
+            System.out.println("Lỗi lúc quay về màn Account!");
             e.printStackTrace();
         }
     }

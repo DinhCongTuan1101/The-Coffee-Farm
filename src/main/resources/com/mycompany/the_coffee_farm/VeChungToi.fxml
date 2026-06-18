@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="500.0" style="-fx-background-color: #FFFDE7;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.the_coffee_farm.VeChungToi_Controller">
+   <children>
+      <ImageView fitHeight="31.0" fitWidth="26.0" layoutX="76.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/pin.png" />
+         </image>
+      </ImageView>
+      <Label prefHeight="60.0" prefWidth="500.0" />
+      <Button layoutX="14.0" layoutY="4.0" mnemonicParsing="false" onAction="#quayLaiAccount" prefHeight="20.0" prefWidth="62.0" style="-fx-background-color: transparent;" text="←">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Button>
+      <Label layoutX="102.0" layoutY="17.0" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #4A4A4A;" text="VỀ CHÚNG TÔI - THE COFFEE FARM">
+         <font>
+            <Font size="9.0" />
+         </font>
+      </Label>
+      <ScrollPane fitToWidth="true" layoutY="54.0" prefHeight="646.0" prefWidth="500.0">
+         <content>
+            <VBox prefHeight="640.0" prefWidth="485.0" spacing="15.0">
+               <padding>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </padding>
+               <children>
+                  <VBox prefWidth="446.0" spacing="10.0">
+                     <children>
+                        <AnchorPane>
+                           <children>
+                              <Label maxHeight="96.0" maxWidth="483.0" prefHeight="67.0" prefWidth="446.0" text="1. LỜI MỞ ĐẦU: Hành Trình Đánh Thức Tinh Hoa Đại Ngàn" wrapText="true">
+                                 <font>
+                                    <Font name="Arial Bold" size="20.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                        <Label maxWidth="1.7976931348623157E308" minHeight="-Infinity" text="Sinh ra từ tình yêu mãnh liệt với mảnh đất Tây Nguyên đầy nắng gió, The Coffee Farm tự hào là doanh nghiệp sở hữu chuỗi cung ứng cà phê khép kín quy mô lớn nhất Việt Nam. Chúng tôi không chỉ đơn thuần là một thương hiệu bán lẻ, mà là những người nông dân, những nghệ nhân rang xay và những chuyên gia pha chế đang ngày đêm cống hiến để mang trọn vẹn &quot;tinh hoa đất trời&quot; vào từng tách cà phê." wrapText="true">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label maxWidth="1.7976931348623157E308" minHeight="-Infinity" text="Trong bối cảnh ngành cà phê không ngừng biến động, The Coffee Farm chọn cho mình một lối đi riêng đầy thử thách nhưng vô cùng bền vững: Mô hình &quot;Từ Nông Trại Đến Tách Cà Phê&quot; (Farm to Cup). Bằng việc tự chủ hoàn toàn 100% từ khâu gieo trồng, chăm sóc, thu hoạch cho đến chế biến và phục vụ thành phẩm, chúng tôi cam kết kiểm soát tuyệt đối chất lượng của từng hạt &quot;ngọc đen&quot; trước khi trao gửi đến tay người tiêu dùng. Với The Coffee Farm, mỗi ly cà phê không chỉ là thức uống, mà là một câu chuyện dài về sự tận tâm, bản sắc văn hóa và niềm tự hào nông sản Việt." wrapText="true">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox prefWidth="446.0" spacing="10.0">
+                     <children>
+                        <AnchorPane>
+                           <children>
+                              <Label maxHeight="96.0" maxWidth="483.0" prefHeight="67.0" prefWidth="446.0" text="2. NỘI DUNG: Nền Tảng Của Một Đế Chế Cà Phê Khép Kín" wrapText="true">
+                                 <font>
+                                    <Font name="Arial Bold" size="20.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane>
+                           <children>
+                              <Label layoutX="34.0" layoutY="2.0" text="Vùng Trồng Nguyên Liệu Trứ Danh &amp; Canh Tác Bền Vững">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fitHeight="22.0" fitWidth="22.0" layoutX="3.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/plant.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                        <Label maxWidth="1.7976931348623157E308" minHeight="-Infinity" text="Sở hữu hàng ngàn hecta đất đỏ bazan màu mỡ tại những thủ phủ cà phê nức tiếng nhất, The Coffee Farm là &quot;ngôi nhà&quot; của những giống cà phê tuyệt hảo như Robusta đậm vị, Arabica thanh tao và giống Xanh Lùn năng suất cao. Chúng tôi áp dụng tiêu chuẩn nông nghiệp sạch toàn cầu, tuyệt đối nói không với hóa chất độc hại, bảo vệ hệ sinh thái sinh học và nguồn nước tự nhiên. Từng trái cà phê đều được thu hái thủ công với tỷ lệ chín mọng đạt trên 95%, đảm bảo hàm lượng hương vị nguyên bản và độ ngọt tự nhiên cao nhất." wrapText="true">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <AnchorPane>
+                           <children>
+                              <Label layoutX="34.0" layoutY="2.0" text="Tổ Hợp Chế Biến Thô &amp; Xưởng Rang Xay Công Nghệ Cao">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fitHeight="22.0" fitWidth="22.0" layoutX="3.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/settings.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                        <Label maxWidth="1.7976931348623157E308" minHeight="-Infinity" text="Sau khi rời cành, những quả cà phê tươi sẽ ngay lập tức được đưa vào hệ thống nhà máy sơ chế hiện đại bậc nhất. Chúng tôi áp dụng đa dạng các phương pháp lên men (Natural, Washed, Honey) để khơi dậy những tầng hương ẩn sâu trong từng chủng loại hạt. Đặc biệt, xưởng rang xay của The Coffee Farm được vận hành bởi những nghệ nhân giàu kinh nghiệm cùng hệ thống máy rang điều khiển bằng máy tính, đảm bảo mỗi mẻ rang – dù là rang mộc, rang vừa hay rang đậm – đều đạt độ đồng nhất hoàn hảo, giữ trọn vẹn dải hương phong phú từ caramel, sô-cô-la cho đến hương hoa cỏ trái cây." wrapText="true">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <AnchorPane>
+                           <children>
+                              <Label layoutX="34.0" layoutY="2.0" text="Hệ Sinh Thái Sản Phẩm Đa Dạng &amp; Không Gian Trải Nghiệm">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fitHeight="22.0" fitWidth="22.0" layoutX="3.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/latte-art.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                        <Label maxWidth="1.7976931348623157E308" minHeight="-Infinity" text="Sự tự chủ về chuỗi cung ứng cho phép The Coffee Farm mang đến một danh mục sản phẩm đồ sộ, phục vụ mọi nhu cầu của thị trường:&#10;&#10;• Nguyên Liệu Thô &amp; Sơ Chế: Cung cấp số lượng lớn cà phê quả tươi, cà phê nhân xanh và hạt đã rang xay chất lượng cao.&#10;• Thế Giới Đồ Uống: Nơi khách hàng trực tiếp thưởng thức cafe tinh hoa (Đen, Bạc Xỉu, Latte, Mocha...).&#10;• Nghệ Thuật Bánh Ngọt: Bông lan, Tiramisu, Muffin... được nướng mới mỗi ngày, kết hợp hoàn hảo cùng cà phê." wrapText="true">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <AnchorPane>
+                           <children>
+                              <Label layoutX="34.0" layoutY="2.0" text="Sứ Mệnh Cộng Đồng">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fitHeight="22.0" fitWidth="22.0" layoutX="3.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/handshake.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                        <Label maxWidth="1.7976931348623157E308" minHeight="-Infinity" text="Trở thành doanh nghiệp lớn mạnh nhất không phải là đích đến duy nhất. Sứ mệnh của chúng tôi là nâng tầm giá trị hạt cà phê Việt trên bản đồ thế giới, đồng thời kiến tạo một cộng đồng phát triển bền vững. Chúng tôi sát cánh cùng hàng vạn hộ nông dân, đảm bảo sinh kế, bao tiêu sản phẩm với giá tốt và chuyển giao kỹ thuật canh tác tiên tiến, giúp họ vươn lên làm giàu trên chính mảnh đất quê hương." wrapText="true">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox prefWidth="446.0" spacing="10.0">
+                     <children>
+                        <AnchorPane>
+                           <children>
+                              <Label maxHeight="96.0" maxWidth="483.0" prefHeight="67.0" prefWidth="446.0" text="3. LỜI KẾT VÀ CẢM ƠN" wrapText="true">
+                                 <font>
+                                    <Font name="Arial Bold" size="20.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                        <Label maxWidth="1.7976931348623157E308" minHeight="-Infinity" text="Hành trình vươn lên trở thành chuỗi cung ứng cà phê hàng đầu Việt Nam của The Coffee Farm sẽ không thể trở thành hiện thực nếu thiếu đi sự đồng hành vô giá của quý vị." wrapText="true">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label maxWidth="1.7976931348623157E308" minHeight="-Infinity" text="Chúng tôi xin gửi lời tri ân sâu sắc nhất đến những người nông dân đã đổ mồ hôi trên những nông trường đầy nắng, những người thợ rang đã miệt mài bên lò lửa đỏ rực, và những đối tác đã luôn tin tưởng vào tầm nhìn của chúng tôi. Trên hết, The Coffee Farm xin cúi đầu cảm ơn hàng triệu khách hàng – những người đã yêu thương, lựa chọn và thưởng thức sản phẩm của chúng tôi mỗi ngày. Sự hài lòng và nụ cười của quý vị khi nhấp ngụm cà phê đầu tiên chính là phần thưởng cao quý nhất, là nguồn động lực to lớn để chúng tôi không ngừng hoàn thiện và tiến bước." wrapText="true">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label maxWidth="1.7976931348623157E308" minHeight="-Infinity" text="Khép lại một chặng đường tự hào, nhưng hành trình mang cà phê Việt vươn tầm thế giới vẫn đang mở ra phía trước. The Coffee Farm cam kết sẽ tiếp tục gìn giữ ngọn lửa đam mê, duy trì chất lượng đỉnh cao và mang đến những trải nghiệm tuyệt vời nhất. Hẹn gặp quý vị tại The Coffee Farm, nơi mọi câu chuyện tốt đẹp đều được bắt đầu từ một ly cà phê tử tế!" wrapText="true">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label text="Trân trọng,">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label text="Đội ngũ The Coffee Farm.">
+                           <font>
+                              <Font name="System Italic" size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>
