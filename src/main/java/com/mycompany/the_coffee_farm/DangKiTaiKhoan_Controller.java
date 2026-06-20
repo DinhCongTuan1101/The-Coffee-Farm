@@ -13,59 +13,57 @@ import java.util.concurrent.Executors;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 public class DangKiTaiKhoan_Controller {
 
-    @FXML
-    private TextField txtSDT;
-    @FXML
-    private PasswordField txtPass1;
-    @FXML
-    private PasswordField txtPass2;
-    @FXML
-    private TextField txtEmail;
-    @FXML
-    private TextField txtDiaChi;
-    @FXML
-    private TextField txtTenNguoiDung;
+    @FXML private TextField txtSDT;
+    @FXML private PasswordField txtPass1;
+    @FXML private PasswordField txtPass2;
+    @FXML private TextField txtEmail;
+    @FXML private TextField txtDiaChi;
+    @FXML private TextField txtTenNguoiDung;
 
-    @FXML
-    private Label lblSDT;
-    @FXML
-    private Label lblPass1;
-    @FXML
-    private Label lblPass2;
-    @FXML
-    private Label lblEmail;
-    @FXML
-    private Label lblDiaChi;
-    @FXML
-    private Label lblTenNguoiDung;
+    @FXML private Label lblSDT;
+    @FXML private Label lblPass1;
+    @FXML private Label lblPass2;
+    @FXML private Label lblEmail;
+    @FXML private Label lblDiaChi;
+    @FXML private Label lblTenNguoiDung;
+
     private final ExecutorService threadPool = Executors.newFixedThreadPool(2);
 
     @FXML
     public void initialize() {
-        if (txtSDT != null && lblSDT != null) {
-            txtSDT.textProperty().addListener((observable, oldValue, newValue) -> lblSDT.setVisible(newValue.isEmpty()));
-        }
-        if (txtPass1 != null && lblPass1 != null) {
-            txtPass1.textProperty().addListener((observable, oldValue, newValue) -> lblPass1.setVisible(newValue.isEmpty()));
-        }
-        if (txtPass2 != null && lblPass2 != null) {
-            txtPass2.textProperty().addListener((observable, oldValue, newValue) -> lblPass2.setVisible(newValue.isEmpty()));
-        }
-        if (txtEmail != null && lblEmail != null) {
-            txtEmail.textProperty().addListener((observable, oldValue, newValue) -> lblEmail.setVisible(newValue.isEmpty()));
-        }
-        if (txtDiaChi != null && lblDiaChi != null) {
-            txtDiaChi.textProperty().addListener((observable, oldValue, newValue) -> lblDiaChi.setVisible(newValue.isEmpty()));
-        }
-        if (txtTenNguoiDung != null && lblTenNguoiDung != null) {
-            txtTenNguoiDung.textProperty().addListener((observable, oldValue, newValue) -> lblTenNguoiDung.setVisible(newValue.isEmpty()));
+        // Bật chữ đỏ lúc mới vào
+        lblTenNguoiDung.setVisible(true);
+        lblSDT.setVisible(true);
+        lblEmail.setVisible(true);
+        lblDiaChi.setVisible(true);
+        lblPass1.setVisible(true);
+        lblPass2.setVisible(true);
+
+        // Khách gõ chữ thì ẩn chữ đỏ đi
+        caiDatLangNghe(txtTenNguoiDung, lblTenNguoiDung, "Vui lòng nhập tên người dùng!");
+        caiDatLangNghe(txtSDT, lblSDT, "Vui lòng nhập số điện thoại!");
+        caiDatLangNghe(txtEmail, lblEmail, "Vui lòng nhập Email!");
+        caiDatLangNghe(txtDiaChi, lblDiaChi, "Vui lòng nhập địa chỉ!");
+        caiDatLangNghe(txtPass1, lblPass1, "Vui lòng nhập mật khẩu!");
+        caiDatLangNghe(txtPass2, lblPass2, "Vui lòng nhập lại mật khẩu!");
+    }
+
+    private void caiDatLangNghe(TextField txt, Label lbl, String loiMacDinh) {
+        if (txt != null && lbl != null) {
+            txt.textProperty().addListener((observable, oldValue, newValue) -> {
+                if (newValue.trim().isEmpty()) {
+                    lbl.setText(loiMacDinh);
+                    lbl.setVisible(true);
+                } else {
+                    lbl.setVisible(false);
+                }
+            });
         }
     }
 
@@ -78,34 +76,62 @@ public class DangKiTaiKhoan_Controller {
         String diaChi = txtDiaChi.getText().trim();
         String tenNguoiDung = txtTenNguoiDung.getText().trim();
 
-        if (sdt.isEmpty() || pass1.isEmpty() || pass2.isEmpty() || email.isEmpty() || diaChi.isEmpty() || tenNguoiDung.isEmpty()) {
-            hienThongBao(Alert.AlertType.WARNING, "Thông báo", "Vui lòng nhập đầy đủ thông tin!");
-            return;
+        boolean coLoiLocal = false;
+
+        // ==========================================
+        // CỬA 1: QUÉT TOÀN BỘ LỖI BỎ TRỐNG VÀ SAI ĐỊNH DẠNG (BÁO CÙNG LÚC)
+        // ==========================================
+
+        // 1. Quét Tên
+        if (tenNguoiDung.isEmpty()) { 
+            lblTenNguoiDung.setText("Vui lòng nhập tên người dùng!"); lblTenNguoiDung.setVisible(true); coLoiLocal = true; 
         }
 
-        if (!sdt.matches("^\\d{10}$")) {
-            hienThongBao(Alert.AlertType.WARNING, "Lỗi định dạng", "Số điện thoại phải bao gồm 10 chữ số!");
-            return;
+        // 2. Quét Địa chỉ
+        if (diaChi.isEmpty()) { 
+            lblDiaChi.setText("Vui lòng nhập địa chỉ!"); lblDiaChi.setVisible(true); coLoiLocal = true; 
         }
 
-        if (!email.matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
-            hienThongBao(Alert.AlertType.WARNING, "Lỗi định dạng", "Email không đúng định dạng!");
-            return;
+        // 3. Quét SĐT
+        if (sdt.isEmpty()) { 
+            lblSDT.setText("Vui lòng nhập số điện thoại!"); lblSDT.setVisible(true); coLoiLocal = true; 
+        } else if (!sdt.matches("^\\d{10}$")) {
+            lblSDT.setText("Số điện thoại không hợp lệ!"); lblSDT.setVisible(true); coLoiLocal = true;
         }
 
-        if (!pass1.equals(pass2)) {
-            hienThongBao(Alert.AlertType.ERROR, "Lỗi mật khẩu", "Mật khẩu nhập lại không trùng khớp!");
-            return;
+        // 4. Quét Email
+        if (email.isEmpty()) { 
+            lblEmail.setText("Vui lòng nhập Email!"); lblEmail.setVisible(true); coLoiLocal = true; 
+        } else if (!email.matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
+            lblEmail.setText("Email không hợp lệ!"); lblEmail.setVisible(true); coLoiLocal = true;
         }
 
+        // 5. Quét Pass 1
+        if (pass1.isEmpty()) { 
+            lblPass1.setText("Vui lòng nhập mật khẩu!"); lblPass1.setVisible(true); coLoiLocal = true; 
+        }
+
+        // 6. Quét Pass 2
+        if (pass2.isEmpty()) { 
+            lblPass2.setText("Vui lòng nhập lại mật khẩu!"); lblPass2.setVisible(true); coLoiLocal = true; 
+        } else if (!pass1.isEmpty() && !pass1.equals(pass2)) {
+            lblPass2.setText("Mật khẩu nhập lại không trùng khớp!"); lblPass2.setVisible(true); coLoiLocal = true;
+        }
+
+        // NẾU NHƯ TRÊN BỀ MẶT CÓ BẤT CỨ Ô NÀO BÁO ĐỎ -> CHẶN LẠI KHÔNG CHO XUỐNG DB
+        if (coLoiLocal) return; 
+
+        // ==========================================
+        // CỬA 2: KIỂM TRA TRÙNG LẶP TRONG DATABASE (CŨNG BÁO CÙNG LÚC)
+        // ==========================================
         threadPool.execute(() -> {
             try {
                 String passwordHash = hashPasswordSHA256(pass1);
-
-                int resultStatus = registerUserInDB(tenNguoiDung, sdt, email, diaChi, passwordHash);
+                String resultStatus = registerUserInDB(tenNguoiDung, sdt, email, diaChi, passwordHash);
 
                 Platform.runLater(() -> {
-                    if (resultStatus == 1) {
+                    if (resultStatus.equals("SUCCESS")) {
+                        // Thành công 100% -> Chuyển trang
                         try {
                             javafx.scene.Parent root = javafx.fxml.FXMLLoader.load(getClass().getResource("DangKiThanhCong.fxml"));
                             javafx.stage.Stage stage = (javafx.stage.Stage) txtSDT.getScene().getWindow();
@@ -113,16 +139,19 @@ public class DangKiTaiKhoan_Controller {
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-                    } else if (resultStatus == -1) {
-                        hienThongBao(Alert.AlertType.ERROR, "Lỗi", "Số điện thoại này đã được đăng ký trước đó!");
-                    } else if (resultStatus == -2) {
-
-                        hienThongBao(Alert.AlertType.ERROR, "Lỗi", "Tên người dùng này đã tồn tại!");
-                    } else if (resultStatus == -3) {
-
-                        hienThongBao(Alert.AlertType.ERROR, "Lỗi", "Email này đã được sử dụng!");
+                    } else if (resultStatus.equals("ERROR")) {
+                        System.out.println("❌ Lỗi hệ thống khi kết nối Database!");
                     } else {
-                        hienThongBao(Alert.AlertType.ERROR, "Lỗi hệ thống", "Đăng ký thất bại, vui lòng thử lại sau!");
+                        // Thằng nào trùng thì nháy đỏ thằng đó (Có thể nháy cả 3 cùng lúc)
+                        if (resultStatus.contains("PHONE")) {
+                            lblSDT.setText("Số điện thoại đã được sử dụng!"); lblSDT.setVisible(true);
+                        }
+                        if (resultStatus.contains("USERNAME")) {
+                            lblTenNguoiDung.setText("Tên người dùng đã tồn tại!"); lblTenNguoiDung.setVisible(true);
+                        }
+                        if (resultStatus.contains("EMAIL")) {
+                            lblEmail.setText("Email đã được sử dụng!"); lblEmail.setVisible(true);
+                        }
                     }
                 });
 
@@ -132,9 +161,46 @@ public class DangKiTaiKhoan_Controller {
         });
     }
 
-    public int registerUserInDB(String username, String phoneNumber, String email, String address, String passwordHash) {
-        String sql = "INSERT INTO users (username, phone_number, email, address, password_hash) VALUES (?, ?, ?, ?, ?)";
-        try (Connection conn = DBConnection.getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+    // Đã sửa lại hàm này để trả về 1 chuỗi gom tất cả các lỗi trùng
+    public String registerUserInDB(String username, String phoneNumber, String email, String address, String passwordHash) {
+        String loiTrungLap = "";
+        String checkSql = "SELECT username, phone_number, email FROM users WHERE username = ? OR phone_number = ? OR email = ?";
+        
+        try (Connection conn = DBConnection.getConnection(); 
+             PreparedStatement checkStmt = conn.prepareStatement(checkSql)) {
+             
+            checkStmt.setString(1, username);
+            checkStmt.setString(2, phoneNumber);
+            checkStmt.setString(3, email);
+            ResultSet rs = checkStmt.executeQuery();
+
+            // Dùng While để lỡ có 2-3 acc khác nhau đang chiếm SĐT và Email thì nó vẫn gom đủ lỗi
+            while (rs.next()) {
+                if (username.equalsIgnoreCase(rs.getString("username")) && !loiTrungLap.contains("USERNAME")) {
+                    loiTrungLap += "USERNAME,";
+                }
+                if (phoneNumber.equals(rs.getString("phone_number")) && !loiTrungLap.contains("PHONE")) {
+                    loiTrungLap += "PHONE,";
+                }
+                if (email.equalsIgnoreCase(rs.getString("email")) && !loiTrungLap.contains("EMAIL")) {
+                    loiTrungLap += "EMAIL,";
+                }
+            }
+
+            // Nếu phát hiện có lỗi trùng lặp -> Trả về danh sách lỗi luôn (VD: "PHONE,EMAIL,")
+            if (!loiTrungLap.isEmpty()) {
+                return loiTrungLap; 
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return "ERROR";
+        }
+
+        // Vượt qua hết ải thì Insert
+        String insertSql = "INSERT INTO users (username, phone_number, email, address, password_hash) VALUES (?, ?, ?, ?, ?)";
+        try (Connection conn = DBConnection.getConnection(); 
+             PreparedStatement pstmt = conn.prepareStatement(insertSql)) {
 
             pstmt.setString(1, username);
             pstmt.setString(2, phoneNumber);
@@ -143,22 +209,11 @@ public class DangKiTaiKhoan_Controller {
             pstmt.setString(5, passwordHash);
 
             int affectedRows = pstmt.executeUpdate();
-            return affectedRows > 0 ? 1 : 0;
+            return affectedRows > 0 ? "SUCCESS" : "ERROR";
 
         } catch (SQLException e) {
-            if (e.getErrorCode() == 2627 || e.getMessage().contains("UQ__users")) {
-                if (e.getMessage().contains("phone_number")) {
-                    return -1;
-                }
-                if (e.getMessage().contains("username")) {
-                    return -2;
-                }
-                if (e.getMessage().contains("email")) {
-                    return -3;
-                }
-            }
             e.printStackTrace();
-            return 0;
+            return "ERROR";
         }
     }
 
@@ -168,20 +223,10 @@ public class DangKiTaiKhoan_Controller {
         StringBuilder hexString = new StringBuilder(2 * encodedHash.length);
         for (byte b : encodedHash) {
             String hex = Integer.toHexString(0xff & b);
-            if (hex.length() == 1) {
-                hexString.append('0');
-            }
+            if (hex.length() == 1) hexString.append('0');
             hexString.append(hex);
         }
         return hexString.toString();
-    }
-
-    private void hienThongBao(Alert.AlertType type, String tieuDe, String noiDung) {
-        Alert alert = new Alert(type);
-        alert.setTitle(tieuDe);
-        alert.setHeaderText(null);
-        alert.setContentText(noiDung);
-        alert.showAndWait();
     }
 
     @FXML

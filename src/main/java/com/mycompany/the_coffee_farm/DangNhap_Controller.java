@@ -3,6 +3,9 @@ package com.mycompany.the_coffee_farm;
 import database.DBConnection;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import javafx.application.Platform;
@@ -12,8 +15,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import model.User;
 
@@ -21,14 +24,31 @@ public class DangNhap_Controller {
 
     private final ExecutorService threadPool = Executors.newFixedThreadPool(2);
 
-    @FXML
-    private Button btnBack;
+    @FXML private Button btnBack;
+    @FXML private javafx.scene.control.TextField txtSDT;
+    @FXML private javafx.scene.control.PasswordField txtMatKhau;
+    
+    @FXML private Label lblSDT;
+    @FXML private Label lblMatKhau;
 
     @FXML
-    private javafx.scene.control.TextField txtSDT;
+    public void initialize() {
+        caiDatLangNghe(txtSDT, lblSDT, "Vui lòng nhập số điện thoại!");
+        caiDatLangNghe(txtMatKhau, lblMatKhau, "Vui lòng nhập mật khẩu!");
+    }
 
-    @FXML
-    private javafx.scene.control.PasswordField txtMatKhau;
+    private void caiDatLangNghe(javafx.scene.control.TextField txt, Label lbl, String loiMacDinh) {
+        if (txt != null && lbl != null) {
+            txt.textProperty().addListener((observable, oldValue, newValue) -> {
+                if (newValue.trim().isEmpty()) {
+                    lbl.setText(loiMacDinh);
+                    lbl.setVisible(true);
+                } else {
+                    lbl.setVisible(false);
+                }
+            });
+        }
+    }
 
     @FXML
     public void veTrangChu(ActionEvent event) {
@@ -62,16 +82,28 @@ public class DangNhap_Controller {
     public void xuLyDangNhap(javafx.event.ActionEvent event) {
         String tk = txtSDT.getText().trim();
         String mk = txtMatKhau.getText();
+        
+        boolean coLoi = false;
 
-        if (tk.isEmpty() || mk.isEmpty()) {
-            hienThongBao(Alert.AlertType.WARNING, "Thông báo", "Vui lòng nhập đầy đủ số điện thoại và mật khẩu!");
-            return;
+        // 1. Quét lỗi bỏ trống tại chỗ
+        if (tk.isEmpty()) {
+            lblSDT.setText("Vui lòng nhập số điện thoại!");
+            lblSDT.setVisible(true);
+            coLoi = true;
+        }
+        
+        if (mk.isEmpty()) {
+            lblMatKhau.setText("Vui lòng nhập mật khẩu!");
+            lblMatKhau.setVisible(true);
+            coLoi = true;
         }
 
+        if (coLoi) return; 
+
+        // 2. Chọc DB kiểm tra đăng nhập
         threadPool.execute(() -> {
             try {
                 String matKhauHash = hashPasswordSHA256(mk);
-
                 User user = DBConnection.checkLoginInDB(tk, matKhauHash);
 
                 if (user != null) {
@@ -103,8 +135,6 @@ public class DangNhap_Controller {
                         }
                         TaiKhoan.gioHangChung.putAll(gioHangCu);
                         System.out.println("🛒 Đã khôi phục thành công " + gioHangCu.size() + " mặt hàng vào giỏ!");
-                    } else {
-                        System.out.println("🛒 Người dùng này chưa có sản phẩm nào trong giỏ hàng ở DB.");
                     }
 
                     Platform.runLater(() -> {
@@ -119,14 +149,15 @@ public class DangNhap_Controller {
 
                 } else {
                     Platform.runLater(() -> {
-                        System.out.println("Sai tài khoản hoặc mật khẩu!");
-                        hienThongBao(Alert.AlertType.ERROR, "Lỗi đăng nhập", "Số điện thoại hoặc mật khẩu không chính xác!");
+                        lblMatKhau.setText("Mật khẩu không chính xác!");
+                        lblMatKhau.setVisible(true);
                     });
                 }
             } catch (Exception e) {
                 e.printStackTrace();
                 Platform.runLater(() -> {
-                    hienThongBao(Alert.AlertType.ERROR, "Lỗi hệ thống", "Không thể kết nối đến cơ sở dữ liệu!");
+                    lblMatKhau.setText("Lỗi kết nối máy chủ!");
+                    lblMatKhau.setVisible(true);
                 });
             }
         });
@@ -147,13 +178,6 @@ public class DangNhap_Controller {
         return hexString.toString();
     }
 
-    private void hienThongBao(Alert.AlertType type, String tieuDe, String noiDung) {
-        Alert alert = new Alert(type);
-        alert.setTitle(tieuDe);
-        alert.setHeaderText(null);
-        alert.setContentText(noiDung);
-        alert.showAndWait();
-    }
     @FXML
     public void moTrangQuenMatKhau(ActionEvent event) {
         try {

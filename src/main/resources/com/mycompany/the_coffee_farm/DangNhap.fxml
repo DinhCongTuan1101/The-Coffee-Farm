@@ -14,56 +14,67 @@
 
 <AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="500.0" style="-fx-background-color: #FFFDE7;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.the_coffee_farm.DangNhap_Controller">
     <children>
-      <VBox alignment="CENTER" layoutX="39.0" layoutY="79.0" prefHeight="380.0" prefWidth="422.0" spacing="25.0" style="-fx-background-color: white; -fx-background-radius: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 15, 0, 4, 4);">
-         <children>
-              <Label alignment="CENTER" prefHeight="32.0" prefWidth="200.0" text="WELCOME" textFill="#4e342e">
-                  <font>
-                      <Font name="Arial Bold" size="28.0" />
-                  </font>
-              </Label>
-            <AnchorPane>
-               <children>
-                    <TextField fx:id="txtSDT" layoutX="46.0" prefHeight="35.0" prefWidth="330.0" promptText="Mobile phone number" style="-fx-background-radius: 15;">
-                        <padding>
-                            <Insets left="40.0" />
-                        </padding>
-                    </TextField>
-                    <ImageView fitHeight="22.0" fitWidth="22.0" layoutX="60.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                            <Image url="@images/smartphone.png" />
-                        </image>
-                    </ImageView>
-               </children>
-            </AnchorPane>
-            <AnchorPane>
-               <children>
-                    <PasswordField fx:id="txtMatKhau" layoutX="46.0" layoutY="-4.0" prefHeight="35.0" prefWidth="330.0" promptText="Password" style="-fx-background-radius: 15;">
-                        <padding>
-                            <Insets left="40.0" />
-                        </padding>
-                    </PasswordField>
-                    <ImageView fitHeight="22.0" fitWidth="22.0" layoutX="61.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                            <Image url="@images/locked.png" />
-                        </image>
-                    </ImageView>
-               </children>
-            </AnchorPane>
-              <Button mnemonicParsing="false" onAction="#xuLyDangNhap" prefHeight="45.0" prefWidth="250.0" style="-fx-background-color: #00cec9; -fx-background-radius: 25; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 16; -fx-cursor: hand; -fx-effect: dropshadow(three-pass-box, rgba(0, 206, 201, 0.4), 10, 0, 0, 4);" text="Đăng Nhập">
-                  <font>
-                      <Font name="Arial Bold" size="15.0" />
-                  </font>
-              </Button>
-              <Button mnemonicParsing="false" onAction="#moTrangQuenMatKhau" style="-fx-background-color: transparent;" text="Quên mật khẩu ?" textFill="#0c7ee1" />
-            <HBox alignment="CENTER">
-               <children>
-                    <Label text="Bạn chưa có tài khoản ?" />
-                    <Button mnemonicParsing="false" onAction="#moTrangDangKi" style="-fx-background-color: transparent;" text="Đăng kí ngay." textFill="#0c7ee1" />
-               </children>
-            </HBox>
-         </children>
-      </VBox>
-        <Button fx:id="btnBack" layoutX="21.0" layoutY="14.0" mnemonicParsing="false" onAction="#veTrangChu" prefHeight="20.0" prefWidth="62.0" style="-fx-background-color: transparent;" text="←">
+        <VBox alignment="CENTER" layoutX="39.0" layoutY="79.0" prefHeight="380.0" prefWidth="422.0" spacing="25.0" style="-fx-background-color: white; -fx-background-radius: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 15, 0, 4, 4);">
+            <children>
+                <Label alignment="CENTER" prefHeight="32.0" prefWidth="200.0" text="WELCOME" textFill="#4e342e">
+                    <font>
+                        <Font name="Arial Bold" size="28.0" />
+                    </font>
+                </Label>
+                
+                <AnchorPane prefHeight="50.0">
+                    <children>
+                        <TextField fx:id="txtSDT" layoutX="46.0" prefHeight="35.0" prefWidth="330.0" promptText="Mobile phone number" style="-fx-background-radius: 15;">
+                            <padding>
+                                <Insets left="40.0" />
+                            </padding>
+                        </TextField>
+                        <ImageView fitHeight="22.0" fitWidth="22.0" layoutX="60.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@images/smartphone.png" />
+                            </image>
+                        </ImageView>
+                        <Label fx:id="lblSDT" layoutX="60.0" layoutY="35.0" text="Vui lòng nhập số điện thoại!" textFill="#f70b0b" visible="false">
+                            <font> <Font size="11.0" /> </font>
+                        </Label>
+                    </children>
+                </AnchorPane>
+                
+                <AnchorPane prefHeight="50.0">
+                    <children>
+                        <PasswordField fx:id="txtMatKhau" layoutX="46.0" prefHeight="35.0" prefWidth="330.0" promptText="Password" style="-fx-background-radius: 15;">
+                            <padding>
+                                <Insets left="40.0" />
+                            </padding>
+                        </PasswordField>
+                        <ImageView fitHeight="22.0" fitWidth="22.0" layoutX="61.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@images/locked.png" />
+                            </image>
+                        </ImageView>
+                        <Label fx:id="lblMatKhau" layoutX="60.0" layoutY="35.0" text="Vui lòng nhập mật khẩu!" textFill="#ea0a0a" visible="false">
+                            <font> <Font size="11.0" /> </font>
+                        </Label>
+                    </children>
+                </AnchorPane>
+                
+                <Button mnemonicParsing="false" onAction="#xuLyDangNhap" prefHeight="45.0" prefWidth="250.0" style="-fx-background-color: #00cec9; -fx-background-radius: 25; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 16; -fx-cursor: hand; -fx-effect: dropshadow(three-pass-box, rgba(0, 206, 201, 0.4), 10, 0, 0, 4);" text="Đăng Nhập">
+                    <font>
+                        <Font name="Arial Bold" size="15.0" />
+                    </font>
+                </Button>
+                
+                <Button mnemonicParsing="false" onAction="#moTrangQuenMatKhau" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Quên mật khẩu ?" textFill="#0c7ee1" />
+                
+                <HBox alignment="CENTER">
+                    <children>
+                        <Label text="Bạn chưa có tài khoản ?" />
+                        <Button mnemonicParsing="false" onAction="#moTrangDangKi" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Đăng kí ngay." textFill="#0c7ee1" />
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+        <Button fx:id="btnBack" layoutX="21.0" layoutY="14.0" mnemonicParsing="false" onAction="#veTrangChu" prefHeight="20.0" prefWidth="62.0" style="-fx-background-color: transparent; -fx-cursor: hand;" text="←">
             <font>
                 <Font size="23.0" />
             </font>

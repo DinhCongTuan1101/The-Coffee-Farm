@@ -86,7 +86,6 @@ public class Account_Screen_Controller implements Initializable {
             stage.setScene(scene);
             stage.show();
         } catch (Exception e) {
-            System.out.println("Lỗi không về trang chủ được!");
             e.printStackTrace();
         }
     }
@@ -127,11 +126,10 @@ public class Account_Screen_Controller implements Initializable {
             stage.setScene(new javafx.scene.Scene(root));
 
         } catch (Exception e) {
-            e.printStackTrace(); 
+            e.printStackTrace();
 
         }
     }
-    
 
     @FXML
     public void moVeChungToi(javafx.event.ActionEvent event) {
@@ -144,18 +142,17 @@ public class Account_Screen_Controller implements Initializable {
             stage.setScene(new javafx.scene.Scene(root));
 
         } catch (Exception e) {
-            e.printStackTrace(); 
+            e.printStackTrace();
 
         }
     }
+
     @FXML
     public void moTimKiemDonHang(javafx.event.ActionEvent event) {
-        System.out.println("Đang mở Tìm kiếm đơn hàng!");
     }
 
     @FXML
     public void moUuDaiCuaBan(javafx.event.ActionEvent event) {
-        System.out.println("Đang mở Ưu đãi!");
     }
 
     @FXML
@@ -168,6 +165,40 @@ public class Account_Screen_Controller implements Initializable {
 
             javafx.stage.Stage stage = (javafx.stage.Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
             stage.setScene(new javafx.scene.Scene(voChinh));
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void moDiaChiDaLuu(javafx.event.ActionEvent event) {
+        try {
+            ThanhChucNang_Controller.isFromCheckout = false;
+            javafx.scene.Parent ruotDiaChi = javafx.fxml.FXMLLoader.load(getClass().getResource("DanhSachDiaChi.fxml"));
+
+            javafx.scene.Scene scene = ((javafx.scene.Node) event.getSource()).getScene();
+            javafx.scene.layout.BorderPane khungChinh = (javafx.scene.layout.BorderPane) scene.lookup("#khungChinh");
+
+            if (khungChinh != null) {
+                khungChinh.setCenter(ruotDiaChi);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static javafx.scene.Scene sceneAccountGoc;
+
+    @FXML
+    public void moThongTinCaNhan(javafx.event.ActionEvent event) {
+        try {
+            sceneAccountGoc = ((javafx.scene.Node) event.getSource()).getScene();
+
+            javafx.scene.Parent ruotThongTin = javafx.fxml.FXMLLoader.load(getClass().getResource("ThongTinCaNhan.fxml"));
+            
+            javafx.stage.Stage stage = (javafx.stage.Stage) sceneAccountGoc.getWindow();
+            stage.setScene(new javafx.scene.Scene(ruotThongTin));
             stage.show();
         } catch (Exception e) {
             e.printStackTrace();

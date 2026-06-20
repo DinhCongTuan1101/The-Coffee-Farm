@@ -12,6 +12,8 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
+<?import javafx.scene.text.Font?>
+<?import javafx.geometry.Insets?>
 
 <StackPane prefHeight="700.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.the_coffee_farm.ThanhChucNang_Controller">
     <children>
@@ -76,7 +78,7 @@
                             <ToggleGroup fx:id="nhomNhanHang" />
                         </fx:define>
 
-                        <RadioButton fx:id="rdoGiaoTanNoi" onAction="#chonGiaoHang" prefHeight="50.0" prefWidth="500.0" style="-fx-cursor: hand; -fx-padding: 0 0 0 40;" text=" Giao Hàng Tận Nơi">
+                        <RadioButton fx:id="rdoGiaoTanNoi" onAction="#chonGiaoHang" prefHeight="50.0" prefWidth="500.0" style="-fx-cursor: hand; -fx-padding: 0 0 0 40;" text=" Giao Hàng Tận Nơi" toggleGroup="$nhomNhanHang">
                             <graphic>
                                 <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -84,9 +86,6 @@
                                     </image>
                                 </ImageView>
                             </graphic>
-                     <toggleGroup>
-                        <ToggleGroup fx:id="nhomNhanHang" />
-                     </toggleGroup>
                         </RadioButton>
 
                         <RadioButton fx:id="rdoLayMangDi" onAction="#chonMangDi" prefHeight="50.0" prefWidth="500.0" style="-fx-cursor: hand; -fx-padding: 0 0 0 40;" text=" Đến Lấy Mang Đi" toggleGroup="$nhomNhanHang">
@@ -113,10 +112,23 @@
 
                 <VBox fx:id="vboxNhapThongTin" layoutY="350.0" prefHeight="350.0" prefWidth="500.0" spacing="15.0" style="-fx-background-color: white; -fx-background-radius: 20 20 0 0; -fx-padding: 20;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                     <children>
-                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0">
+                        <HBox alignment="CENTER" prefHeight="30.0" prefWidth="200.0">
                             <children>
                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold; -fx-font-size: 16px;" text="Thông Tin Giao Hàng" />
                             </children>
+                        </HBox>
+                        
+                        <HBox alignment="CENTER_RIGHT" prefWidth="200.0">
+                            <children>
+                                <Button fx:id="btnChonDiaChi" mnemonicParsing="false" onAction="#moTrangChonDiaChi" style="-fx-background-color: transparent; -fx-text-fill: #ee4d2d; -fx-cursor: hand;" text="Chọn địa chỉ đã lưu &gt;&gt;" underline="true">
+                                    <font> 
+                                        <Font name="System Bold" size="13.0" /> 
+                                    </font>
+                                </Button>
+                            </children>
+                            <VBox.margin> 
+                                <Insets top="-10.0" bottom="-5.0" /> 
+                            </VBox.margin>
                         </HBox>
                         
                         <TextField fx:id="txtHoTenNhan" prefHeight="40.0" promptText="Họ và tên người nhận" style="-fx-background-radius: 10;" />

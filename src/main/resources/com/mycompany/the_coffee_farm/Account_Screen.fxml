@@ -36,6 +36,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
                         <Button fx:id="btnLichSu" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#moLichSuDonHang" prefHeight="66.0" prefWidth="230.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-cursor: hand; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 10, 0, 2, 4); -fx-font-weight: bold; -fx-text-fill: #5D4037;" text="Lịch sử đơn hàng" GridPane.rowIndex="1">
@@ -50,7 +51,7 @@
                                 <Font name="Arial Bold" size="12.0" />
                             </font>
                         </Button>
-                        <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#moTimKiemDonHang" prefHeight="66.0" prefWidth="230.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-cursor: hand; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 10, 0, 2, 4); -fx-font-weight: bold; -fx-text-fill: #5D4037;" text="Tìm kiếm đơn hàng" GridPane.rowIndex="3">
+                        <Button fx:id="btnTimKiem" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#moTimKiemDonHang" prefHeight="66.0" prefWidth="230.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-cursor: hand; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 10, 0, 2, 4); -fx-font-weight: bold; -fx-text-fill: #5D4037;" text="Tìm kiếm đơn hàng" GridPane.rowIndex="4">
                             <graphic>
                                 <ImageView fitHeight="64.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -74,7 +75,7 @@
                                 <Font name="Arial Bold" size="12.0" />
                             </font>
                         </Button>
-                        <Button fx:id="btnUuDai" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#moUuDaiCuaBan" prefHeight="66.0" prefWidth="230.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-cursor: hand; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 10, 0, 2, 4); -fx-font-weight: bold; -fx-text-fill: #5D4037;" text="Ưu đãi của bạn" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <Button fx:id="btnUuDai" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#moUuDaiCuaBan" prefHeight="66.0" prefWidth="230.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-cursor: hand; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 10, 0, 2, 4); -fx-font-weight: bold; -fx-text-fill: #5D4037;" text="Ưu đãi của bạn" GridPane.columnIndex="1" GridPane.rowIndex="4">
                             <graphic>
                                 <ImageView fitHeight="64.0" fitWidth="36.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -158,7 +159,7 @@
                       </Text>
                       <VBox prefHeight="161.0" prefWidth="460.0" spacing="10.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 5 10; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.04), 10, 0, 2, 4);">
                           <children>
-                              <Button fx:id="btnThongTin" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="39.0" prefWidth="490.0" style="-fx-background-color: transparent; -fx-text-fill: #4A4A4A;" text="Thông tin cá nhân">
+                              <Button fx:id="btnThongTin" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#moThongTinCaNhan" prefHeight="39.0" prefWidth="490.0" style="-fx-background-color: transparent; -fx-text-fill: #4A4A4A;" text="Thông tin cá nhân">
                                   <graphic>
                                       <ImageView fitHeight="22.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                                           <image>
@@ -170,7 +171,7 @@
                                       <Font name="System Bold" size="12.0" />
                                   </font>
                               </Button>
-                              <Button fx:id="btnDiaChi" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="38.0" prefWidth="554.0" style="-fx-background-color: transparent; -fx-text-fill: #4A4A4A;" text="Địa chỉ đã lưu">
+                              <Button fx:id="btnDiaChi" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#moDiaChiDaLuu" prefHeight="38.0" prefWidth="554.0" style="-fx-background-color: transparent; -fx-text-fill: #4A4A4A;" text="Địa chỉ đã lưu">
                                   <graphic>
                                       <ImageView fitHeight="23.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                                           <image>

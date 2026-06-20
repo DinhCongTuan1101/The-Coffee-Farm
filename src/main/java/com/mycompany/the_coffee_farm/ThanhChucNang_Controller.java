@@ -1,5 +1,9 @@
 package com.mycompany.the_coffee_farm;
 
+import database.DBConnection;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -68,15 +72,12 @@ public class ThanhChucNang_Controller {
     @FXML
     public void bamNutAccount(javafx.event.ActionEvent event) {
         try {
-
             javafx.scene.Parent ruotAccount = javafx.fxml.FXMLLoader.load(getClass().getResource("Account_Screen.fxml"));
-
             if (khungChinh != null) {
                 khungChinh.setCenter(ruotAccount);
             } else {
                 System.out.println("Lỗi: Chưa đặt fx:id là 'khungChinh' cho BorderPane bên Scene Builder!");
             }
-
         } catch (Exception e) {
             System.out.println("Lỗi: Không tìm thấy hoặc không load được file Account_Screen.fxml!");
             e.printStackTrace();
@@ -156,13 +157,68 @@ public class ThanhChucNang_Controller {
         }
     }
 
+
     @FXML
     public void xacNhanGiaoHang(javafx.event.ActionEvent event) {
-        System.out.println("Giao đến: " + txtHoTenNhan.getText() + " - " + txtDiaChiNhan.getText());
+        String ten = txtHoTenNhan.getText().trim();
+        String sdt = txtSDTNhan.getText().trim();
+        String diaChi = txtDiaChiNhan.getText().trim();
+
+        if (ten.isEmpty() || sdt.isEmpty() || diaChi.isEmpty()) {
+            System.out.println("Vui lòng điền đầy đủ thông tin!");
+            return;
+        }
+
+        System.out.println("Giao đến: " + ten + " - " + diaChi);
+        
+        tuDongLuuDiaChi(TaiKhoan.id, ten, sdt, diaChi);
+
         if (btnShippingMethod != null) {
             btnShippingMethod.setText("Giao tận nơi");
         }
         dongPopupShipping(event);
+    }
+
+    private void tuDongLuuDiaChi(int userId, String tenNguoiNhan, String sdt, String diaChi) {
+        String sqlCheck = "SELECT COUNT(*) FROM user_addresses WHERE user_id = ? AND detail_address = ?";
+        String sqlInsert = "INSERT INTO user_addresses (user_id, receiver_name, receiver_phone, detail_address) VALUES (?, ?, ?, ?)";
+
+        try (Connection conn = DBConnection.getConnection()) {
+            PreparedStatement psCheck = conn.prepareStatement(sqlCheck);
+            psCheck.setInt(1, userId);
+            psCheck.setString(2, diaChi);
+            ResultSet rs = psCheck.executeQuery();
+
+            if (rs.next() && rs.getInt(1) == 0) {
+                PreparedStatement psInsert = conn.prepareStatement(sqlInsert);
+                psInsert.setInt(1, userId);
+                psInsert.setString(2, tenNguoiNhan);
+                psInsert.setString(3, sdt);
+                psInsert.setString(4, diaChi);
+                psInsert.executeUpdate();
+                System.out.println("Đã tự động lưu địa chỉ mới vào kho!");
+            }
+        } catch (Exception e) {
+            System.out.println("Lỗi lúc tự động lưu địa chỉ!");
+            e.printStackTrace();
+        }
+    }
+
+public static boolean isFromCheckout = false;
+
+    @FXML
+    public void moTrangChonDiaChi(ActionEvent event) {
+        try {
+            isFromCheckout = true; 
+            dongPopupShipping(event);
+            Parent ruotChonDiaChi = FXMLLoader.load(getClass().getResource("DanhSachDiaChi.fxml"));
+            if (khungChinh != null) {
+                khungChinh.setCenter(ruotChonDiaChi);
+            }
+        } catch (Exception e) {
+            System.out.println("Lỗi không mở được trang Chọn Địa Chỉ!");
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -181,4 +237,47 @@ public class ThanhChucNang_Controller {
         }
     }
 
+    public static ThanhChucNang_Controller instance;
+
+    @FXML
+    public void initialize() {
+        instance = this; 
+    }
+
+    public void nhanDiaChiDaChon(String ten, String sdt, String diaChi) {
+        try {
+
+            javafx.scene.Parent ruotNhanh = javafx.fxml.FXMLLoader.load(getClass().getResource(trangChuCuaNhanh));
+            if (khungChinh != null) {
+                khungChinh.setCenter(ruotNhanh);
+            }
+
+            lopPhuShippingMethod.setVisible(true);
+            vboxChonPhuongThuc.setVisible(false);
+            vboxNhapThongTin.setVisible(true);
+
+            txtHoTenNhan.setText(ten);
+            txtSDTNhan.setText(sdt);
+            txtDiaChiNhan.setText(diaChi);
+
+            rdoGiaoTanNoi.setSelected(true);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void quayLaiTuDanhSachDiaChi() {
+        try {
+            javafx.scene.Parent ruotNhanh = javafx.fxml.FXMLLoader.load(getClass().getResource(trangChuCuaNhanh));
+            if (khungChinh != null) {
+                khungChinh.setCenter(ruotNhanh);
+            }
+            lopPhuShippingMethod.setVisible(true);
+            vboxChonPhuongThuc.setVisible(false);
+            vboxNhapThongTin.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

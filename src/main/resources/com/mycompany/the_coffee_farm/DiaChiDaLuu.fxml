@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="100.0" prefWidth="480.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 5, 0, 0, 2);" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.the_coffee_farm.DiaChiDaLuu_Controller">
+    <children>
+        <RadioButton fx:id="rdoChon" layoutX="15.0" layoutY="40.0" mnemonicParsing="false" onAction="#chonDiaChiNay" style="-fx-cursor: hand;" />
+        <Label fx:id="txtTen" layoutX="45.0" layoutY="15.0" text="Đinh Công Tuấn">
+            <font> <Font name="System Bold" size="16.0" /> </font>
+        </Label>
+        <Label fx:id="txtDauGach" layoutX="185.0" layoutY="16.0" text="|" textFill="#aaaaaa">
+            <font> <Font size="14.0" /> </font>
+        </Label>
+        <Label fx:id="txtSDT" layoutX="200.0" layoutY="17.0" text="0966447725" textFill="#707070">
+            <font> <Font size="14.0" /> </font>
+        </Label>
+        <Label fx:id="txtDiaChi" layoutX="45.0" layoutY="45.0" prefWidth="400.0" text="Số Nhà 24a, Ngách 87/59 Đường Yên Xá, Phường Thanh Liệt" textFill="#4a4a4a" wrapText="true">
+            <font> <Font size="14.0" /> </font>
+        </Label>
+    </children>
+</AnchorPane>
