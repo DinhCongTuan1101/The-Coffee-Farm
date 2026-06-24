@@ -17,7 +17,6 @@ public class LienHeVaGopY_Controller {
             stage.show();
 
         } catch (Exception e) {
-            System.out.println("Lỗi lúc quay về màn Account!");
             e.printStackTrace();
         }
     }

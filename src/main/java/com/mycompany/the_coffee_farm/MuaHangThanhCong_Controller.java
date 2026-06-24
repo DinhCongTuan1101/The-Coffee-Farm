@@ -19,7 +19,6 @@ public class MuaHangThanhCong_Controller {
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root)); 
         } catch (Exception e) {
-            System.out.println("Lỗi khi quay về trang chủ!");
             e.printStackTrace();
         }
     }

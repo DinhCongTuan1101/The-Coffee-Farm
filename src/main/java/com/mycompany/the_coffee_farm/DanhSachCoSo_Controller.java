@@ -49,7 +49,6 @@ public class DanhSachCoSo_Controller {
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
         } catch (Exception e) {
-            System.out.println("Lỗi chuyển sang trang thành công Off!");
             e.printStackTrace();
         }
     }
@@ -61,7 +60,6 @@ public class DanhSachCoSo_Controller {
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
         } catch (Exception e) {
-            System.out.println("Lỗi quay lại trang Giỏ Hàng!");
             e.printStackTrace();
         }
     }

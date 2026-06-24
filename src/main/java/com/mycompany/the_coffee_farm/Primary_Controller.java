@@ -55,7 +55,7 @@ public class Primary_Controller implements Initializable {
             timeline.setCycleCount(Timeline.INDEFINITE);
             timeline.play();
         } catch (Exception e) {
-            System.out.println("Lỗi đường dẫn ảnh!");
+            e.printStackTrace();
         }
     }
 
@@ -67,7 +67,7 @@ public class Primary_Controller implements Initializable {
             javafx.scene.Scene sceneMoi = new javafx.scene.Scene(trangThongTin);
             stage.setScene(sceneMoi);
         } catch (IOException e) {
-            System.out.println("Lỗi không load được file thông tin!");
+            e.printStackTrace();
         }
     }
 
@@ -84,7 +84,6 @@ public class Primary_Controller implements Initializable {
             khungChinh.setCenter(ruotNLT);
             stage.setScene(new javafx.scene.Scene(voChinh));
         } catch (Exception e) {
-            System.out.println("Lỗi vào Nguyên liệu thô!");
             e.printStackTrace();
         }
     }
@@ -103,7 +102,6 @@ public class Primary_Controller implements Initializable {
             stage.setScene(new javafx.scene.Scene(voChinh, 500, 700));
             stage.setResizable(false);
         } catch (Exception e) {
-            System.out.println("Lỗi vào Nguyên liệu sơ chế!");
             e.printStackTrace();
         }
     }
@@ -122,7 +120,6 @@ public class Primary_Controller implements Initializable {
             stage.setScene(new javafx.scene.Scene(voChinh, 500, 700));
             stage.setResizable(false);
         } catch (Exception e) {
-            System.out.println("Lỗi vào Food and Drink!");
             e.printStackTrace();
         }
     }
@@ -137,7 +134,6 @@ public class Primary_Controller implements Initializable {
             stage.setScene(scene);
             stage.show();
         } catch (Exception e) {
-            System.out.println("Lỗi không load được trang Đăng Nhập!");
             e.printStackTrace();
         }
     }

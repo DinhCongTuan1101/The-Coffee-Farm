@@ -46,7 +46,6 @@ public class LichsudonHang_Controller implements Initializable {
             stage.show();
 
         } catch (Exception e) {
-            System.out.println("Lỗi lúc quay về màn Account!");
             e.printStackTrace();
         }
     }
@@ -111,7 +110,7 @@ public class LichsudonHang_Controller implements Initializable {
                     try {
                         imgSanPham.setImage(new Image(getClass().getResourceAsStream("images/anh1.png")));
                     } catch (Exception ex) {
-                        System.out.println("Lỗi load ảnh mặc định!");
+                        System.out.println("Lỗi load ảnh");
                     }
                 }
 
@@ -139,9 +138,9 @@ public class LichsudonHang_Controller implements Initializable {
 
                     javafx.scene.layout.VBox dialog = new javafx.scene.layout.VBox(15);
                     dialog.setStyle("-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 30; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 20, 0, 0, 0);");
-                    
-                    dialog.setMaxWidth(320); 
-                    dialog.setMaxHeight(javafx.scene.layout.Region.USE_PREF_SIZE); 
+
+                    dialog.setMaxWidth(320);
+                    dialog.setMaxHeight(javafx.scene.layout.Region.USE_PREF_SIZE);
                     dialog.setAlignment(javafx.geometry.Pos.CENTER);
 
                     ImageView icon = new ImageView();
@@ -150,7 +149,6 @@ public class LichsudonHang_Controller implements Initializable {
                         icon.setFitWidth(60);
                         icon.setFitHeight(60);
                     } catch (Exception e) {
-                        System.out.println("Không tìm thấy file check.png trong thư mục images!");
                     }
 
                     Label message = new Label("Đã thêm " + tenSp + " vào giỏ hàng!");

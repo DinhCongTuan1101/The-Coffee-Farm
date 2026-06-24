@@ -29,7 +29,6 @@ public class DangNhapThanhCong_Controller {
             Scene sceneMoi = new Scene(rooPrimary);
             stage.setScene(sceneMoi);
         } catch (Exception e) {
-            System.out.println("Lỗi không quay lại được trang trước!");
             e.printStackTrace();
         }
     }

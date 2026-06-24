@@ -23,25 +23,38 @@ import javafx.stage.Stage;
 
 public class ThongTinCaNhan_Controller implements Initializable {
 
-    // --- BIẾN GIAO DIỆN CHÍNH ---
-    @FXML private Label txtTen;
-    @FXML private Label txtTieuSu;
-    @FXML private Label txtGioiTinh;
-    @FXML private Label txtNgaySinh;
-    @FXML private Label txtSDT;
-    @FXML private Label txtEmail;
+    @FXML
+    private Label txtTen;
+    @FXML
+    private Label txtTieuSu;
+    @FXML
+    private Label txtGioiTinh;
+    @FXML
+    private Label txtNgaySinh;
+    @FXML
+    private Label txtSDT;
+    @FXML
+    private Label txtEmail;
 
-    // --- BIẾN CHO PHẦN POPUP ---
-    @FXML private AnchorPane lopPhuMoc;
-    @FXML private VBox boxTieuSu;
-    @FXML private VBox boxGioiTinh;
-    @FXML private VBox boxNgaySinh;
-    
-    @FXML private TextField inputTieuSu;
-    @FXML private RadioButton rdoNam;
-    @FXML private RadioButton rdoNu;
-    @FXML private RadioButton rdoKhac;
-    @FXML private DatePicker dpNgaySinh;
+    @FXML
+    private AnchorPane lopPhuMoc;
+    @FXML
+    private VBox boxTieuSu;
+    @FXML
+    private VBox boxGioiTinh;
+    @FXML
+    private VBox boxNgaySinh;
+
+    @FXML
+    private TextField inputTieuSu;
+    @FXML
+    private RadioButton rdoNam;
+    @FXML
+    private RadioButton rdoNu;
+    @FXML
+    private RadioButton rdoKhac;
+    @FXML
+    private DatePicker dpNgaySinh;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -50,10 +63,9 @@ public class ThongTinCaNhan_Controller implements Initializable {
 
     private void loadDuLieuTuDatabase() {
         String sql = "SELECT username, phone_number, email, tieu_su, gioi_tinh, ngay_sinh FROM users WHERE user_id = ?";
-        
-        try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
-             
+
+        try (Connection conn = DBConnection.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
+
             ps.setInt(1, TaiKhoan.id);
             ResultSet rs = ps.executeQuery();
 
@@ -69,21 +81,25 @@ public class ThongTinCaNhan_Controller implements Initializable {
 
                 if (sdt != null && sdt.length() >= 4) {
                     txtSDT.setText("*".repeat(sdt.length() - 2) + sdt.substring(sdt.length() - 2));
-                } else txtSDT.setText(sdt != null ? sdt : "Chưa cập nhật");
+                } else {
+                    txtSDT.setText(sdt != null ? sdt : "Chưa cập nhật");
+                }
 
                 if (email != null && email.contains("@")) {
                     String[] parts = email.split("@");
                     if (parts[0].length() > 2) {
                         txtEmail.setText(parts[0].charAt(0) + "*".repeat(parts[0].length() - 2) + parts[0].charAt(parts[0].length() - 1) + "@" + parts[1]);
-                    } else txtEmail.setText(email);
-                } else txtEmail.setText(email != null ? email : "Chưa cập nhật");
+                    } else {
+                        txtEmail.setText(email);
+                    }
+                } else {
+                    txtEmail.setText(email != null ? email : "Chưa cập nhật");
+                }
 
-                // Đắp dữ liệu 3 cột mới
                 txtTieuSu.setText(tieuSu != null ? tieuSu : "Thiết lập ngay");
                 txtGioiTinh.setText(gioiTinh != null ? gioiTinh : "Thiết lập ngay");
-                
+
                 if (ngaySinh != null) {
-                    // Chuyển kiểu Date của SQL sang dd/MM/yyyy để hiện cho đẹp
                     LocalDate date = ngaySinh.toLocalDate();
                     txtNgaySinh.setText(date.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
                 } else {
@@ -108,8 +124,6 @@ public class ThongTinCaNhan_Controller implements Initializable {
         }
     }
 
-    // ================== LOGIC TẮT BẬT POPUP ==================
-
     @FXML
     public void dongPopup(ActionEvent event) {
         lopPhuMoc.setVisible(false);
@@ -119,7 +133,7 @@ public class ThongTinCaNhan_Controller implements Initializable {
         boxTieuSu.setVisible(false);
         boxGioiTinh.setVisible(false);
         boxNgaySinh.setVisible(false);
-        
+
         hopThoaiCanMo.setVisible(true);
         lopPhuMoc.setVisible(true);
     }
@@ -127,7 +141,7 @@ public class ThongTinCaNhan_Controller implements Initializable {
     @FXML
     public void moSuaTieuSu(MouseEvent event) {
         if (!txtTieuSu.getText().equals("Thiết lập ngay")) {
-            inputTieuSu.setText(txtTieuSu.getText()); // Bê chữ cũ vào ô nhập
+            inputTieuSu.setText(txtTieuSu.getText());
         } else {
             inputTieuSu.clear();
         }
@@ -137,10 +151,14 @@ public class ThongTinCaNhan_Controller implements Initializable {
     @FXML
     public void moSuaGioiTinh(MouseEvent event) {
         String gt = txtGioiTinh.getText();
-        if (gt.equals("Nam")) rdoNam.setSelected(true);
-        else if (gt.equals("Nữ")) rdoNu.setSelected(true);
-        else if (gt.equals("Khác")) rdoKhac.setSelected(true);
-        
+        if (gt.equals("Nam")) {
+            rdoNam.setSelected(true);
+        } else if (gt.equals("Nữ")) {
+            rdoNu.setSelected(true);
+        } else if (gt.equals("Khác")) {
+            rdoKhac.setSelected(true);
+        }
+
         hienThiPopup(boxGioiTinh);
     }
 
@@ -149,19 +167,15 @@ public class ThongTinCaNhan_Controller implements Initializable {
         hienThiPopup(boxNgaySinh);
     }
 
-    // ================== LOGIC LƯU VÀO DATABASE ==================
-
     private void capNhatDatabase(String tenCot, Object giaTri) {
         String sql = "UPDATE users SET " + tenCot + " = ? WHERE user_id = ?";
-        try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
-             
+        try (Connection conn = DBConnection.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
+
             ps.setObject(1, giaTri);
             ps.setInt(2, TaiKhoan.id);
             ps.executeUpdate();
-            
+
         } catch (Exception e) {
-            System.out.println("❌ Lỗi khi cập nhật " + tenCot);
             e.printStackTrace();
         }
     }
@@ -179,12 +193,15 @@ public class ThongTinCaNhan_Controller implements Initializable {
     @FXML
     public void luuGioiTinh(ActionEvent event) {
         String gt = "Khác";
-        if (rdoNam.isSelected()) gt = "Nam";
-        else if (rdoNu.isSelected()) gt = "Nữ";
-        
+        if (rdoNam.isSelected()) {
+            gt = "Nam";
+        } else if (rdoNu.isSelected()) {
+            gt = "Nữ";
+        }
+
         capNhatDatabase("gioi_tinh", gt);
         txtGioiTinh.setText(gt);
-        txtGioiTinh.setTextFill(javafx.scene.paint.Color.valueOf("#4a4a4a")); // Đổi sang màu xám đậm
+        txtGioiTinh.setTextFill(javafx.scene.paint.Color.valueOf("#4a4a4a"));
         dongPopup(event);
     }
 
@@ -192,9 +209,7 @@ public class ThongTinCaNhan_Controller implements Initializable {
     public void luuNgaySinh(ActionEvent event) {
         LocalDate date = dpNgaySinh.getValue();
         if (date != null) {
-            // Lưu xuống SQL theo định dạng chuẩn yyyy-mm-dd
             capNhatDatabase("ngay_sinh", java.sql.Date.valueOf(date));
-            // HIển thị lên UI theo định dạng ngày VN (không che sao)
             txtNgaySinh.setText(date.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
             txtNgaySinh.setTextFill(javafx.scene.paint.Color.valueOf("#4a4a4a"));
         }

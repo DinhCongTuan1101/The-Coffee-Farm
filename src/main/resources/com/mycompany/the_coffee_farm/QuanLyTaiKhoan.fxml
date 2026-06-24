@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="700.0" prefWidth="500.0" style="-fx-background-color: #f4f6f8;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.the_coffee_farm.QuanLyTaiKhoan_Controller">
+   <children>
+      <AnchorPane prefHeight="80.0" prefWidth="500.0" style="-fx-background-color: #0A3D62;">
+         <children>
+            <Button layoutX="10.0" layoutY="20.0" mnemonicParsing="false" onAction="#quayLai" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 16; -fx-font-weight: bold; -fx-cursor: hand;" text="←" />
+            <Label layoutX="120.0" layoutY="22.0" text="QUẢN LÝ TÀI KHOẢN" textFill="WHITE">
+               <font><Font name="System Bold" size="24.0" /></font>
+            </Label>
+         </children>
+      </AnchorPane>
+
+      <TableView fx:id="tblTaiKhoan" layoutX="20.0" layoutY="100.0" prefHeight="380.0" prefWidth="460.0" style="-fx-background-radius: 8;">
+        <columns>
+          <TableColumn fx:id="colId" prefWidth="77.59997749328613" text="ID" />
+          <TableColumn fx:id="colSdt" prefWidth="114.40001678466797" text="SĐT (Tài khoản)" />
+          <TableColumn fx:id="colTen" prefWidth="166.39996337890625" text="Tên Khách" />
+          <TableColumn fx:id="colTrangThai" prefWidth="104.0" text="Trạng Thái" />
+        </columns>
+      </TableView>
+
+      <VBox layoutX="20.0" layoutY="500.0" spacing="15.0">
+         <children>
+            <TextField fx:id="txtDisplayTen" editable="false" prefHeight="45.0" prefWidth="460.0" promptText="Tên khách hàng đang chọn..." style="-fx-background-radius: 8; -fx-font-size: 14; -fx-background-color: #e9ecef; -fx-text-fill: #2c3e50; -fx-font-weight: bold;" />
+            <TextField fx:id="txtDisplaySdt" editable="false" prefHeight="45.0" prefWidth="460.0" promptText="Số điện thoại đang chọn..." style="-fx-background-radius: 8; -fx-font-size: 14; -fx-background-color: #e9ecef; -fx-text-fill: #2c3e50; -fx-font-weight: bold;" />
+         </children>
+      </VBox>
+
+      <HBox alignment="CENTER" layoutX="10.0" layoutY="620.0" prefWidth="480.0" spacing="15.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#themTaiKhoan" prefHeight="45.0" prefWidth="145.0" style="-fx-background-color: #2ecc71; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14; -fx-background-radius: 8; -fx-cursor: hand;" text="➕ Thêm Tài Khoản" />
+            <Button fx:id="btnKhoa" mnemonicParsing="false" onAction="#khoaTaiKhoan" prefHeight="45.0" prefWidth="150.0" style="-fx-background-color: #9b59b6; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14; -fx-background-radius: 8; -fx-cursor: hand;" text="🔒 Khóa Tài Khoản" />
+            <Button mnemonicParsing="false" onAction="#xoaTaiKhoan" prefHeight="45.0" prefWidth="145.0" style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14; -fx-background-radius: 8; -fx-cursor: hand;" text="🗑 Xóa Tài Khoản" />
+         </children>
+      </HBox>
+
+      <StackPane fx:id="paneThemTK" style="-fx-background-color: rgba(0,0,0,0.6);" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox alignment="CENTER" maxHeight="380.0" maxWidth="400.0" spacing="15.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 30; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 15, 0, 0, 0);">
+               <children>
+                  <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="TẠO TÀI KHOẢN MỚI" />
+                  <TextField fx:id="txtTenMoi" prefHeight="40.0" promptText="Nhập Họ Tên..." style="-fx-background-radius: 5; -fx-font-size: 14px;" />
+                  <TextField fx:id="txtSdtMoi" prefHeight="40.0" promptText="Nhập Số Điện Thoại..." style="-fx-background-radius: 5; -fx-font-size: 14px;" />
+                  <TextField fx:id="txtEmailMoi" prefHeight="40.0" promptText="Nhập Email..." style="-fx-background-radius: 5; -fx-font-size: 14px;" />
+                  <TextField fx:id="txtMatKhauMoi" prefHeight="40.0" promptText="Nhập Mật Khẩu..." style="-fx-background-radius: 5; -fx-font-size: 14px;" />
+                  <TextField fx:id="txtDiaChiMoi" prefHeight="40.0" promptText="Nhập Địa chỉ..." style="-fx-background-radius: 5; -fx-font-size: 14px;" />
+                  <HBox alignment="CENTER" spacing="20.0" style="-fx-padding: 10 0 0 0;">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#dongPopupThem" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: #95a5a6; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-cursor: hand;" text="Hủy" />
+                        <Button mnemonicParsing="false" onAction="#luuTaiKhoanMoi" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: #2ecc71; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-cursor: hand;" text="Thêm Tài Khoản" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </StackPane>
+
+      <StackPane fx:id="paneThongBao" style="-fx-background-color: rgba(0,0,0,0.4);" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+          <children>
+              <VBox alignment="CENTER" maxHeight="150" maxWidth="320.0" spacing="15" style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 0);">
+                  <children>
+                      <Label style="-fx-text-fill: #e74c3c; -fx-font-weight: bold; -fx-font-size: 16px;" text="THÔNG BÁO" />
+                      <Label fx:id="lblNoiDungThongBao" alignment="CENTER" style="-fx-font-size: 14px; -fx-text-fill: #2c3e50;" text="Nội dung" textAlignment="CENTER" wrapText="true" />
+                      <Button onAction="#dongThongBao" prefHeight="35" prefWidth="90" style="-fx-background-color: #34495e; -fx-text-fill: white; -fx-background-radius: 8; -fx-font-weight: bold; -fx-cursor: hand;" text="OK" />
+                  </children>
+              </VBox>
+          </children>
+      </StackPane>
+   </children>
+</AnchorPane>

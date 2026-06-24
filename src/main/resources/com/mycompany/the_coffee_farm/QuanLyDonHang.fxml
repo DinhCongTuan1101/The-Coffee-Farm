@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="700.0" prefWidth="500.0" style="-fx-background-color: #f4f6f8;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.the_coffee_farm.QuanLyDonHang_Controller">
+   <children>
+      <AnchorPane prefHeight="80.0" prefWidth="500.0" style="-fx-background-color: #0A3D62;">
+         <children>
+            <Button layoutX="10.0" layoutY="20.0" mnemonicParsing="false" onAction="#quayLai" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 16; -fx-font-weight: bold; -fx-cursor: hand;" text="←" />
+            <Label layoutX="128.0" layoutY="22.0" text="QUẢN LÝ ĐƠN HÀNG" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+
+      <TableView fx:id="tblDonHang" layoutX="20.0" layoutY="100.0" prefHeight="350.0" prefWidth="460.0" style="-fx-background-radius: 8;">
+        <columns>
+          <TableColumn fx:id="colIdDon" prefWidth="60.0" text="ID Đơn" />
+          <TableColumn fx:id="colSdtKhach" prefWidth="130.0" text="SĐT Khách" />
+          <TableColumn fx:id="colTongTien" prefWidth="120.0" text="Tổng Tiền" />
+          <TableColumn fx:id="colTrangThai" prefWidth="148.0" text="Trạng Thái" />
+        </columns>
+      </TableView>
+
+      <VBox layoutX="20.0" layoutY="470.0" spacing="15.0">
+         <children>
+            <TextField fx:id="txtIdDon" prefHeight="45.0" prefWidth="460.0" promptText="Nhập ID Đơn hàng cần xử lý..." style="-fx-background-radius: 8; -fx-font-size: 15;" />
+            <TextField fx:id="txtTrangThai" prefHeight="45.0" prefWidth="460.0" promptText="Nhập trạng thái (Ví dụ: Đang giao, Hoàn thành)..." style="-fx-background-radius: 8; -fx-font-size: 15;" />
+         </children>
+      </VBox>
+
+      <HBox layoutX="20.0" layoutY="590.0" spacing="20.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#capNhatTrangThai" prefHeight="45.0" prefWidth="140.0" style="-fx-background-color: #2980b9; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 15; -fx-background-radius: 8; -fx-cursor: hand; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 3);" text="🔄 Cập nhật" />
+            <Button mnemonicParsing="false" onAction="#huyDon" prefHeight="45.0" prefWidth="140.0" style="-fx-background-color: #f39c12; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 15; -fx-background-radius: 8; -fx-cursor: hand; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 3);" text="🚫 Hủy Đơn" />
+            <Button mnemonicParsing="false" onAction="#xoaDon" prefHeight="45.0" prefWidth="140.0" style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 15; -fx-background-radius: 8; -fx-cursor: hand; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 3);" text="🗑 Xóa Đơn" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

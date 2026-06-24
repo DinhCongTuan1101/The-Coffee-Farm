@@ -229,7 +229,6 @@ public class OrderScreen_Controller implements Initializable {
             if (tongTien == 0) return;
 
             if (TaiKhoan.phuongThucNhan == 0) {
-                System.out.println("⚠️ Cảnh báo: Khách chưa chọn phương thức nhận hàng!");
                 lopPhuCanhBao.toFront();
                 lopPhuCanhBao.setVisible(true); 
                 return; 
@@ -267,7 +266,6 @@ public class OrderScreen_Controller implements Initializable {
                 });
             });
         } catch (Exception e) {
-            System.out.println("Lỗi trong lúc xử lý mua hàng:");
             e.printStackTrace(); 
         }
     }

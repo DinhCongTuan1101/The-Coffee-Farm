@@ -55,7 +55,6 @@ public class ThanhChucNang_Controller {
                 System.out.println("Lỗi: Chưa đặt fx:id là 'khungChinh' cho BorderPane bên Scene Builder!");
             }
         } catch (Exception e) {
-            System.out.println("Lỗi không về được nhánh chính: " + trangChuCuaNhanh);
             e.printStackTrace();
         }
     }
@@ -65,7 +64,7 @@ public class ThanhChucNang_Controller {
         if (lopPhuShippingMethod != null) {
             lopPhuShippingMethod.setVisible(true);
         } else {
-            System.out.println("Lỗi: Chưa nối ID lớp phủ bên Scene Builder!");
+            return;
         }
     }
 
@@ -77,9 +76,9 @@ public class ThanhChucNang_Controller {
                 khungChinh.setCenter(ruotAccount);
             } else {
                 System.out.println("Lỗi: Chưa đặt fx:id là 'khungChinh' cho BorderPane bên Scene Builder!");
+                return;
             }
         } catch (Exception e) {
-            System.out.println("Lỗi: Không tìm thấy hoặc không load được file Account_Screen.fxml!");
             e.printStackTrace();
         }
     }
@@ -95,7 +94,6 @@ public class ThanhChucNang_Controller {
             Scene sceneMoi = new Scene(rooPrimary);
             stage.setScene(sceneMoi);
         } catch (Exception e) {
-            System.out.println("Lỗi không quay lại được trang trước!");
             e.printStackTrace();
         }
     }
@@ -124,7 +122,6 @@ public class ThanhChucNang_Controller {
     public void chonMangDi(javafx.event.ActionEvent event) {
         if (rdoLayMangDi.isSelected()) {
             TaiKhoan.phuongThucNhan = 2;
-            System.out.println("Bạn đã chọn: Đến lấy mang đi");
             if (btnShippingMethod != null) {
                 btnShippingMethod.setText("Mang đi");
             }
@@ -136,7 +133,6 @@ public class ThanhChucNang_Controller {
     public void chonTaiQuan(javafx.event.ActionEvent event) {
         if (rdoDungTaiQuan.isSelected()) {
             TaiKhoan.phuongThucNhan = 3;
-            System.out.println("Bạn đã chọn: Dùng tại quán");
             if (btnShippingMethod != null) {
                 btnShippingMethod.setText("Tại quán");
             }
@@ -157,7 +153,6 @@ public class ThanhChucNang_Controller {
         }
     }
 
-
     @FXML
     public void xacNhanGiaoHang(javafx.event.ActionEvent event) {
         String ten = txtHoTenNhan.getText().trim();
@@ -165,12 +160,9 @@ public class ThanhChucNang_Controller {
         String diaChi = txtDiaChiNhan.getText().trim();
 
         if (ten.isEmpty() || sdt.isEmpty() || diaChi.isEmpty()) {
-            System.out.println("Vui lòng điền đầy đủ thông tin!");
             return;
         }
 
-        System.out.println("Giao đến: " + ten + " - " + diaChi);
-        
         tuDongLuuDiaChi(TaiKhoan.id, ten, sdt, diaChi);
 
         if (btnShippingMethod != null) {
@@ -196,27 +188,24 @@ public class ThanhChucNang_Controller {
                 psInsert.setString(3, sdt);
                 psInsert.setString(4, diaChi);
                 psInsert.executeUpdate();
-                System.out.println("Đã tự động lưu địa chỉ mới vào kho!");
             }
         } catch (Exception e) {
-            System.out.println("Lỗi lúc tự động lưu địa chỉ!");
             e.printStackTrace();
         }
     }
 
-public static boolean isFromCheckout = false;
+    public static boolean isFromCheckout = false;
 
     @FXML
     public void moTrangChonDiaChi(ActionEvent event) {
         try {
-            isFromCheckout = true; 
+            isFromCheckout = true;
             dongPopupShipping(event);
             Parent ruotChonDiaChi = FXMLLoader.load(getClass().getResource("DanhSachDiaChi.fxml"));
             if (khungChinh != null) {
                 khungChinh.setCenter(ruotChonDiaChi);
             }
         } catch (Exception e) {
-            System.out.println("Lỗi không mở được trang Chọn Địa Chỉ!");
             e.printStackTrace();
         }
     }
@@ -232,7 +221,6 @@ public static boolean isFromCheckout = false;
             stage.setScene(scene);
             stage.show();
         } catch (Exception e) {
-            System.out.println("Lỗi không chuyển được trang!");
             e.printStackTrace();
         }
     }
@@ -241,7 +229,7 @@ public static boolean isFromCheckout = false;
 
     @FXML
     public void initialize() {
-        instance = this; 
+        instance = this;
     }
 
     public void nhanDiaChiDaChon(String ten, String sdt, String diaChi) {

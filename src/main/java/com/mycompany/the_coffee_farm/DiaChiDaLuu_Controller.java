@@ -6,11 +6,17 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 
 public class DiaChiDaLuu_Controller {
-    @FXML private Label txtTen;
-    @FXML private Label txtDauGach;
-    @FXML private Label txtSDT;
-    @FXML private Label txtDiaChi;
-    @FXML private RadioButton rdoChon;
+
+    @FXML
+    private Label txtTen;
+    @FXML
+    private Label txtDauGach;
+    @FXML
+    private Label txtSDT;
+    @FXML
+    private Label txtDiaChi;
+    @FXML
+    private RadioButton rdoChon;
 
     private String tenNguoiNhan;
     private String sdtNguoiNhan;
@@ -24,11 +30,11 @@ public class DiaChiDaLuu_Controller {
         txtSDT.setText(sdt);
         txtDiaChi.setText(diaChi);
     }
-    
+
     public void setCheDoHienThi(boolean isCheckout) {
         if (!isCheckout) {
-            rdoChon.setVisible(false); 
-            
+            rdoChon.setVisible(false);
+
             txtTen.setLayoutX(txtTen.getLayoutX() - 25);
             txtDauGach.setLayoutX(txtDauGach.getLayoutX() - 25);
             txtSDT.setLayoutX(txtSDT.getLayoutX() - 25);

@@ -20,10 +20,14 @@ import javafx.scene.layout.VBox;
 
 public class DanhSachDiaChi_Controller implements Initializable {
 
-    @FXML private VBox vboxDanhSach;
-    @FXML private Label txtTieuDe;
-    @FXML private ScrollPane scrollPane;
-    @FXML private AnchorPane paneXacNhan;
+    @FXML
+    private VBox vboxDanhSach;
+    @FXML
+    private Label txtTieuDe;
+    @FXML
+    private ScrollPane scrollPane;
+    @FXML
+    private AnchorPane paneXacNhan;
 
     public static DanhSachDiaChi_Controller instance;
 
@@ -41,14 +45,14 @@ public class DanhSachDiaChi_Controller implements Initializable {
     private void loadDanhSachDiaChi() {
         vboxDanhSach.getChildren().clear();
         danhSachRadio.clear();
-        
+
         boolean isCheckout = ThanhChucNang_Controller.isFromCheckout;
-        
-        if (!isCheckout) { 
+
+        if (!isCheckout) {
             txtTieuDe.setText("Thông tin địa chỉ");
-            paneXacNhan.setVisible(false); 
-            AnchorPane.setBottomAnchor(scrollPane, 0.0); 
-        } else { 
+            paneXacNhan.setVisible(false);
+            AnchorPane.setBottomAnchor(scrollPane, 0.0);
+        } else {
             txtTieuDe.setText("Chọn địa chỉ nhận hàng");
             paneXacNhan.setVisible(true);
             AnchorPane.setBottomAnchor(scrollPane, 80.0);
@@ -56,9 +60,8 @@ public class DanhSachDiaChi_Controller implements Initializable {
 
         String sql = "SELECT * FROM user_addresses WHERE user_id = ? ORDER BY is_default DESC, address_id DESC";
 
-        try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
-             
+        try (Connection conn = DBConnection.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
+
             ps.setInt(1, TaiKhoan.id);
             ResultSet rs = ps.executeQuery();
 
@@ -72,8 +75,8 @@ public class DanhSachDiaChi_Controller implements Initializable {
 
                 DiaChiDaLuu_Controller controller = loader.getController();
                 controller.setData(ten, sdt, diaChi);
-                                controller.setCheDoHienThi(isCheckout);
-                
+                controller.setCheDoHienThi(isCheckout);
+
                 danhSachRadio.add(controller.getRadioButton());
                 vboxDanhSach.getChildren().add(theDiaChi);
             }
