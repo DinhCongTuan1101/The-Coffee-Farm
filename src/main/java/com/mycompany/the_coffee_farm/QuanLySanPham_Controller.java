@@ -2,6 +2,8 @@ package com.mycompany.the_coffee_farm;
 
 import java.io.File;
 import java.net.URL;
+import java.text.NumberFormat;
+import java.util.Locale;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -31,7 +33,7 @@ public class QuanLySanPham_Controller implements Initializable {
     @FXML
     private TableColumn<SanPham, String> colTen;
     @FXML
-    private TableColumn<SanPham, Double> colGia;
+    private TableColumn<SanPham, String> colGia;
     @FXML
     private TextField txtTenSP;
     @FXML
@@ -61,7 +63,12 @@ public class QuanLySanPham_Controller implements Initializable {
         });
 
         colTen.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(cellData.getValue().getTenSanPham()));
-        colGia.setCellValueFactory(cellData -> new javafx.beans.property.SimpleObjectProperty<>(cellData.getValue().getGiaBan()));
+        
+        colGia.setCellValueFactory(cellData -> {
+            double giaRaw = cellData.getValue().getGiaBan();
+            String giaDinhDang = String.format("%,dđ", (int) giaRaw).replace(",", ".");
+            return new javafx.beans.property.SimpleStringProperty(giaDinhDang);
+        });
 
         danhSachLoc = new FilteredList<>(danhSachGoc, p -> p.getIdLoai() == 1);
         tblSanPham.setItems(danhSachLoc);

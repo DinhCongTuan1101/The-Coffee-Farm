@@ -1,6 +1,13 @@
 package com.mycompany.the_coffee_farm;
 
+import database.DBConnection;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.text.NumberFormat;
+import java.time.LocalDate;
+import java.util.Locale;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -33,15 +40,21 @@ public class ThongKeDoanhThu_Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        cboThang.getItems().addAll("Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", 
-                                   "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12");
+        for (int i = 1; i <= 12; i++) {
+            cboThang.getItems().add("Tháng " + i);
+        }
         cboNam.getItems().addAll("2024", "2025", "2026");
-                colTenSP.setCellValueFactory(new PropertyValueFactory<>("tenSP"));
+        
+        colTenSP.setCellValueFactory(new PropertyValueFactory<>("tenSP"));
         colSoLuong.setCellValueFactory(new PropertyValueFactory<>("soLuong"));
         colDoanhThu.setCellValueFactory(new PropertyValueFactory<>("doanhThu"));
 
-        cboThang.getSelectionModel().select("Tháng 1");
-        cboNam.getSelectionModel().select("2026"); 
+        LocalDate ngayHienTai = LocalDate.now();
+        int thangHienTai = ngayHienTai.getMonthValue();
+        int namHienTai = ngayHienTai.getYear();
+
+        cboThang.getSelectionModel().select("Tháng " + thangHienTai);
+        cboNam.getSelectionModel().select(String.valueOf(namHienTai)); 
         
         loadDuLieuBang(cboThang.getValue(), cboNam.getValue());
     }    
@@ -55,22 +68,75 @@ public class ThongKeDoanhThu_Controller implements Initializable {
         }
     }
 
-    private void loadDuLieuBang(String thang, String nam) {
+    private void loadDuLieuBang(String chuoiThang, String chuoiNam) {
         ObservableList<ChiTietThongKe> list = FXCollections.observableArrayList();
         
-        if (thang.equals("Tháng 1") && nam.equals("2026")) {
-            list.add(new ChiTietThongKe("Cà phê sữa đá", 120, "3.600.000"));
-            list.add(new ChiTietThongKe("Bạc xỉu", 85, "2.975.000"));
-            list.add(new ChiTietThongKe("Trà đen Macchiato", 60, "2.700.000"));
-            lblTongDoanhThu.setText("9.275.000 đ");
-            lblTongDonHang.setText("265 Đơn");
-        } else {
-            list.add(new ChiTietThongKe("Trà đào cam sả", 50, "2.250.000"));
-            lblTongDoanhThu.setText("2.250.000 đ");
-            lblTongDonHang.setText("50 Đơn");
+        int thang = Integer.parseInt(chuoiThang.replace("Tháng ", "").trim());
+        int nam = Integer.parseInt(chuoiNam.trim());
+
+        String sqlTongQuan = "SELECT ISNULL(SUM(total_amount), 0) AS TongDoanhThu, COUNT(order_id) AS TongDonHang " +
+                             "FROM orders " +
+                             "WHERE MONTH(ordered_at) = ? AND YEAR(ordered_at) = ? " +
+                             "AND order_status = N'Thành công'";
+
+        String sqlChiTiet = "SELECT p.product_name, SUM(od.quantity) AS SoLuong, SUM(od.quantity * od.historical_price) AS DoanhThu " +
+                            "FROM order_details od " +
+                            "JOIN products p ON od.product_id = p.product_id " +
+                            "JOIN orders o ON od.order_id = o.order_id " +
+                            "WHERE MONTH(o.ordered_at) = ? AND YEAR(o.ordered_at) = ? " +
+                            "AND o.order_status = N'Thành công' " +
+                            "GROUP BY p.product_id, p.product_name " +
+                            "ORDER BY DoanhThu DESC";
+
+        try (Connection conn = DBConnection.getConnection()) {
+            if (conn != null) {
+                try (PreparedStatement psTongQuan = conn.prepareStatement(sqlTongQuan)) {
+                    psTongQuan.setInt(1, thang);
+                    psTongQuan.setInt(2, nam);
+                    try (ResultSet rsTongQuan = psTongQuan.executeQuery()) {
+                        if (rsTongQuan.next()) {
+                            int tongDoanhThu = rsTongQuan.getInt("TongDoanhThu");
+                            int tongDonHang = rsTongQuan.getInt("TongDonHang");
+                            
+                            String tongDoanhThuHienThi = String.format("%,dđ", tongDoanhThu).replace(",", ".");
+                            lblTongDoanhThu.setText(tongDoanhThuHienThi);
+                            lblTongDonHang.setText(tongDonHang + " Đơn");
+                        }
+                    }
+                }
+
+                try (PreparedStatement psChiTiet = conn.prepareStatement(sqlChiTiet)) {
+                    psChiTiet.setInt(1, thang);
+                    psChiTiet.setInt(2, nam);
+                    try (ResultSet rsChiTiet = psChiTiet.executeQuery()) {
+                        while (rsChiTiet.next()) {
+                            String tenSP = rsChiTiet.getString("product_name");
+                            int soLuong = rsChiTiet.getInt("SoLuong");
+                            int doanhThuInt = rsChiTiet.getInt("DoanhThu");
+                            
+                            String doanhThuHienThi = String.format("%,dđ", doanhThuInt).replace(",", ".");
+                            
+                            list.add(new ChiTietThongKe(tenSP, soLuong, doanhThuHienThi));
+                        }
+                    }
+                }
+            } else {
+                hienThiThongBaoLoi("Lỗi hệ thống", "Không thể tạo kết nối đến Cơ sở dữ liệu.");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            hienThiThongBaoLoi("Lỗi cơ sở dữ liệu", "Đã xảy ra lỗi khi tải dữ liệu thống kê doanh thu.");
         }
-        
+
         tblThongKe.setItems(list);
+    }
+
+    private void hienThiThongBaoLoi(String tieuDe, String noiDung) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(tieuDe);
+        alert.setHeaderText(null);
+        alert.setContentText(noiDung);
+        alert.showAndWait();
     }
 
     @FXML

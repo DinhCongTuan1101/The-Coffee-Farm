@@ -19,7 +19,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
-import static javafx.scene.input.KeyCode.N;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
@@ -46,6 +45,7 @@ public class OrderScreen_Controller implements Initializable {
 
     private boolean dangSuaMode = false;
     private List<Button> danhSachNutXoa = new ArrayList<>();
+    private int currentInsertedOrderId = -1;
 
     class DongGioHang {
         CheckBox chkChonMua;
@@ -258,10 +258,14 @@ public class OrderScreen_Controller implements Initializable {
                             lopPhuQR.toFront(); 
                             lopPhuQR.setVisible(true);
                         } else if (rdoTaiQuay.isSelected()) {
+                            capNhatTrangThaiDonHang(currentInsertedOrderId, "Thành công");
                             chuyenTrang(event, "MuaHangThanhCong(Onl).fxml");
                         }
                     } else {                       
                         System.err.println("Thanh toán thất bại do lỗi hệ thống hoặc hết hàng kho!");
+                        if (currentInsertedOrderId != -1) {
+                            capNhatTrangThaiDonHang(currentInsertedOrderId, "Thất bại");
+                        }
                     }
                 });
             });
@@ -272,6 +276,7 @@ public class OrderScreen_Controller implements Initializable {
 
     private boolean executeDatabaseTransaction(int userId, int tongTien, String shippingAddress, List<DongGioHang> dsMonDuocChon) {
         java.sql.Connection conn = null;
+        currentInsertedOrderId = -1;
         try {
             conn = DBConnection.getConnection();
             conn.setAutoCommit(false);
@@ -307,7 +312,6 @@ public class OrderScreen_Controller implements Initializable {
             }
 
             String insertOrderSql = "INSERT INTO orders (user_id, total_amount, shipping_address, order_status, ordered_at) VALUES (?, ?, ?, ?, GETDATE())";
-            int generatedOrderId = -1;
             try (java.sql.PreparedStatement psOrder = conn.prepareStatement(insertOrderSql, java.sql.Statement.RETURN_GENERATED_KEYS)) {
                 psOrder.setInt(1, userId);
                 psOrder.setDouble(2, tongTien);
@@ -317,12 +321,12 @@ public class OrderScreen_Controller implements Initializable {
 
                 try (java.sql.ResultSet generatedKeys = psOrder.getGeneratedKeys()) {
                     if (generatedKeys.next()) {
-                        generatedOrderId = generatedKeys.getInt(1);
+                        currentInsertedOrderId = generatedKeys.getInt(1);
                     }
                 }
             }
 
-            if (generatedOrderId == -1) {
+            if (currentInsertedOrderId == -1) {
                 conn.rollback();
                 return false;
             }
@@ -332,7 +336,7 @@ public class OrderScreen_Controller implements Initializable {
             try (java.sql.PreparedStatement psDetail = conn.prepareStatement(insertDetailSql)) {
                 for (DongGioHang dong : dsMonDuocChon) {
                     int soLuongMua = Integer.parseInt(dong.lblSoLuong.getText());
-                    psDetail.setInt(1, generatedOrderId);
+                    psDetail.setInt(1, currentInsertedOrderId);
                     psDetail.setString(2, dong.tenMon);
                     psDetail.setInt(3, soLuongMua);
                     psDetail.setDouble(4, dong.giaTienMotMon);
@@ -367,10 +371,26 @@ public class OrderScreen_Controller implements Initializable {
         }
     }
 
+    private void capNhatTrangThaiDonHang(int orderId, String trangThai) {
+        if (orderId == -1) return;
+        threadPool.execute(() -> {
+            String sql = "UPDATE orders SET order_status = ? WHERE order_id = ?";
+            try (java.sql.Connection conn = DBConnection.getConnection();
+                 java.sql.PreparedStatement ps = conn.prepareStatement(sql)) {
+                ps.setString(1, trangThai);
+                ps.setInt(2, orderId);
+                ps.executeUpdate();
+            } catch (java.sql.SQLException e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
     @FXML
     private void xacNhanDaQuetQR(javafx.scene.input.MouseEvent event) {
         lopPhuQR.setVisible(false);
         xoaCacMonDaMua(); 
+        capNhatTrangThaiDonHang(currentInsertedOrderId, "Thành công");
         chuyenTrangSauKhiBamVungNgoai(event, "MuaHangThanhCong(Onl).fxml");
     }
 
