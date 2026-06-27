@@ -5,9 +5,7 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.text.NumberFormat;
 import java.time.LocalDate;
-import java.util.Locale;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,12 +15,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class ThongKeDoanhThu_Controller implements Initializable {
@@ -37,6 +35,10 @@ public class ThongKeDoanhThu_Controller implements Initializable {
     @FXML private TableColumn<ChiTietThongKe, String> colTenSP;
     @FXML private TableColumn<ChiTietThongKe, Integer> colSoLuong;
     @FXML private TableColumn<ChiTietThongKe, String> colDoanhThu;
+
+    // Khai báo 2 biến cho Popup Thông Báo tự làm
+    @FXML private StackPane paneThongBao;
+    @FXML private Label lblNoiDungThongBao;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -121,31 +123,18 @@ public class ThongKeDoanhThu_Controller implements Initializable {
                     }
                 }
             } else {
-                hienThiThongBaoLoi("Lỗi hệ thống", "Không thể tạo kết nối đến Cơ sở dữ liệu.");
+                hienThiThongBao("Lỗi hệ thống: Không thể tạo kết nối đến Cơ sở dữ liệu.");
             }
         } catch (Exception e) {
-            e.printStackTrace();
-            hienThiThongBaoLoi("Lỗi cơ sở dữ liệu", "Đã xảy ra lỗi khi tải dữ liệu thống kê doanh thu.");
+            hienThiThongBao("Lỗi cơ sở dữ liệu: Đã xảy ra lỗi khi tải dữ liệu thống kê doanh thu.");
         }
 
         tblThongKe.setItems(list);
     }
 
-    private void hienThiThongBaoLoi(String tieuDe, String noiDung) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle(tieuDe);
-        alert.setHeaderText(null);
-        alert.setContentText(noiDung);
-        alert.showAndWait();
-    }
-
     @FXML
     private void xuatBaoCao(ActionEvent event) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Thành công");
-        alert.setHeaderText(null);
-        alert.setContentText("Đã xuất báo cáo " + cboThang.getValue() + " năm " + cboNam.getValue() + " ra file Excel!");
-        alert.showAndWait();
+        hienThiThongBao("Đã xuất báo cáo " + cboThang.getValue() + " năm " + cboNam.getValue() + " ra file Excel thành công!");
     }
 
     @FXML
@@ -155,10 +144,24 @@ public class ThongKeDoanhThu_Controller implements Initializable {
             Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
         } catch (Exception e) { 
-            e.printStackTrace(); 
+            hienThiThongBao("Lỗi khi quay lại màn hình chính!");
         }
     }
 
+    // ===============================================
+    // HÀM XỬ LÝ POPUP THÔNG BÁO TỰ TẠO
+    // ===============================================
+    private void hienThiThongBao(String noiDung) {
+        lblNoiDungThongBao.setText(noiDung);
+        paneThongBao.setVisible(true);
+    }
+
+    @FXML
+    private void dongThongBao(ActionEvent event) {
+        paneThongBao.setVisible(false);
+    }
+
+    // Class đại diện dữ liệu cho bảng
     public static class ChiTietThongKe {
         private String tenSP;
         private int soLuong;

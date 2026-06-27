@@ -110,7 +110,7 @@
                                       <Font name="System Bold" size="12.0" />
                                   </font>
                               </Button>
-                              <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="38.0" prefWidth="554.0" style="-fx-background-color: transparent; -fx-text-fill: #4A4A4A;" text="Điều khoản                                ">
+                              <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#moDieuKhoan" prefHeight="38.0" prefWidth="554.0" style="-fx-background-color: transparent; -fx-text-fill: #4A4A4A;" text="Điều khoản                                ">
                                   <graphic>
                                       <ImageView fitHeight="23.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                                           <image>

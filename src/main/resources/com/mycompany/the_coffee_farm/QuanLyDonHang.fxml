@@ -7,6 +7,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -25,10 +26,10 @@
 
       <TableView fx:id="tblDonHang" layoutX="20.0" layoutY="100.0" prefHeight="350.0" prefWidth="460.0" style="-fx-background-radius: 8;">
         <columns>
-          <TableColumn fx:id="colIdDon" prefWidth="60.0" text="ID Đơn" />
-          <TableColumn fx:id="colSdtKhach" prefWidth="130.0" text="SĐT Khách" />
-          <TableColumn fx:id="colTongTien" prefWidth="120.0" text="Tổng Tiền" />
-          <TableColumn fx:id="colTrangThai" prefWidth="148.0" text="Trạng Thái" />
+          <TableColumn fx:id="colIdDon" prefWidth="102.39996528625488" text="ID Đơn" />
+          <TableColumn fx:id="colSdtKhach" prefWidth="131.20000457763672" text="SĐT Khách" />
+          <TableColumn fx:id="colTongTien" prefWidth="123.20001220703125" text="Tổng Tiền" />
+          <TableColumn fx:id="colTrangThai" prefWidth="103.199951171875" text="Trạng Thái" />
         </columns>
       </TableView>
 
@@ -46,5 +47,17 @@
             <Button mnemonicParsing="false" onAction="#xoaDon" prefHeight="45.0" prefWidth="140.0" style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 15; -fx-background-radius: 8; -fx-cursor: hand; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 3);" text="🗑 Xóa Đơn" />
          </children>
       </HBox>
+
+    <StackPane fx:id="paneThongBao" style="-fx-background-color: rgba(0,0,0,0.5);" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+          <children>
+              <VBox alignment="CENTER" maxHeight="150" maxWidth="300" spacing="15" style="-fx-background-color: white; -fx-background-radius: 20; -fx-padding: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 0);">
+                  <children>
+                      <Label style="-fx-text-fill: #e74c3c; -fx-font-weight: bold; -fx-font-size: 16px;" text="THÔNG BÁO" />
+                      <Label fx:id="lblNoiDungThongBao" style="-fx-font-size: 14px;" text="Nội dung" />
+                      <Button onAction="#dongThongBao" prefWidth="80" style="-fx-background-color: #34495e; -fx-text-fill: white; -fx-background-radius: 5; -fx-cursor: hand;" text="OK" />
+                  </children>
+              </VBox>
+          </children>
+      </StackPane>
    </children>
 </AnchorPane>

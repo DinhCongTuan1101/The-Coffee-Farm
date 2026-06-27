@@ -119,15 +119,11 @@ public class Account_Screen_Controller implements Initializable {
     public void moLichSuDonHang(javafx.event.ActionEvent event) {
 
         try {
-
             javafx.scene.Parent root = javafx.fxml.FXMLLoader.load(getClass().getResource("LichsudonHang.fxml"));
-
             javafx.stage.Stage stage = (javafx.stage.Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
             stage.setScene(new javafx.scene.Scene(root));
-
         } catch (Exception e) {
             e.printStackTrace();
-
         }
     }
 
@@ -135,20 +131,23 @@ public class Account_Screen_Controller implements Initializable {
     public void moVeChungToi(javafx.event.ActionEvent event) {
 
         try {
-
             javafx.scene.Parent root = javafx.fxml.FXMLLoader.load(getClass().getResource("VeChungToi.fxml"));
-
             javafx.stage.Stage stage = (javafx.stage.Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
             stage.setScene(new javafx.scene.Scene(root));
-
         } catch (Exception e) {
             e.printStackTrace();
-
         }
     }
 
     @FXML
     public void moTimKiemDonHang(javafx.event.ActionEvent event) {
+        try {
+            javafx.scene.Parent root = javafx.fxml.FXMLLoader.load(getClass().getResource("TimKiemDonHang.fxml"));
+            javafx.stage.Stage stage = (javafx.stage.Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new javafx.scene.Scene(root));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -176,10 +175,8 @@ public class Account_Screen_Controller implements Initializable {
         try {
             ThanhChucNang_Controller.isFromCheckout = false;
             javafx.scene.Parent ruotDiaChi = javafx.fxml.FXMLLoader.load(getClass().getResource("DanhSachDiaChi.fxml"));
-
             javafx.scene.Scene scene = ((javafx.scene.Node) event.getSource()).getScene();
             javafx.scene.layout.BorderPane khungChinh = (javafx.scene.layout.BorderPane) scene.lookup("#khungChinh");
-
             if (khungChinh != null) {
                 khungChinh.setCenter(ruotDiaChi);
             }
@@ -194,9 +191,7 @@ public class Account_Screen_Controller implements Initializable {
     public void moThongTinCaNhan(javafx.event.ActionEvent event) {
         try {
             sceneAccountGoc = ((javafx.scene.Node) event.getSource()).getScene();
-
             javafx.scene.Parent ruotThongTin = javafx.fxml.FXMLLoader.load(getClass().getResource("ThongTinCaNhan.fxml"));
-            
             javafx.stage.Stage stage = (javafx.stage.Stage) sceneAccountGoc.getWindow();
             stage.setScene(new javafx.scene.Scene(ruotThongTin));
             stage.show();

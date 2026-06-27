@@ -14,11 +14,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class QuanLyDonHang_Controller implements Initializable {
@@ -32,6 +33,10 @@ public class QuanLyDonHang_Controller implements Initializable {
     @FXML private TextField txtIdDon;
     @FXML private TextField txtTrangThai;
 
+    // Các biến cho Popup thông báo tự làm
+    @FXML private StackPane paneThongBao;
+    @FXML private Label lblNoiDungThongBao;
+
     private ObservableList<DonHangItem> danhSachDonHang = FXCollections.observableArrayList();
 
     @Override
@@ -43,11 +48,11 @@ public class QuanLyDonHang_Controller implements Initializable {
 
         loadDataLenBang();
 
+        // Giữ nguyên hiển thị full TCF-DH ở Textbox cho đẹp
         tblDonHang.setOnMouseClicked(event -> {
             if (event.getClickCount() == 1 && tblDonHang.getSelectionModel().getSelectedItem() != null) {
                 DonHangItem selected = tblDonHang.getSelectionModel().getSelectedItem();
-                String rawId = selected.getIdDon().replace("TCF-DH", "");
-                txtIdDon.setText(String.valueOf(Integer.parseInt(rawId)));
+                txtIdDon.setText(selected.getIdDon()); 
                 txtTrangThai.setText(selected.getTrangThai());
             }
         });
@@ -78,33 +83,40 @@ public class QuanLyDonHang_Controller implements Initializable {
         tblDonHang.setItems(danhSachDonHang);
     }
 
+    // Hàm lấy ID nguyên gốc từ chuỗi hiển thị
+    private int getRawId(String idHienThi) {
+        String raw = idHienThi.replaceAll("[^0-9]", ""); // Lọc bỏ mọi thứ không phải là số
+        return Integer.parseInt(raw);
+    }
+
     @FXML
     private void capNhatTrangThai(ActionEvent event) {
         String id = txtIdDon.getText().trim();
         String trangThai = txtTrangThai.getText().trim();
 
         if (id.isEmpty() || trangThai.isEmpty()) {
-            thongBaoChung("Thiếu thông tin", "Vui lòng nhập ID Đơn và Trạng thái mới!", Alert.AlertType.WARNING);
+            hienThiThongBao("Vui lòng nhập ID Đơn và Trạng thái mới!");
             return;
         }
 
         String sql = "UPDATE orders SET order_status = ? WHERE order_id = ?";
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
+            
             ps.setString(1, trangThai);
-            ps.setInt(2, Integer.parseInt(id));
+            ps.setInt(2, getRawId(id)); // Lấy ID số
 
             if (ps.executeUpdate() > 0) {
-                thongBaoChung("Thành công", "Đã cập nhật trạng thái đơn hàng!", Alert.AlertType.INFORMATION);
+                hienThiThongBao("Đã cập nhật trạng thái đơn hàng thành công!");
                 loadDataLenBang();
                 txtIdDon.clear();
                 txtTrangThai.clear();
             } else {
-                thongBaoChung("Lỗi", "Không tìm thấy mã đơn hàng này!", Alert.AlertType.ERROR);
+                hienThiThongBao("Lỗi: Không tìm thấy mã đơn hàng này!");
             }
         } catch (Exception e) {
             e.printStackTrace();
-            thongBaoChung("Lỗi", "Cập nhật dữ liệu thất bại!", Alert.AlertType.ERROR);
+            hienThiThongBao("Lỗi hệ thống: Cập nhật dữ liệu thất bại!");
         }
     }
 
@@ -113,26 +125,27 @@ public class QuanLyDonHang_Controller implements Initializable {
         String id = txtIdDon.getText().trim();
 
         if (id.isEmpty()) {
-            thongBaoChung("Thiếu thông tin", "Vui lòng nhập hoặc chọn ID Đơn cần hủy!", Alert.AlertType.WARNING);
+            hienThiThongBao("Vui lòng nhập hoặc chọn ID Đơn cần hủy!");
             return;
         }
 
         String sql = "UPDATE orders SET order_status = N'Đã hủy' WHERE order_id = ?";
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setInt(1, Integer.parseInt(id));
+            
+            ps.setInt(1, getRawId(id)); // Lấy ID số
 
             if (ps.executeUpdate() > 0) {
-                thongBaoChung("Thành công", "Đã hủy đơn hàng thành công!", Alert.AlertType.INFORMATION);
+                hienThiThongBao("Đã hủy đơn hàng thành công!");
                 loadDataLenBang();
                 txtIdDon.clear();
                 txtTrangThai.clear();
             } else {
-                thongBaoChung("Lỗi", "Không tìm thấy mã đơn hàng này!", Alert.AlertType.ERROR);
+                hienThiThongBao("Lỗi: Không tìm thấy mã đơn hàng này!");
             }
         } catch (Exception e) {
             e.printStackTrace();
-            thongBaoChung("Lỗi", "Hủy đơn hàng thất bại!", Alert.AlertType.ERROR);
+            hienThiThongBao("Lỗi hệ thống: Hủy đơn hàng thất bại!");
         }
     }
 
@@ -141,26 +154,27 @@ public class QuanLyDonHang_Controller implements Initializable {
         String id = txtIdDon.getText().trim();
 
         if (id.isEmpty()) {
-            thongBaoChung("Thiếu thông tin", "Vui lòng nhập hoặc chọn ID Đơn cần xóa!", Alert.AlertType.WARNING);
+            hienThiThongBao("Vui lòng nhập hoặc chọn ID Đơn cần xóa!");
             return;
         }
 
         String sql = "DELETE FROM orders WHERE order_id = ?";
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setInt(1, Integer.parseInt(id));
+            
+            ps.setInt(1, getRawId(id)); // Lấy ID số
 
             if (ps.executeUpdate() > 0) {
-                thongBaoChung("Thành công", "Đã xóa vĩnh viễn đơn hàng thành công!", Alert.AlertType.INFORMATION);
+                hienThiThongBao("Đã xóa vĩnh viễn đơn hàng thành công!");
                 loadDataLenBang();
                 txtIdDon.clear();
                 txtTrangThai.clear();
             } else {
-                thongBaoChung("Lỗi", "Không tìm thấy mã đơn hàng này!", Alert.AlertType.ERROR);
+                hienThiThongBao("Lỗi: Không tìm thấy mã đơn hàng này!");
             }
         } catch (Exception e) {
             e.printStackTrace();
-            thongBaoChung("Lỗi", "Không thể xóa đơn do ràng buộc dữ liệu!", Alert.AlertType.ERROR);
+            hienThiThongBao("Lỗi hệ thống: Không thể xóa đơn do ràng buộc dữ liệu!");
         }
     }
 
@@ -175,12 +189,15 @@ public class QuanLyDonHang_Controller implements Initializable {
         }
     }
 
-    private void thongBaoChung(String tieuDe, String noiDung, Alert.AlertType kieuIcon) {
-        Alert alert = new Alert(kieuIcon);
-        alert.setTitle(tieuDe);
-        alert.setHeaderText(null);
-        alert.setContentText(noiDung);
-        alert.showAndWait();
+    // Các hàm xử lý Popup thông báo tự làm
+    private void hienThiThongBao(String noiDung) {
+        lblNoiDungThongBao.setText(noiDung);
+        paneThongBao.setVisible(true);
+    }
+
+    @FXML
+    private void dongThongBao(ActionEvent event) {
+        paneThongBao.setVisible(false);
     }
 
     public static class DonHangItem {

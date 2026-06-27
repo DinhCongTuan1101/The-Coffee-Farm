@@ -222,7 +222,7 @@ public class OrderScreen_Controller implements Initializable {
         }
     }
 
-    @FXML
+   @FXML
     private void xuLyMuaHang(ActionEvent event) {
         try {
             int tongTien = Integer.parseInt(lblTongTien.getText().replace(".", "").replace("đ", "").trim());
@@ -242,7 +242,7 @@ public class OrderScreen_Controller implements Initializable {
             }
             
             int userId = TaiKhoan.id; 
-            String shippingAddress = (rdoOnline.isSelected()) ? "Giao hàng tận nơi" : "Nhận tại quầy";
+            String shippingAddress = (TaiKhoan.phuongThucNhan == 1) ? "Giao hàng tận nơi" : "Nhận tại quầy";
 
             threadPool.execute(() -> {
                 System.out.println("[Thread: " + Thread.currentThread().getName() + "] Đang xử lý giao dịch tại DB...");
@@ -253,13 +253,19 @@ public class OrderScreen_Controller implements Initializable {
                     if (dbSuccess) {
                         xoaCacMonDaMua(); 
                         taiDuLieuTuGioHangChung();
-                        
+
                         if (rdoOnline.isSelected()) {
                             lopPhuQR.toFront(); 
                             lopPhuQR.setVisible(true);
-                        } else if (rdoTaiQuay.isSelected()) {
-                            capNhatTrangThaiDonHang(currentInsertedOrderId, "Thành công");
-                            chuyenTrang(event, "MuaHangThanhCong(Onl).fxml");
+                        } 
+                        else {
+                            capNhatTrangThaiDonHang(currentInsertedOrderId, "Thành công"); 
+
+                            if (TaiKhoan.phuongThucNhan == 1) {
+                                chuyenTrang(event, "MuaHangThanhCong(Onl).fxml");
+                            } else {
+                                chuyenTrang(event, "DanhSachCoSo.fxml");
+                            }
                         }
                     } else {                       
                         System.err.println("Thanh toán thất bại do lỗi hệ thống hoặc hết hàng kho!");
